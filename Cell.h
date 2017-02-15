@@ -4,7 +4,7 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include <vector>
 
 /**
  * @class Cell
@@ -17,7 +17,8 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+  Cell();
+  Cell(std::vector<float>);
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -25,7 +26,7 @@ public:
 //==============================
 //    GETTERS
 //==============================
-
+std::vector<float> intra_metabolites(); 
 //==============================
 //    SETTERS
 //==============================
@@ -46,13 +47,15 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-static const float fitness_min_;
-static const float Pdeath_;
-static const float Pmut_;
-int fitness_;
-float a_;
-float b_;
-float c_;
+  static const float fitness_min_;
+  static const float Pdeath_;
+  static const float Pmut_;
+  int fitness_;
+  float a_;
+  float b_;
+  float c_;
+
+
 
 };
 
