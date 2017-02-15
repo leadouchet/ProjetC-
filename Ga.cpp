@@ -8,8 +8,8 @@
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
-const float Ga::Raa_= 0.1;
-const float Ga::Rab_ = 0.1;
+  const float Ga::Raa_= 0.1;
+  const float Ga::Rab_ = 0.1;
 //==============================
 //    CONSTRUCTORS
 //==============================
@@ -21,12 +21,18 @@ const float Ga::Rab_ = 0.1;
 //==============================
 //    DESTRUCTOR
 //==============================
-Ga::~Ga(){}
+  Ga::~Ga(){}
 
 //==============================
 //    PUBLIC METHODS
 //==============================
-
+  void Ga::metabolism(float& a_ext){
+	  float flux_in = Raa_*a_ext;
+	  float chgt = Rab_*a_;
+	  a_ext -= flux_in;
+	  a_ = flux_in - chgt;
+	  b_ = a_ * Rab_ ;
+  }
 
 //==============================
 //   PROTECTED METHODS
