@@ -6,7 +6,9 @@
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
-
+const float Cell::fitness_min_ = 0;
+const float Cell::Pdeath_ = 0.02; 
+const float Cell::Pmut_ = 0;
 //==============================
 //    CONSTRUCTORS
 //==============================

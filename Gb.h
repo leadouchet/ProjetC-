@@ -51,6 +51,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
+static const float Rbb_;
+static const float Rbc_;
 
 };
 //==============================

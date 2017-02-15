@@ -49,6 +49,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
+static const float Raa_;
+static const float Rab_;
 
 };
 
