@@ -7,8 +7,8 @@
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
-const float Ga::Rbb_= 0.1;
-const float Ga::Rbc_ = 0.1;
+const float Gb::Rbb_= 0.1;
+const float Gb::Rbc_ = 0.1;
 //==============================
 //    CONSTRUCTORS
 //==============================

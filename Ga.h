@@ -6,7 +6,7 @@
 //==============================
 
 #include "Cell.h"
-
+#include "vector"
 /**
  * @class Ga
  * @brief Creates a Ga Genotype, Cell
@@ -18,7 +18,8 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+  Ga();
+  Ga(std::vector<float> intra_metabolites);
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -40,7 +41,6 @@ public:
 //==============================
 
   
-
 protected:
 //==============================
 //    PROTECTED METHODS
@@ -49,8 +49,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-static const float Raa_;
-static const float Rab_;
+  static const float Raa_;
+  static const float Rab_;
 
 };
 

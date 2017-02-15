@@ -11,7 +11,7 @@
  * @brief Creates a Box associted to environment
  */
 
-class Box : 
+class Box 
 {
 public:
 //==============================
@@ -50,7 +50,9 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-
+  float A_;
+  float B_;
+  float C_;
 };
 //==============================
 //    GETTER DEFINITION
