@@ -2,7 +2,7 @@
 //    INCLUDES
 //==============================
 #include "Cell.h"
-
+#include <vector>
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -33,3 +33,12 @@ Cell::Cell(std::vector<float> intra_metabolites){
 //==============================
 //    PUBLIC METHODS
 //==============================
+
+
+//==============================
+//    GETTERS
+//==============================
+std::vector<float> Cell::intra_metabolites()
+{  std::vector<float> vec{a_ , b_ , c_};
+return(vec);
+}
