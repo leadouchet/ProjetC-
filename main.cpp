@@ -21,7 +21,6 @@
 
 int main(int argc, char const *argv[])
 {
-	
-	
-	
+	Ga* A1 = new Ga();
+	delete A1;
 	}
