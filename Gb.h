@@ -42,7 +42,7 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
-  metabolism(float&) override;
+  virtual void metabolism(float&) override;
   
 
 protected:
