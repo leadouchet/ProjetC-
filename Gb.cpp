@@ -22,12 +22,20 @@
 //==============================
 //    DESTRUCTOR
 //==============================
-
+  Gb::~Gb(){}
 
 //==============================
 //    PUBLIC METHODS
 //==============================
-
+  void Gb::metabolism(float& b_ext)
+  {
+    float flux_in = Rbb_*b_ext;
+    float chgt = Rbc_*b_;
+    b_ext -= flux_in;
+    b_ += flux_in - chgt;
+    c_ += chgt;
+  }
+  
 //==============================
 //   PROTECTED METHODS
 //==============================

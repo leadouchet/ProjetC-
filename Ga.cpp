@@ -16,7 +16,7 @@ const float Ga::Rab_ = 0.1;
   Ga::Ga(){}
   
   Ga::Ga(std::vector<float> intra_metabolites) : Cell (intra_metabolites){
-	  fitness_ = b_
+	  fitness_ = b_;
 	  }
 //==============================
 //    DESTRUCTOR
