@@ -46,7 +46,7 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-static const int fitness_min_;
+static const float fitness_min_;
 static const float Pdeath_;
 static const float Pmut_;
 int fitness_;

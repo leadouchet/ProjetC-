@@ -11,7 +11,7 @@
  * @brief Creates a Box associted to environment
  */
 
-class Box : 
+class Box
 {
 public:
 //==============================

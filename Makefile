@@ -3,10 +3,10 @@ LDFLAGS=
 
 all: main
 
-main: main.o Environment.o Cell.o Ga.o Gb.o Case.o
-	g++ main.o Environment.o Cell.o Ga.o Gb.o Case.o -o main
+main: main.o Environment.o Cell.o Ga.o Gb.o Box.o
+	g++ main.o Environment.o Cell.o Ga.o Gb.o Box.o -o main
 
-main.o: main.cpp Environment.h Cell.h Ga.h Gb.h Case.h
+main.o: main.cpp Environment.h Cell.h Ga.h Gb.h Box.h
 	g++ $(CFLAGS) -c main.cpp -o main.o
 
 Environment.o: Environment.cpp Environment.h
@@ -21,7 +21,7 @@ Ga.o: Ga.cpp Ga.h
 Gb.o: Gb.cpp Gb.h
 	g++ $(CFLAGS) -c  Gb.cpp -o Gb.o
 
-Case.o: Case.cpp Case.h
-	g++ $(CFLAGS) -c  Case.cpp -o Case.o
+Box.o: Box.cpp Box.h
+	g++ $(CFLAGS) -c  Box.cpp -o Box.o
 clean:
 	rm -f *.o

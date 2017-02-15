@@ -6,6 +6,7 @@
 //==============================
 
 #include "Cell.h"
+#include <vector>
 
 /**
  * @class Gb
@@ -18,7 +19,8 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+  Gb();
+  Gb(std::vector<float>);
 
 //==============================
 //    DESTRUCTOR
@@ -51,8 +53,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-static const float Rbb_;
-static const float Rbc_;
+  static const float Rbb_;
+  static const float Rbc_;
 
 };
 //==============================
