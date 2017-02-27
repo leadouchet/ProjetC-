@@ -4,7 +4,8 @@
 #include "Box.h"
 #include <cstdio>
 #include <vector>
-#include <stdlib.h> 
+#include <stdlib.h>
+
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -45,15 +46,20 @@ bool Box::empty_Box(){
 	else return 1;
 }
 
-void Box::Cellular_death(){
-	std::vector<float> cell_metabolites;
-	cell_metabolites = cell_-> intra_metabolites();
-	CONCENTRATIONS_[0] += cell_metabolites[0];
-	CONCENTRATIONS_[1] += cell_metabolites[1];
-	CONCENTRATIONS_[2] += cell_metabolites[2];
-	delete cell_;
-	cell_ = nullptr;
+bool Box::Cellular_death(){
+	float decision = (double) rand() / (RAND_MAX);
+	if(decision <= cell_->Pdeath()){
+		std::vector<float> cell_metabolites;
+		cell_metabolites = cell_-> intra_metabolites();
+		CONCENTRATIONS_[0] += cell_metabolites[0];
+		CONCENTRATIONS_[1] += cell_metabolites[1];
+		CONCENTRATIONS_[2] += cell_metabolites[2];
+		delete cell_;
+		cell_ = nullptr;
+		}
+	return empty_Box();
 	}
+
 
 void Box::refresh_box(float A_init){
   CONCENTRATIONS_[0] = A_init;
