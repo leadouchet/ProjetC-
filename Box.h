@@ -4,7 +4,10 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include <vector>
+#include "Cell.h"
+#include "Ga.h"
+#include "Gb.h"
 
 /**
  * @class Box
@@ -18,13 +21,13 @@ public:
 //    CONSTRUCTORS
 //==============================
 Box();
-Box(string type, float A_init);
+Box(char type, float A_init);
 	
 
 //==============================
 //    DESTRUCTOR
 //==============================
-
+~Box();
 
 //==============================
 //    GETTERS
@@ -52,9 +55,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-  float A_;
-  float B_;
-  float C_;
+  std::vector<float> CONCENTRATIONS_;
+  Cell* cell_;
 };
 //==============================
 //    GETTER DEFINITION

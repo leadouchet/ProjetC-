@@ -38,12 +38,14 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+  virtual std::vector<float> metabolism(std::vector<float>) = 0;
+
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  virtual void metabolism(float&)=0;
+  
 //==============================
 //    ATTRIBUTES
 //==============================
