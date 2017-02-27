@@ -25,7 +25,7 @@ public:
 //==============================
 //    DESTRUCTOR
 //==============================
-
+  virtual ~Gb();
 
 //==============================
 //    GETTERS
@@ -42,7 +42,7 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
-
+  virtual void metabolism(float&) override;
   
 
 protected:
