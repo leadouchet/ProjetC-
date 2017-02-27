@@ -4,6 +4,7 @@
 #include "Box.h"
 #include <cstdio>
 #include <vector>
+#include <stdlib.h> 
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -61,8 +62,32 @@ void Box::refresh_box(float A_init){
 }
 
 void Box::metab_trade(){
-  CONCENTRATIONS_ = cell_ -> metabolism(CONCENTRATION_);
+  CONCENTRATIONS_ = cell_ -> metabolism(CONCENTRATIONS_);
 }
+
+
+void Box::newborn(Cell* mother){
+  float aleat = (double) rand() / (RAND_MAX);
+  if (mother -> WhatAmI() == 'a'){
+    if (aleat < (mother->Pmut()){
+	cell_ = new Gb(mother->intra_metabolites());
+      }
+    else{
+      	cell_ = new Ga(mother->intra_metabolites());
+    }
+      }
+  else{
+    if (aleat < (mother->Pmut()){
+	cell_ = new Ga(mother->intra_metabolites());
+      }
+    else{
+      	cell_ = new Gb(mother->intra_metabolites());
+    }
+
+  }
+  }
+
+
 //==============================
 //   PROTECTED METHODS
 //==============================

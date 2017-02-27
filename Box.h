@@ -37,6 +37,8 @@ Box(char type, float A_init);
 //    SETTERS
 //==============================
 
+
+
 //==============================
 //    OPERATORS
 //==============================
@@ -48,6 +50,8 @@ Box(char type, float A_init);
   void metab_trade();
   void Cellular_death();
   bool empty_Box();
+  void newborn(Cell* mother);
+
 
 protected:
 //==============================
