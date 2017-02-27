@@ -4,11 +4,14 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include <vector>
+#include "Cell.h"
+#include "Ga.h"
+#include "Gb.h"
 
 /**
  * @class Box
- * @brief Creates a Box associted to environment
+ * @brief Creates a Box associated to environment
  */
 
 class Box
@@ -17,12 +20,14 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+Box();
+Box(char type, float A_init);
+	
 
 //==============================
 //    DESTRUCTOR
 //==============================
-
+~Box();
 
 //==============================
 //    GETTERS
@@ -41,6 +46,8 @@ public:
 //==============================
   void refresh_box(float A_init); 
   void metab_trade();
+  void Cellular_death();
+  bool empty_Box();
 
 protected:
 //==============================
@@ -50,9 +57,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-  float A_;
-  float B_;
-  float C_;
+  std::vector<float> CONCENTRATIONS_;
+  Cell* cell_;
 };
 //==============================
 //    GETTER DEFINITION
