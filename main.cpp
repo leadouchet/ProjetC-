@@ -28,9 +28,21 @@ using std::cin;
 int main(int argc, char const *argv[])
 {
 	Ga* A1 = new Ga();
-	Gb* B1 = new Gb();
+	std::vector<float> c = {1,2,3};
+	Gb* B1 = new Gb(c);
 	cout << A1-> WhatAmI()<< endl;
 	cout << B1 -> WhatAmI() << endl;
+	cout << B1-> intra_metabolites()[0] << endl;
+	cout << B1-> intra_metabolites()[1] << endl;
+	cout << B1-> intra_metabolites()[2] << endl;
+	std::vector<float> res = B1-> Cell_division();
+	cout << B1-> intra_metabolites()[0] << endl;
+	cout << B1-> intra_metabolites()[1] << endl;
+	cout << B1-> intra_metabolites()[2] << endl;
+	
+	cout << res[0] << endl;
+	cout << res[1] << endl;
+	cout << res[2] << endl;
 	delete A1;
 	delete B1;
 	Box* b1 = new Box('a',5);
