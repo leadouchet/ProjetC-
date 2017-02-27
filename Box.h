@@ -39,8 +39,8 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
-
-  
+  void refresh_box(float A_init); 
+  void metab_trade();
 
 protected:
 //==============================
