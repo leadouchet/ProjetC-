@@ -16,7 +16,7 @@
   Ga::Ga(){}
   
   Ga::Ga(std::vector<float> intra_metabolites) : Cell (intra_metabolites){
-	  fitness_ = b_;
+	  fitness_ = concentrations_[1];
 	  }
 //==============================
 //    DESTRUCTOR
@@ -28,10 +28,10 @@
 //==============================
   void Ga::metabolism(float& a_ext){
 	  float flux_in = Raa_*a_ext;
-	  float chgt = Rab_*a_;
+	  float chgt = Rab_*concentrations_[0];
 	  a_ext -= flux_in;
-	  a_ = flux_in - chgt;
-	  b_ = a_ * Rab_ ;
+	  concentrations_[0] += flux_in - chgt;
+	  concentrations_[1] += concentrations_[0] * Rab_ ;
   }
 
 //==============================

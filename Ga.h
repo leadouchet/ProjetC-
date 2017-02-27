@@ -51,7 +51,6 @@ protected:
 //==============================
   static const float Raa_;
   static const float Rab_;
-
 };
 
 //==============================
