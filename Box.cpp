@@ -61,7 +61,7 @@ void Box::refresh_box(float A_init){
 }
 
 void Box::metab_trade(){
-  CONCENTRATIONS_ = cell_ -> metabolism(CONCENTRATION_);
+  CONCENTRATIONS_ = cell_ -> metabolism(CONCENTRATIONS_);
 }
 //==============================
 //   PROTECTED METHODS

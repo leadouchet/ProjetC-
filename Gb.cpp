@@ -16,7 +16,10 @@
   Gb::Gb(){}
   Gb::Gb(std::vector<float> intra_metabolites) : Cell(intra_metabolites) 
   {
-    fitness_ = concentrations_[2]; 
+	if (concentrations_[1] >= fitness_min_){
+    fitness_ = concentrations_[3];
+    }
+	else fitness_ = 0; 
   }
   
 //==============================
