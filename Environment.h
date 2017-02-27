@@ -5,6 +5,9 @@
 //    INCLUDES
 //==============================
 #include <vector>
+#include <array>
+#include <stdlib.h>
+#include "Box.h"
 
 /**
  * @class Environment
@@ -17,6 +20,7 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
+  Environment();
 
 //==============================
 //    DESTRUCTOR
@@ -46,7 +50,22 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
+  int W_; //width
+  int H_; //Height
+  std::vector< std::vector<Box> > grid_;
+  float D_; // diffusion constant
+  int T_;
+  float A_init_;
 
+
+private :
+//==============================
+//      PRIVATE METHODS
+//==============================
+  char randel (std::vector<char>& tab);
+
+  
+  
 };
 
 //==============================
