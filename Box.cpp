@@ -69,7 +69,7 @@ void Box::metab_trade(){
 void Box::newborn(Cell* mother){
   float aleat = (double) rand() / (RAND_MAX);
   if (mother -> WhatAmI() == 'a'){
-    if (aleat < (mother->Pmut()){
+    if (aleat < (mother->Pmut())){
 	cell_ = new Gb(mother->intra_metabolites());
       }
     else{
@@ -77,7 +77,7 @@ void Box::newborn(Cell* mother){
     }
       }
   else{
-    if (aleat < (mother->Pmut()){
+    if (aleat < (mother->Pmut())){
 	cell_ = new Ga(mother->intra_metabolites());
       }
     else{

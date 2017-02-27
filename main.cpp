@@ -50,4 +50,8 @@ int main(int argc, char const *argv[])
 	cout << ((double) rand() / (RAND_MAX))  << endl;	
 	cout << ((double) rand() / (RAND_MAX))  << endl;
 	cout << ((double) rand() / (RAND_MAX))  << endl;
+	Box b2 = Box();
+	Cell* mother = new Ga(c);
+	b2.newborn(mother);
+	
 }
