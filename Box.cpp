@@ -19,7 +19,7 @@ Box::Box(){
  cell_ = nullptr; 
 }
 
-  Box::Box(char type, float A_init)
+Box::Box(char type, float A_init)
   {
     CONCENTRATIONS_ = {A_init,0.0,0.0};
     if (type == 'a'){

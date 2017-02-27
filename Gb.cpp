@@ -27,6 +27,10 @@
 //==============================
 //    PUBLIC METHODS
 //==============================
+char Gb::WhatAmI() {
+	return 'b';
+	}
+
   void Gb::metabolism(float& b_ext)
   {
     float flux_in = Rbb_*b_ext;

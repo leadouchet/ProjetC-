@@ -26,6 +26,10 @@
 //==============================
 //    PUBLIC METHODS
 //==============================
+char Ga::WhatAmI() {
+	return 'a';
+	}
+	
   void Ga::metabolism(float& a_ext){
 	  float flux_in = Raa_*a_ext;
 	  float chgt = Rab_*concentrations_[0];
@@ -33,6 +37,7 @@
 	  concentrations_[0] += flux_in - chgt;
 	  concentrations_[1] += concentrations_[0] * Rab_ ;
   }
+  
 
 //==============================
 //   PROTECTED METHODS

@@ -39,7 +39,9 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+  char WhatAmI() override;
   void metabolism(float& a_ext) override;
+
   
 protected:
 //==============================
