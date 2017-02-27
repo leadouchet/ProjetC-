@@ -36,5 +36,5 @@ Cell::~Cell(){}
 //==============================
 std::vector<float> Cell::intra_metabolites()
 {  
-  return(concentrations_)
+  return(concentrations_);
 }
