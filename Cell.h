@@ -53,6 +53,8 @@ protected:
   int fitness_;
   std::vector<float> concentrations_;
 
+
+
 };
 
 //==============================
