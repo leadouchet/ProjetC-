@@ -27,7 +27,10 @@ Box::~Box(){
 //==============================
 //    PUBLIC METHODS
 //==============================
-
+bool Box::empty_Box(){
+	if (cell_ == nullptr) return 0;
+	else return 1;
+}
 
 //==============================
 //   PROTECTED METHODS
