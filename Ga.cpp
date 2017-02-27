@@ -16,7 +16,10 @@
   Ga::Ga(){}
   
   Ga::Ga(std::vector<float> intra_metabolites) : Cell (intra_metabolites){
+	  if (concentrations_[1] >= fitness_min_){
 	  fitness_ = concentrations_[1];
+	  }
+	  else fitness_ = 0;
 	  }
 //==============================
 //    DESTRUCTOR
