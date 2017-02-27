@@ -43,7 +43,7 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  virtual void metabolism(float&)=0;
+  virtual void metabolism(float&) = 0;
 //==============================
 //    ATTRIBUTES
 //==============================

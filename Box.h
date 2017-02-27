@@ -4,11 +4,12 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include <vector>
+#include "Cell.h"
 
 /**
  * @class Box
- * @brief Creates a Box associted to environment
+ * @brief Creates a Box associated to environment
  */
 
 class Box
@@ -18,13 +19,13 @@ public:
 //    CONSTRUCTORS
 //==============================
 Box();
-Box(string type, float A_init);
+Box(char type, float A_init);
 	
 
 //==============================
 //    DESTRUCTOR
 //==============================
-
+~Box();
 
 //==============================
 //    GETTERS
@@ -41,21 +42,20 @@ Box(string type, float A_init);
 //==============================
 //    PUBLIC METHODS
 //==============================
-
-  
+void Cellular_death();
+bool empty_Box();
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-bool empty_Box();
+
 
 //==============================
 //    ATTRIBUTES
 //==============================
-  float A_;
-  float B_;
-  float C_;
+std::vector<float> CONCENTRATIONS_;
+Cell* cell_ = nullptr;
 };
 //==============================
 //    GETTER DEFINITION
