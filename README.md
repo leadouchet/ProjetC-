@@ -10,5 +10,10 @@ destructor
 ### Class Ga
 ### Class Gb
 ### Class Box :
+
+
+
+
+
 ### Class Environment 
 array de cases
