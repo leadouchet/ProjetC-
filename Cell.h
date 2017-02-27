@@ -39,12 +39,14 @@ public:
 //    PUBLIC METHODS
 //==============================
 virtual char WhatAmI() = 0;
+  virtual std::vector<float> metabolism(std::vector<float>) = 0;
+
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  virtual void metabolism(float&) = 0;
+  
 //==============================
 //    ATTRIBUTES
 //==============================

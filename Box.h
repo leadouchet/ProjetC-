@@ -6,6 +6,8 @@
 //==============================
 #include <vector>
 #include "Cell.h"
+#include "Ga.h"
+#include "Gb.h"
 
 /**
  * @class Box
@@ -54,8 +56,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-std::vector<float> CONCENTRATIONS_;
-Cell* cell_ = nullptr;
+  std::vector<float> CONCENTRATIONS_;
+  Cell* cell_;
 };
 //==============================
 //    GETTER DEFINITION

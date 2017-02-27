@@ -43,8 +43,8 @@ public:
 //    PUBLIC METHODS
 //==============================
   char WhatAmI() override;
-  virtual void metabolism(float&) override;
-
+virtual std::vector<float> metabolism(std::vector<float> ext_metab) override;
+  
 
 protected:
 //==============================

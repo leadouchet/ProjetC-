@@ -2,11 +2,9 @@
 //    INCLUDES
 //==============================
 #include "Box.h"
-#include "Cell.h"
-#include "Ga.h"
-#include "Gb.h"
 #include <cstdio>
 #include <vector>
+
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
