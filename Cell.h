@@ -51,11 +51,7 @@ protected:
   static const float Pdeath_;
   static const float Pmut_;
   int fitness_;
-  float a_;
-  float b_;
-  float c_;
-
-
+  std::vector<float> concentrations_;
 
 };
 
