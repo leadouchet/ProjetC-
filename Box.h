@@ -11,7 +11,7 @@
 
 /**
  * @class Box
- * @brief Creates a Box associted to environment
+ * @brief Creates a Box associated to environment
  */
 
 class Box
@@ -44,13 +44,14 @@ Box(char type, float A_init);
 //==============================
 //    PUBLIC METHODS
 //==============================
-
-  
+void Cellular_death();
+bool empty_Box();
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
+
 
 //==============================
 //    ATTRIBUTES

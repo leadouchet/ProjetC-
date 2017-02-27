@@ -10,7 +10,7 @@ destructor
 ### Class Ga
 ### Class Gb
 ### Class Box :
-
+empty_Box : Test wether a box is empty or not, if there is a cell into the box.
 
 
 

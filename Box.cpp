@@ -39,7 +39,20 @@ Box::~Box(){
 //==============================
 //    PUBLIC METHODS
 //==============================
+bool Box::empty_Box(){
+	if (cell_ == nullptr) return 0;
+	else return 1;
+}
 
+void Box::Cellular_death(){
+	std::vector<float> cell_metabolites;
+	cell_metabolites = cell_-> intra_metabolites();
+	CONCENTRATIONS_[0] += cell_metabolites[0];
+	CONCENTRATIONS_[1] += cell_metabolites[1];
+	CONCENTRATIONS_[2] += cell_metabolites[2];
+	delete cell_;
+	cell_ = nullptr;
+	}
 
 //==============================
 //   PROTECTED METHODS
