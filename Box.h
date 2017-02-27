@@ -18,6 +18,7 @@ public:
 //    CONSTRUCTORS
 //==============================
 
+  Box(string type, float A_init);
 
 //==============================
 //    DESTRUCTOR
@@ -50,9 +51,7 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-  float A_;
-  float B_;
-  float C_;
+  std::vector<float> CONCENTRATIONS_;
 };
 //==============================
 //    GETTER DEFINITION
