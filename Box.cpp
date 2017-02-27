@@ -11,6 +11,10 @@
 //==============================
 //    CONSTRUCTORS
 //==============================
+Box::Box(){
+ CONCENTRATIONS_ = {0.0,0.0,0.0}; // Concentrations A, B, C
+ cell_ = nullptr; 
+}
 
 //==============================
 //    DESTRUCTOR

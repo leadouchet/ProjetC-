@@ -8,7 +8,7 @@
 
 /**
  * @class Box
- * @brief Creates a Box associted to environment
+ * @brief Creates a Box associated to environment
  */
 
 class Box
@@ -17,7 +17,9 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+Box();
+Box(int A_init);
+	
 
 //==============================
 //    DESTRUCTOR
@@ -53,6 +55,7 @@ protected:
   float A_;
   float B_;
   float C_;
+  Cell* cell_;
 };
 //==============================
 //    GETTER DEFINITION
