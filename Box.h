@@ -46,7 +46,7 @@ Box(char type, float A_init);
 //==============================
   void refresh_box(float A_init); 
   void metab_trade();
-  void Cellular_death();
+  bool Cellular_death();
   bool empty_Box();
 
 protected:

@@ -30,9 +30,9 @@
 //==============================
 //    PUBLIC METHODS
 //==============================
-char Gb::WhatAmI() {
-	return 'b';
-	}
+  char Gb::WhatAmI() {
+	  return 'b';
+	  }
   std::vector<float> Gb::metabolism(std::vector<float> ext_metab)
   {
     float flux_in = Rbb_*ext_metab[1];

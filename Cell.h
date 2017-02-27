@@ -29,6 +29,7 @@ public:
  std::vector<float> intra_metabolites(); 
  inline float Pmut() const; 
  inline float fitness() const;
+ inline float Pdeath() const;
 //==============================
 //    SETTERS
 //==============================
@@ -73,6 +74,11 @@ inline float Cell::Pmut() const
 inline float Cell::fitness() const
 {
   return fitness_;
+}
+
+inline float Cell::Pdeath() const
+{
+  return Pdeath_;
 }
 //==============================
 //    SETTER DEFINITION

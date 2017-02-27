@@ -15,6 +15,7 @@ WhatAmI : return the phenotype of the cell as a character 'a' or 'b'.
 
 ### Class Box :
 empty_Box : Test wether a box is empty or not, if there is a cell into the box. Return 0 if no cell and 1 otherwise.
+Cellular_death : Test wether the cell in the box is expected to die. If yes, this method release the cells metabolites into the box and destroy the cell and return 0 (the box is now empty). If not the method return 1 and do not change the cell.
 
 
 
