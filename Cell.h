@@ -43,7 +43,7 @@ public:
 //==============================
 virtual char WhatAmI() = 0;
 virtual std::vector<float> metabolism(std::vector<float>) = 0;
-std::vector<float> Cell_division();
+void Cell_division();
 
 
 

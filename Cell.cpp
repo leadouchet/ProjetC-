@@ -29,11 +29,10 @@ Cell::~Cell(){}
 //==============================
 //    PUBLIC METHODS
 //==============================
-std::vector<float> Cell::Cell_division(){
+void Cell::Cell_division(){
 	concentrations_[0] /= 2;
 	concentrations_[1] /= 2;
 	concentrations_[2] /= 2;
-	return concentrations_;
 }
 //==============================
 //    GETTERS
