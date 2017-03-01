@@ -49,13 +49,16 @@ int main(int argc, char const *argv[])
 	cout << ((double) rand() / (RAND_MAX))  << endl;
 	Box b2 = Box();
 	Cell* mother = new Ga(c);
-    mother-> Cell_division();
+	cout << mother->WhatAmI() << endl;
+	mother-> Cell_division();
 	b2.newborn(mother);
-    std::vector<float> e = b2.get_cell_concentration();
-    cout << e[0] << endl;
-    cout << e[1] << endl;
-    cout << e[2] << endl;
-	delete mother;
+	std::vector<float> e = b2.get_cell_concentration();
+	cout << e[0] << endl;
+	cout << e[1] << endl;
+	cout << e[2] << endl;
+	cout << b2.get_cell_type() << endl;
+	
+    delete mother;
     srand (time(NULL));
     
     Environment envir = Environment();
@@ -64,5 +67,4 @@ int main(int argc, char const *argv[])
     cout << lettre << endl;
     cout << tab->at(0) << tab->at(1) << tab->at(2) << tab->at(3) << endl;
     delete tab;
-
 }

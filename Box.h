@@ -33,6 +33,7 @@ Box(char type, float A_init);
 //    GETTERS
 //==============================
 std::vector<float> get_cell_concentration();
+ char get_cell_type();
 //==============================
 //    SETTERS
 //==============================

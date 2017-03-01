@@ -93,11 +93,16 @@ void Box::newborn(Cell* mother){
   }
   }
 
-std::vector<float> Box::get_cell_concentration(){
-    return(cell_ -> intra_metabolites());
-    
-    
+std::vector<float> Box::get_cell_concentration()
+{
+    return(cell_ -> intra_metabolites());    
 }
+
+char Box::get_cell_type()
+{
+  return(cell_-> WhatAmI()); 
+}
+
 
 //==============================
 //   PROTECTED METHODS
