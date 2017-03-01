@@ -41,6 +41,8 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+  char pick_char (std::vector<char>* tab);
+
 
 protected:
 //==============================
@@ -62,7 +64,7 @@ private :
 //==============================
 //      PRIVATE METHODS
 //==============================
-  char randel (std::vector<char>& tab);
+
 
   
   

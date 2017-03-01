@@ -9,6 +9,7 @@
 #include "Ga.h"
 #include "Gb.h"
 #include "Box.h"
+#include "Environment.h"
 #include <vector>
 #include <list>
 #include <iostream>
@@ -54,5 +55,14 @@ int main(int argc, char const *argv[])
     cout << e[0] << endl;
     cout << e[1] << endl;
     cout << e[2] << endl;
-	
+	delete mother;
+    srand (time(NULL));
+    
+    Environment envir = Environment();
+    std::vector<char>* tab = new std::vector<char> {'a','b','c','d','e'};
+    char lettre = envir.pick_char(tab);
+    cout << lettre << endl;
+    cout << tab->at(0) << tab->at(1) << tab->at(2) << tab->at(3) << endl;
+    delete tab;
+
 }
