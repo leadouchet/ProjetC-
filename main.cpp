@@ -9,6 +9,7 @@
 #include "Ga.h"
 #include "Gb.h"
 #include "Box.h"
+#include "Environment.h"
 #include <vector>
 #include <list>
 #include <iostream>
@@ -35,7 +36,7 @@ int main(int argc, char const *argv[])
 	cout << B1-> intra_metabolites()[0] << endl;
 	cout << B1-> intra_metabolites()[1] << endl;
 	cout << B1-> intra_metabolites()[2] << endl;
-	B1-> Cell_division();
+    B1-> Cell_division();
 	cout << B1-> intra_metabolites()[0] << endl;
 	cout << B1-> intra_metabolites()[1] << endl;
 	cout << B1-> intra_metabolites()[2] << endl;
@@ -57,4 +58,13 @@ int main(int argc, char const *argv[])
 	cout << e[2] << endl;
 	cout << b2.get_cell_type() << endl;
 	
+    delete mother;
+    srand (time(NULL));
+    
+    Environment envir = Environment();
+    std::vector<char>* tab = new std::vector<char> {'a','b','c','d','e'};
+    char lettre = envir.pick_char(tab);
+    cout << lettre << endl;
+    cout << tab->at(0) << tab->at(1) << tab->at(2) << tab->at(3) << endl;
+    delete tab;
 }
