@@ -35,7 +35,7 @@ int main(int argc, char const *argv[])
 	cout << B1-> intra_metabolites()[0] << endl;
 	cout << B1-> intra_metabolites()[1] << endl;
 	cout << B1-> intra_metabolites()[2] << endl;
-    B1-> Cell_division();
+	B1-> Cell_division();
 	cout << B1-> intra_metabolites()[0] << endl;
 	cout << B1-> intra_metabolites()[1] << endl;
 	cout << B1-> intra_metabolites()[2] << endl;
@@ -48,11 +48,13 @@ int main(int argc, char const *argv[])
 	cout << ((double) rand() / (RAND_MAX))  << endl;
 	Box b2 = Box();
 	Cell* mother = new Ga(c);
-    mother-> Cell_division();
+	cout << mother->WhatAmI() << endl;
+	mother-> Cell_division();
 	b2.newborn(mother);
-    std::vector<float> e = b2.get_cell_concentration();
-    cout << e[0] << endl;
-    cout << e[1] << endl;
-    cout << e[2] << endl;
+	std::vector<float> e = b2.get_cell_concentration();
+	cout << e[0] << endl;
+	cout << e[1] << endl;
+	cout << e[2] << endl;
+	cout << b2.get_cell_type() << endl;
 	
 }
