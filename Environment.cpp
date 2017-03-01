@@ -28,6 +28,41 @@
 
 
 //==============================
+//    PROTECTED METHODS
+//==============================
+std::vector<int> Environment::toroidal(std::vector<int> coord)
+{
+  int i = coord[0];
+  int j = coord[1];
+  if (i<0){
+    if (j<0){
+      return {H_-1,W_-1};
+    }
+    if (j>(W_-1)){
+      return {H_-1,0};
+    }
+    return {H_-1,j};
+  }
+  if (i>(H_-1)){
+    if (j<0){
+      return {0,W_-1};
+    }
+    if (j>(W_-1)){
+      return {0,0};
+    }
+    return {0,j}; 
+  }
+  if (j>(W_-1)){
+    return {i,0};
+  }
+  if (j<0){
+    return {i,W_-1};
+    }
+  return {i,j};
+}
+
+
+//==============================
 //      PRIVATE METHODS
 //==============================
 /**

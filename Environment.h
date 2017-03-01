@@ -42,11 +42,12 @@ public:
 //    PUBLIC METHODS
 //==============================
 
+
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-
+  std::vector<int> toroidal(std::vector<int> coord);
 //==============================
 //    ATTRIBUTES
 //==============================
