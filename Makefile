@@ -1,4 +1,4 @@
-CFLAGS= -g -std=c++11
+CFLAGS= -g -O0 -std=c++11
 LDFLAGS=
 
 all: main

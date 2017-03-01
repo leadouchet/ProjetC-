@@ -27,7 +27,7 @@ using std::cin;
 //==============================
 
 int main(int argc, char const *argv[])
-{	srand (time(NULL));
+{	/*srand (time(NULL));
 	Ga* A1 = new Ga();
 	std::vector<float> c = {1,2,3};
 	Gb* B1 = new Gb(c);
@@ -59,12 +59,14 @@ int main(int argc, char const *argv[])
 	cout << b2.get_cell_type() << endl;
 	
     delete mother;
-    srand (time(NULL));
+    srand (time(NULL));*/
     
     Environment envir = Environment();
-    std::vector<char>* tab = new std::vector<char> {'a','b','c','d','e'};
-    char lettre = envir.pick_char(tab);
-    cout << lettre << endl;
-    cout << tab->at(0) << tab->at(1) << tab->at(2) << tab->at(3) << endl;
-    delete tab;
+    std::vector<std::vector<Box*> >::iterator row;
+    std::vector<Box*>::iterator col;
+    for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
+      for (col = row->begin(); col != row->end(); col++) {
+        cout <<(*col)->get_cell_type()<<endl;
+	  }
+    }
 }

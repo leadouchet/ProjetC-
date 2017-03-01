@@ -19,6 +19,23 @@ using std::cin;
     W_ = 32;
     H_ = 32;
     A_init_ = 0;
+    std::vector<char>* tab = new std::vector<char> (W_*H_);
+
+    for (int i = 0 ; i!=W_*H_/2 ; ++i ){
+      (*tab)[i]='a';
+    }
+    for (int j = W_*H_/2  ; j!=W_*H_; ++j){
+      (*tab)[j]='b';
+    }
+     std::vector<std::vector<Box*> >::iterator row;
+    std::vector<Box*>::iterator col;
+    for (row = grid_.begin(); row != grid_.end(); row++) {
+      for (col = row->begin(); col != row->end(); col++) {
+        char type = pick_char(tab);
+	  (*col) = new Box(type,A_init_);
+	  }
+    }
+    delete tab;
   }
   
   
@@ -29,7 +46,6 @@ using std::cin;
 //==============================
 //    PUBLIC METHODS
 //==============================
-
 
 //==============================
 //    PROTECTED METHODS

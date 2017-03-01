@@ -17,6 +17,7 @@
 class Environment
 {
 public:
+  std::vector< std::vector<Box* > > grid_(32,std::vector< Box* >(32));
 //==============================
 //    CONSTRUCTORS
 //==============================
@@ -43,8 +44,6 @@ public:
 //==============================
   char pick_char (std::vector<char>* tab);
 
-
-
 protected:
 //==============================
 //    PROTECTED METHODS
@@ -55,7 +54,7 @@ protected:
 //==============================
   int W_; //width
   int H_; //Height
-  std::vector< std::vector<Box> > grid_;
+  //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
   int T_;
   float A_init_;
