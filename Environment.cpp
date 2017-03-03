@@ -99,15 +99,16 @@ void Environment::diffuse_box(int x, int y){
 	grid_[x][y] -> update_box (ABC);
 }
 
-/*
-void diffuse_metabolites(){
-	for (int y = 0, y < H_ , ++y){
-		for (int x = 0, x < W_, ++x){
-			for (int i = -1, i <= 1, ++1){
-				for (int j = -1
-	}
 
-*/
+void Environment::diffuse_metabolites(){
+	for (int y = 0; y < H_ ; ++y){
+		for (int x = 0; x < W_; ++x){
+			diffuse_box(x,y);
+	}
+}
+}
+
+
 
 //==============================
 //      PRIVATE METHODS
