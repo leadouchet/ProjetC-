@@ -43,6 +43,7 @@ public:
 //    PUBLIC METHODS
 //==============================
   char pick_char (vector<char>* tab);
+  vector<vector<int>>* Cellular_killer();
 
 protected:
 //==============================

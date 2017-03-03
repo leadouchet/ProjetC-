@@ -14,10 +14,11 @@
 #include <list>
 #include <iostream>
 #include <stdlib.h>  
+
 using std::cout;
 using std::endl;
 using std::cin;
-
+using namespace std;
 //==============================
 //    FUNCTION DECLARATION
 //==============================
@@ -71,4 +72,12 @@ int main(int argc, char const *argv[])
 	  }
         cout<< endl;
     }
+    for (int i = 0; i<10 ; ++i){
+      vector<vector<int>>* dead_list = envir.Cellular_killer();
+      for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
+	for (col = row->begin(); col != row->end(); col++) {
+	  cout <<(*col)->get_cell_type() << "  ";
+	}
+	cout<< endl;} cout<< endl;
+}
 }

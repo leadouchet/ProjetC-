@@ -40,7 +40,7 @@ float get_cell_fitness();
 //==============================
 //    SETTERS
 //==============================
-  void update_box(const vector<float> ABC);
+
 
 
 //==============================

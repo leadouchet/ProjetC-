@@ -105,7 +105,7 @@ vector<float> Box::get_cell_concentration()
 }
 
 char Box::get_cell_type()
-{
+{ if (cell_==nullptr){return('X');}
   return(cell_-> WhatAmI()); 
 }
 

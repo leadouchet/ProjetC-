@@ -109,6 +109,19 @@ void Environment::diffuse_metabolites(){
 }
 
 
+vector<vector<int>>* Environment::Cellular_killer()
+{ vector<vector<int>>* result = new vector<vector<int>>;
+  for (int y = 0; y < H_ ; ++y){
+    for (int x = 0; x < W_; ++x){
+      if (grid_[x][y] -> Cellular_death()){
+	result -> push_back(vector<int> {x,y}); 
+      } 
+      
+    }
+  }
+  return(result);
+}
+
 vector<int> Environment::Best_fit(vector<int> EmptyBox){
 	float Bestfit = 0.0;
 	vector<int> xy = toroidal({EmptyBox[0]+1,EmptyBox[1]+1});
@@ -129,6 +142,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox){
 	}
 	return xy ;
 }
+
 //==============================
 //      PRIVATE METHODS
 //==============================
