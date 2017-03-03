@@ -43,7 +43,7 @@ Box::~Box(){
 //==============================
 //Getter 
 
-std::vector<float> Box::get_box_metabolites(){
+vector<float> Box::get_box_metabolites(){
 	return CONCENTRATIONS_;
 	}
 
@@ -99,7 +99,7 @@ void Box::newborn(Cell* mother){
   }
   }
 
-std::vector<float> Box::get_cell_concentration()
+vector<float> Box::get_cell_concentration()
 {
     return(cell_ -> intra_metabolites());    
 }
@@ -109,7 +109,12 @@ char Box::get_cell_type()
   return(cell_-> WhatAmI()); 
 }
 
-
+void Box::update_box(const vector<float> ABC)
+{
+for (auto it = 0 ; it < 3; ++it){
+	CONCENTRATIONS_[it] = ABC[it];
+}
+}
 //==============================
 //   PROTECTED METHODS
 //==============================
