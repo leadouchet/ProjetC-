@@ -120,13 +120,30 @@ void diffuse_metabolites(){
         r = rand() % (tab->size()-1);
     else
         r = 0;
-    char rec = tab->at(r);
+    char res = tab->at(r);
     int i = 0;
     for (auto it = tab->begin(); it != tab->end() ; ++it, ++i){
 		if (i==r) {
 			tab->erase(it);
             break;}
 		}
-    return rec;
+    return res;
 }
  
+ 
+  vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
+{
+    int r;
+    if (tab->size() > 1)
+        r = rand() % (tab->size()-1);
+    else
+        r = 0;
+    vector<int> res = tab->at(r);
+    int i = 0;
+    for (auto it = tab->begin(); it != tab->end() ; ++it, ++i){
+		if (i==r) {
+			tab->erase(it);
+            break;}
+		}
+    return res;  
+}

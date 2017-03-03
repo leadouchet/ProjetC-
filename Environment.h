@@ -43,14 +43,16 @@ public:
 //    PUBLIC METHODS
 //==============================
   char pick_char (vector<char>* tab);
+  vector<int> pick_coord (vector< vector<int> >*  tab);
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
   vector<int> toroidal(vector<int> coord);
-void diffuse_metabolites();
-void diffuse_box(int x, int y);
+  void diffuse_metabolites();
+  void diffuse_box(int x, int y);
+  
 //==============================
 //    ATTRIBUTES
 //==============================
