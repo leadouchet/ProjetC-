@@ -130,8 +130,8 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox){
 	  for (int j = -1; j <= 1; ++i){
 	    vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+i});
 	    if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit){
-			vector<vector<int>>* C = new vector<vector<int>> {xy,coord};
-			vector<int> decision = pick_coord(C);
+			vector<vector<int>>* C = new vector<vector<int>> {xy,coord}; // we put both vector of coordinates into a vector
+			vector<int> decision = pick_coord(C); // Choose randomly one of the vectors
 			vector<int> xy = decision;
 			delete C;
 		}
