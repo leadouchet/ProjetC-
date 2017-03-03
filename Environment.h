@@ -17,6 +17,7 @@
 class Environment
 {
 public:
+  std::vector< std::vector<Box* > > grid_(32,std::vector< Box* >(32));
 //==============================
 //    CONSTRUCTORS
 //==============================
@@ -41,18 +42,20 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+  char pick_char (std::vector<char>* tab);
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
+  std::vector<int> toroidal(std::vector<int> coord);
 void diffuse_metabolites();
 //==============================
 //    ATTRIBUTES
 //==============================
   int W_; //width
   int H_; //Height
-  std::vector< std::vector<Box> > grid_;
+  //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
   int T_;
   float A_init_;

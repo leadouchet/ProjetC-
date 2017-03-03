@@ -34,6 +34,7 @@ Box(char type, float A_init);
 //==============================
 std::vector<float> get_box_metabolites() const;
 std::vector<float> get_cell_concentration() const;
+char get_cell_type();
 //==============================
 //    SETTERS
 //==============================
