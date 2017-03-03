@@ -62,11 +62,13 @@ int main(int argc, char const *argv[])
     srand (time(NULL));*/
     
     Environment envir = Environment();
+    cout << "environment initialized" << endl;
     std::vector<std::vector<Box*> >::iterator row;
     std::vector<Box*>::iterator col;
     for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
-        cout <<(*col)->get_cell_type()<<endl;
+        cout <<(*col)->get_cell_type() << "  ";
 	  }
+        cout<< endl;
     }
 }
