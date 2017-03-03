@@ -41,6 +41,27 @@ Box::~Box(){
 //==============================
 //    PUBLIC METHODS
 //==============================
+
+// Setters 
+
+void update_box(const vector<float> C){
+	CONCENTRATIONS_ = C
+}
+
+void Box::refresh_box(float A_init){
+  CONCENTRATIONS_[0] = A_init;
+  CONCENTRATIONS_[1] = 0;
+  CONCENTRATIONS_[2] = 0;  
+}
+//Getter 
+
+std::vector<float> get_box_metabolites(){
+	return CONCENTRATIONS_;
+	}
+
+
+
+
 bool Box::empty_Box(){
 	if (cell_ == nullptr) return 0;
 	else return 1;
@@ -60,12 +81,6 @@ bool Box::Cellular_death(){
 	return empty_Box();
 	}
 
-
-void Box::refresh_box(float A_init){
-  CONCENTRATIONS_[0] = A_init;
-  CONCENTRATIONS_[1] = 0;
-  CONCENTRATIONS_[2] = 0;  
-}
 
 void Box::metab_trade(){
   CONCENTRATIONS_ = cell_ -> metabolism(CONCENTRATIONS_);
@@ -98,6 +113,8 @@ std::vector<float> Box::get_cell_concentration(){
     
     
 }
+
+
 
 //==============================
 //   PROTECTED METHODS

@@ -32,7 +32,8 @@ Box(char type, float A_init);
 //==============================
 //    GETTERS
 //==============================
-std::vector<float> get_cell_concentration();
+std::vector<float> get_box_metabolites() const;
+std::vector<float> get_cell_concentration() const;
 //==============================
 //    SETTERS
 //==============================
@@ -51,6 +52,7 @@ std::vector<float> get_cell_concentration();
   bool Cellular_death();
   bool empty_Box();
   void newborn(Cell* mother);
+  void update_box(const std::vector<float> C);
 
 
 protected:
