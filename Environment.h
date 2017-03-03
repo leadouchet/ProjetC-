@@ -45,6 +45,7 @@ public:
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
 
+  vector<vector<int>>* Cellular_killer();
   void DeathAndCompet();
 
 protected:
