@@ -36,6 +36,7 @@ Box(char type, float A_init);
 vector<float> get_box_metabolites() ;
 vector<float> get_cell_concentration();
 char get_cell_type();
+float get_cell_fitness();
 //==============================
 //    SETTERS
 //==============================
@@ -54,7 +55,6 @@ char get_cell_type();
   bool Cellular_death();
   bool empty_Box();
   void newborn(Cell* mother);
-  void update_box(const std::vector<float> C);
 
 
 protected:
