@@ -45,6 +45,8 @@ public:
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
 
+  void DeathAndCompet();
+
 protected:
 //==============================
 //    PROTECTED METHODS

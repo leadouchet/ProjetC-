@@ -109,6 +109,12 @@ void diffuse_metabolites(){
 
 */
 
+ void DeathAndCompet()
+ {
+   vector< vector<int> >* 
+	 
+ }
+
 //==============================
 //      PRIVATE METHODS
 //==============================
