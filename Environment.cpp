@@ -85,18 +85,18 @@ vector<int> Environment::toroidal(vector<int> coord)
 
 
 void Environment::diffuse_box(int x, int y){
-  vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
+  vector<float> ABC =  grid_[y][x]-> get_box_metabolites();
 	for (int i = -1; i <= 1; ++i){
 	  for (int j = -1; j <= 1; ++i){
 	    vector<int> xy = {x+i,y+i};
 	    vector<int> coord = toroidal(xy);
-	    vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+	    vector<float> NextBox = grid_[coord[1]][coord[0]]-> get_box_metabolites();
 	    for (auto it = 0 ; it < 3 ;  ++it){
 	      ABC[it] += D_*NextBox[it];
 			}
 		}
 	}
-	grid_[x][y] ->  update_box (ABC);
+	grid_[y][x] ->  update_box (ABC);
 }
 
 
@@ -109,7 +109,26 @@ void Environment::diffuse_metabolites(){
 }
 
 
-
+vector<int> Environment::Best_fit(vector<int> EmptyBox){
+	float Bestfit = 0.0;
+	vector<int> xy = toroidal({EmptyBox[0]+1,EmptyBox[1]+1});
+	for (int i = -1; i <= 1; ++i){
+	  for (int j = -1; j <= 1; ++i){
+	    vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+i});
+	    if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit){
+			vector<vector<int>>* C = new vector<vector<int>> {xy,coord};
+			vector<int> decision = pick_coord(C);
+			vector<int> xy = decision;
+			delete C;
+		}
+	    if (grid_[coord[1]][coord[0]]-> get_cell_fitness() > Bestfit){
+			Bestfit = grid_[coord[1]][coord[0]]-> get_cell_fitness();
+			vector<int> xy = {coord[0],coord[1]};
+		}
+	}
+	}
+	return xy ;
+}
 //==============================
 //      PRIVATE METHODS
 //==============================

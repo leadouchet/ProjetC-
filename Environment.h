@@ -51,6 +51,7 @@ protected:
   vector<int> toroidal(vector<int> coord);
 void diffuse_metabolites();
 void diffuse_box(int x, int y);
+vector<int> Best_fit(vector<int> EmptyBox);
 //==============================
 //    ATTRIBUTES
 //==============================
