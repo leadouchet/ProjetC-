@@ -8,6 +8,7 @@
 using std::cout;
 using std::endl;
 using std::cin;
+//using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -16,18 +17,19 @@ using std::cin;
 //    CONSTRUCTORS
 //==============================
   Environment::Environment(){
-    W_ = 32;
-    H_ = 32;
+    W_ = 4;
+    H_ = 4;
     A_init_ = 0;
     std::vector<char>* tab = new std::vector<char> (W_*H_);
-
+    grid_ = std::vector<std::vector<Box*>>(H_,std::vector< Box* >(W_));
     for (int i = 0 ; i!=W_*H_/2 ; ++i ){
       (*tab)[i]='a';
     }
     for (int j = W_*H_/2  ; j!=W_*H_; ++j){
       (*tab)[j]='b';
     }
-     std::vector<std::vector<Box*> >::iterator row;
+      
+    std::vector<std::vector<Box*> >::iterator row;
     std::vector<Box*>::iterator col;
     for (row = grid_.begin(); row != grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
@@ -112,12 +114,17 @@ void diffuse_metabolites(){
 
   char Environment::pick_char (std::vector<char>* tab)
 {
-    int r = rand() % (tab->size()-1);
+    int r;
+    if (tab->size() > 1)
+        r = rand() % (tab->size()-1);
+    else
+        r = 0;
     char rec = tab->at(r);
     int i = 0;
     for (auto it = tab->begin(); it != tab->end() ; ++it, ++i){
 		if (i==r) {
-			tab->erase(it);}
+			tab->erase(it);
+            break;}
 		}
     return rec;
 }

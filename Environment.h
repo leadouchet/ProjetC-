@@ -17,7 +17,7 @@
 class Environment
 {
 public:
-  std::vector< std::vector<Box* > > grid_(32,std::vector< Box* >(32));
+    std::vector< std::vector<Box* > > grid_;//(32,std::vector< Box* >(32));
 //==============================
 //    CONSTRUCTORS
 //==============================
