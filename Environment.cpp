@@ -123,10 +123,10 @@ vector<vector<int>>* Environment::Cellular_killer()
 }
 
 
- void DeathAndCompet()
+ void Environment::DeathAndCompet()
  {
-   vector< vector<int> >* 
-	 
+   vector< vector<int> >* dead_ones = Cellular_killer();
+   //for (int i = dead_ones.size() ; i )	 
  }
 
 //==============================
