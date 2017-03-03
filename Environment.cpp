@@ -85,18 +85,18 @@ vector<int> Environment::toroidal(vector<int> coord)
 
 
 void Environment::diffuse_box(int x, int y){
-	vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
+  vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
 	for (int i = -1; i <= 1; ++i){
-		for (int j = -1; j <= 1; ++i){
-			vector<int> xy = {x+i,y+j};
-			vector<int> coord = toroidal(xy);
-			vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
-			for (auto it = 0 ; it < 3 ;  ++it){
-				ABC[it] += D_*NextBox[it];
+	  for (int j = -1; j <= 1; ++i){
+	    vector<int> xy = {x+i,y+i};
+	    vector<int> coord = toroidal(xy);
+	    vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+	    for (auto it = 0 ; it < 3 ;  ++it){
+	      ABC[it] += D_*NextBox[it];
 			}
 		}
 	}
-	grid_[x][y] -> update_box (ABC);
+	grid_[x][y] ->  update_box (ABC);
 }
 
 

@@ -54,7 +54,7 @@ char get_cell_type();
   bool Cellular_death();
   bool empty_Box();
   void newborn(Cell* mother);
-
+  void update_box(const std::vector<float> C);
 
 
 protected:

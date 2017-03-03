@@ -66,7 +66,6 @@ private :
 //==============================
 //      PRIVATE METHODS
 //==============================
-  char randel (vector<char>& tab);
 
   
   
