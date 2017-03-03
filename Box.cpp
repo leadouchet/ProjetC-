@@ -43,7 +43,7 @@ Box::~Box(){
 //==============================
 //Getter 
 
-std::vector<float> get_box_metabolites(){
+std::vector<float> Box::get_box_metabolites(){
 	return CONCENTRATIONS_;
 	}
 

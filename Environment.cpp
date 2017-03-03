@@ -8,7 +8,8 @@
 using std::cout;
 using std::endl;
 using std::cin;
-//using namespace std;
+using namespace std;
+
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -84,18 +85,19 @@ std::vector<int> Environment::toroidal(std::vector<int> coord)
 }
 
 
-void diffuse_box(int x, int y){
-	std::vector<float> ABC =  grid_[x][y]-> get_box_concentrations();
-	for (int i = -1, i <= 1, ++1){
-		for (int j = -1, j <= 1, ++i){
-			coord = toroidal(x+i,y+j);
-			std::vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_concentrations();
-			for auto it = 0 ; it < 3 ;  ++it){
-				ABC[it] += D_*NextBox[it];
+void Environment::diffuse_box(int x, int y){
+  std::vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
+	for (int i = -1; i <= 1; ++i){
+	  for (int j = -1; j <= 1; ++i){
+	    vector<int> xy = {x+i,y+i};
+	    vector<int> coord = toroidal(xy);
+	    std::vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+	    for (auto it = 0 ; it < 3 ;  ++it){
+	      ABC[it] += D_*NextBox[it];
 			}
 		}
 	}
-	grid[x][y] =  update_box (ABC);
+	//grid_[x][y] =  update_box (ABC);
 }
 
 /*
@@ -128,4 +130,4 @@ void diffuse_metabolites(){
 		}
     return rec;
 }
- */
+

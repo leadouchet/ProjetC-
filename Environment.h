@@ -43,6 +43,7 @@ public:
 //    PUBLIC METHODS
 //==============================
   char pick_char (std::vector<char>* tab);
+  void diffuse_box(int x, int y);
 
 protected:
 //==============================
@@ -65,7 +66,6 @@ private :
 //==============================
 //      PRIVATE METHODS
 //==============================
-  char randel (std::vector<char>& tab);
 
   
   
