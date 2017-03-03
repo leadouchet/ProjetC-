@@ -17,7 +17,7 @@
 class Environment
 {
 public:
-    std::vector< std::vector<Box* > > grid_;//(32,std::vector< Box* >(32));
+    vector< vector<Box* > > grid_;//(32,std::vector< Box* >(32));
 //==============================
 //    CONSTRUCTORS
 //==============================
@@ -42,14 +42,15 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
-  char pick_char (std::vector<char>* tab);
+  char pick_char (vector<char>* tab);
 
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  std::vector<int> toroidal(std::vector<int> coord);
+  vector<int> toroidal(vector<int> coord);
 void diffuse_metabolites();
+void diffuse_box(int x, int y);
 //==============================
 //    ATTRIBUTES
 //==============================
@@ -65,7 +66,7 @@ private :
 //==============================
 //      PRIVATE METHODS
 //==============================
-  char randel (std::vector<char>& tab);
+  char randel (vector<char>& tab);
 
   
   

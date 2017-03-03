@@ -8,7 +8,7 @@
 using std::cout;
 using std::endl;
 using std::cin;
-//using namespace std;
+using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -20,8 +20,8 @@ using std::cin;
     W_ = 4;
     H_ = 4;
     A_init_ = 0;
-    std::vector<char>* tab = new std::vector<char> (W_*H_);
-    grid_ = std::vector<std::vector<Box*>>(H_,std::vector< Box* >(W_));
+    vector<char>* tab = new vector<char> (W_*H_);
+    grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
     for (int i = 0 ; i!=W_*H_/2 ; ++i ){
       (*tab)[i]='a';
     }
@@ -29,8 +29,8 @@ using std::cin;
       (*tab)[j]='b';
     }
       
-    std::vector<std::vector<Box*> >::iterator row;
-    std::vector<Box*>::iterator col;
+    vector<vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
     for (row = grid_.begin(); row != grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
         char type = pick_char(tab);
@@ -52,7 +52,7 @@ using std::cin;
 //==============================
 //    PROTECTED METHODS
 //==============================
-std::vector<int> Environment::toroidal(std::vector<int> coord)
+vector<int> Environment::toroidal(vector<int> coord)
 {
   int i = coord[0];
   int j = coord[1];
@@ -84,18 +84,19 @@ std::vector<int> Environment::toroidal(std::vector<int> coord)
 }
 
 
-void diffuse_box(int x, int y){
-	std::vector<float> ABC =  grid_[x][y]-> get_box_concentrations();
-	for (int i = -1, i <= 1, ++1){
-		for (int j = -1, j <= 1, ++i){
-			coord = toroidal(x+i,y+j);
-			std::vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_concentrations();
-			for auto it = 0 ; it < 3 ;  ++it){
+void Environment::diffuse_box(int x, int y){
+	vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
+	for (int i = -1; i <= 1; ++i){
+		for (int j = -1; j <= 1; ++i){
+			vector<int> xy = {x+i,y+j};
+			vector<int> coord = toroidal(xy);
+			vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+			for (auto it = 0 ; it < 3 ;  ++it){
 				ABC[it] += D_*NextBox[it];
 			}
 		}
 	}
-	grid[x][y] =  update_box (ABC);
+	grid_[x][y] -> update_box (ABC);
 }
 
 /*
@@ -128,4 +129,4 @@ void diffuse_metabolites(){
 		}
     return rec;
 }
- */
+ 
