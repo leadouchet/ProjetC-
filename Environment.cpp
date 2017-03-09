@@ -4,7 +4,8 @@
 #include "Environment.h"
 #include <vector>
 #include <iostream>
-#include <stdlib.h>  
+#include <stdlib.h> 
+#include <stdio.h> 
 using std::cout;
 using std::endl;
 using std::cin;
@@ -123,25 +124,33 @@ vector<vector<int>>* Environment::Cellular_killer()
   return(result);
 }
 
-vector<int> Environment::Best_fit(vector<int> EmptyBox){
+vector<int> Environment::Best_fit(vector<int> EmptyBox)
+{
 	float Bestfit = 0.0;
-	vector<int> xy = toroidal({EmptyBox[0]+1,EmptyBox[1]+1});
-	for (int i = -1; i <= 1; ++i){
-	  for (int j = -1; j <= 1; ++i){
-	    vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+i});
-	    if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit){
-			vector<vector<int>>* C = new vector<vector<int>> {xy,coord}; // we put both vector of coordinates into a vector
-			vector<int> decision = pick_coord(C); // Choose randomly one of the vectors
-			vector<int> xy = decision;
-			delete C;
-		}
-	    if (grid_[coord[1]][coord[0]]-> get_cell_fitness() > Bestfit){
-			Bestfit = grid_[coord[1]][coord[0]]-> get_cell_fitness();
-			vector<int> xy = {coord[0],coord[1]};
-		}
-	}
-	}
-	return xy ;
+  vector<vector<int>>* C = new vector<vector<int>> {};
+	for (int i = -1; i <= 1; ++i)
+  {
+	  for (int j = -1; j <= 1; ++j)
+    {
+      vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+j});
+      if (grid_[coord[1]][coord[0]]-> empty_Box() != 0)
+      {
+        if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit)
+        {
+        C-> push_back(coord); // we put vector of coordinates with the same fitness into a vector        
+      }
+      if (grid_[coord[1]][coord[0]]-> get_cell_fitness() > Bestfit)
+      {
+        Bestfit = grid_[coord[1]][coord[0]]-> get_cell_fitness();
+        delete C;
+        C = new vector<vector<int>> {{coord[0],coord[1]}};
+      }
+    }
+  }
+}
+vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
+delete C;
+return xy ;
 }
 
 
