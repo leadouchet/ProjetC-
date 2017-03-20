@@ -197,17 +197,38 @@ return xy ;
 
  void Environment::Cycle()
  {
+ //Diffusion 	
+   diffuse_metabolites(); 
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
  //Competition
-   for (auto l = dead_ones->size() ; l > 0 ; l--){
+   for (int l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
 	 vector<int> coord_best_fit = Best_fit(coord_empty);
      grid_[coord_empty[1]][coord_empty[0]]->newborn( grid_[coord_best_fit[1]][coord_best_fit[0]]->cell_ );
    }
-  //Diffusion 	
-    diffuse_metabolites(); 
+  //Metabolism
+    for (auto col = grid_.begin(); col != grid_.end() ; col++)
+    {
+		for (auto box = col->begin() ; box != col->end() ; box++)
+		{
+			(*box)->metab_trade();
+		}
+	}
  }
+ 
+ 
+ void Environment::refresh_Environment()
+ {
+    for (auto col = grid_.begin(); col != grid_.end() ; col++)
+    {
+		for (auto box = col->begin() ; box != col->end() ; box++)
+		{
+			(*box)->refresh_box(A_init_);
+		}
+	}
+ }
+ 
 
 //==============================
 //      PRIVATE METHODS

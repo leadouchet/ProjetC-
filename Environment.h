@@ -47,11 +47,15 @@ public:
 //==============================
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
-
-  vector<vector<int>>* Cellular_killer();
-  void Cycle();
-  vector<int> Best_fit(vector<int> EmptyBox);
   void Run(float t);
+  //go in protected
+  void Cycle(); 
+  vector<vector<int>>* Cellular_killer();
+
+  vector<int> Best_fit(vector<int> EmptyBox);
+  void refresh_Environment();
+
+
 
 protected:
 //==============================
