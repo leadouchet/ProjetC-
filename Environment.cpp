@@ -155,6 +155,7 @@ return xy ;
 
 
 
+
  void Environment::DeathAndCompet()
  {
    vector< vector<int> >* dead_ones = Cellular_killer();

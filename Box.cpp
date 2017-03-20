@@ -118,7 +118,8 @@ for (auto it = 0 ; it < 3; ++it){
 
 
 float Box::get_cell_fitness(){
-return cell_-> fitness();
+  if (cell_!=nullptr){
+    return cell_-> fitness();}
 }
 
 

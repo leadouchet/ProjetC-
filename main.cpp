@@ -68,7 +68,7 @@ int main(int argc, char const *argv[])
     std::vector<Box*>::iterator col;
     for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
-        cout <<(*col)->get_cell_type() << "  ";
+        cout <<(*col)->get_cell_type() <<" "<< (*col)->get_cell_fitness()  << "  ";
 	  }
         cout<< endl;
     }
@@ -86,7 +86,7 @@ int main(int argc, char const *argv[])
         
         for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
             for (col = row->begin(); col != row->end(); col++) {
-                cout <<(*col)->get_cell_type() << "   ";
+	      cout <<(*col)->get_cell_type() <<" "<< (*col)->get_cell_fitness() << "   ";
 	}
 	cout<< endl;} cout<< endl;
 }
