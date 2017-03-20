@@ -80,4 +80,15 @@ int main(int argc, char const *argv[])
 	}
 	cout<< endl;} cout<< endl;
 }
+    vector<vector<int>>* dead_list = envir.Cellular_killer();
+    vector<vector<int>> mylist = *dead_list;
+    vector<vector<int>>::iterator cellule;
+    vector<int>::iterator coordonnee;
+    for (cellule = mylist.begin(); cellule != mylist.end(); cellule++) {
+      for (coordonnee = cellule->begin(); coordonnee != cellule->end(); coordonnee++) {
+        cout << *coordonnee;
+	  }
+      cout<< endl;}
+
+
 }
