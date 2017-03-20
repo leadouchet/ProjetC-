@@ -9,23 +9,29 @@
 const float Cell::fitness_min_ = 0.001;
 const float Cell::Pdeath_ = 0.02; 
 const float Cell::Pmut_ = 0;
+const float Cell::dt_ = 0.1;
+int Cell::nb_cell = 0;
 //==============================
 //    CONSTRUCTORS
 //==============================
 Cell::Cell()
 { fitness_ = 0;
   concentrations_ = {0.0,0.0,0.0};
+  nb_cell += 1;
 }
 
 Cell::Cell(std::vector<float> intra_metabolites){
   fitness_ = 0;
   concentrations_= intra_metabolites;
+  nb_cell += 1;
 }
 
 //==============================
 //    DESTRUCTOR
 //==============================
-Cell::~Cell(){}
+Cell::~Cell(){
+	nb_cell-= 1;
+	}
 //==============================
 //    PUBLIC METHODS
 //==============================

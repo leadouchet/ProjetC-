@@ -13,7 +13,7 @@ using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
-
+const float Environment::dt =0.1;
 //==============================
 //    CONSTRUCTORS
 //==============================

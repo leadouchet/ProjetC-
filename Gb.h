@@ -30,7 +30,7 @@ public:
 //==============================
 //    GETTERS
 //==============================
-
+inline int Get_nb() const override;
 //==============================
 //    SETTERS
 //==============================
@@ -74,5 +74,10 @@ void Update_Fit() override;
 //==============================
 // INLINE FUNCTION DEFINITION
 //==============================
+
+inline int Gb::Get_nb()  const
+{
+  return nb_Gb;
+}
 
 #endif // GB_H

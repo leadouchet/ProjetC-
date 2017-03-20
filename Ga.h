@@ -41,6 +41,7 @@ public:
 //==============================
   char WhatAmI() override;
   virtual std::vector<float> metabolism(std::vector<float> ext_metab) override;
+  inline int Get_nb() const override;
   
 protected:
 //==============================
@@ -53,6 +54,7 @@ protected:
   static const float Raa_;
   static const float Rab_;
   static int nb_Ga;
+  
 
 };
 
@@ -71,7 +73,10 @@ protected:
 //==============================
 // INLINE FUNCTION DEFINITION
 //==============================
-
+inline int Ga::Get_nb() const
+{
+  return nb_Ga;
+}
 
 #endif // GA_H
 
