@@ -59,3 +59,4 @@ void Gb::Update_Fit(){
 	else fitness_ = 0; 
 	}
 
+

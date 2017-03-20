@@ -126,24 +126,25 @@ vector<int> Environment::toroidal(vector<int> coord)
 
 
 void Environment::diffuse_box(int x, int y){
-  vector<float> ABC =  grid_[y][x]-> get_box_metabolites();
+  vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
 	for (int i = -1; i <= 1; ++i){
-	  for (int j = -1; j <= 1; ++i){
-	    vector<int> xy = {x+i,y+i};
+	  for (int j = -1; j <= 1; ++j){
+          //cout << "i = " << i << "  " << "j = " << j << endl;
+	    vector<int> xy = {x+i,y+j};
 	    vector<int> coord = toroidal(xy);
-	    vector<float> NextBox = grid_[coord[1]][coord[0]]-> get_box_metabolites();
-	    for (auto it = 0 ; it < 3 ;  ++it){
-	      ABC[it] += D_*NextBox[it];
+	    vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+	    for (int rank = 0 ; rank < 3 ;  ++rank){
+            ABC[rank] += D_*NextBox[rank];
 			}
 		}
 	}
-	grid_[y][x] ->  update_box (ABC);
+	grid_[x][y] ->  update_box (ABC);
 }
 
 
 void Environment::diffuse_metabolites(){
-	for (int y = 0; y < H_ ; ++y){
-		for (int x = 0; x < W_; ++x){
+	for (int x = 0; x < H_ ; ++x){
+		for (int y = 0; y < W_; ++y){
 			diffuse_box(x,y);
 	}
 }
@@ -153,8 +154,8 @@ void Environment::diffuse_metabolites(){
 
 vector<vector<int>>* Environment::Cellular_killer()
 { vector<vector<int>>* result = new vector<vector<int>>;
-  for (int y = 0; y < H_ ; ++y){
-    for (int x = 0; x < W_; ++x){
+  for (int x = 0; x < H_ ; ++x){
+    for (int y = 0; y < W_; ++y){
       if (grid_[x][y] -> Cellular_death()){
 	result -> push_back(vector<int> {x,y}); 
       } 
@@ -173,15 +174,15 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 	  for (int j = -1; j <= 1; ++j)
     {
       vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+j});
-      if (grid_[coord[1]][coord[0]]-> empty_Box() != 0)
+      if (grid_[coord[0]][coord[1]]-> empty_Box() != true)
       {
-        if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit)
+        if (grid_[coord[0]][coord[1]]-> get_cell_fitness() == Bestfit)
         {
         C-> push_back(coord); // we put vector of coordinates with the same fitness into a vector        
 		}
-      if (grid_[coord[1]][coord[0]]-> get_cell_fitness() > Bestfit)
+      if (grid_[coord[0]][coord[1]]-> get_cell_fitness() > Bestfit)
 		{
-        Bestfit = grid_[coord[1]][coord[0]]-> get_cell_fitness();
+        Bestfit = grid_[coord[0]][coord[1]]-> get_cell_fitness();
         delete C;
         C = new vector<vector<int>> {{coord[0],coord[1]}};
 		}
@@ -197,16 +198,25 @@ return xy ;
 
  void Environment::Cycle()
  {
- //Diffusion 	
-   diffuse_metabolites(); 
+ 
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
- //Competition
-   for (int l = dead_ones->size() ; l > 0 ; l--){
+    std::vector<std::vector<Box*> >::iterator row;
+    std::vector<Box*>::iterator col;     for (row = grid_.begin(); row != grid_.end(); row++) {
+        for (col = row->begin(); col != row->end(); col++) {
+            cout <<(*col)->get_cell_type() << "  ";
+         }
+         cout<< endl;
+     } //Competition
+   for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
 	 vector<int> coord_best_fit = Best_fit(coord_empty);
-     grid_[coord_empty[1]][coord_empty[0]]->newborn( grid_[coord_best_fit[1]][coord_best_fit[0]]->cell_ );
+     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
    }
+     delete dead_ones;
+  //Diffusion 	
+    diffuse_metabolites(); 
+
   //Metabolism
     for (auto col = grid_.begin(); col != grid_.end() ; col++)
     {

@@ -61,37 +61,24 @@ int main(int argc, char const *argv[])
 	
     delete mother;
     srand (time(NULL));*/
-    Gb* A1 = new Gb();
-    Gb* B1 = new Gb();
-    cout<< A1->Get_nb () << endl ;
-    /*Environment envir = Environment();
+    
+    Environment envir = Environment();
     cout << "environment initialized" << endl;
     std::vector<std::vector<Box*> >::iterator row;
     std::vector<Box*>::iterator col;
-    cout << Environment
-    
     for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
         cout <<(*col)->get_cell_type() << "  ";
 	  }
         cout<< endl;
-    }
+    }cout<< endl;
  for (int i = 0; i<10 ; ++i){
-        vector<vector<int>>* dead_list = envir.Cellular_killer();
-        std::vector<std::vector<int>>::iterator coord;
-        std::vector<int>::iterator val;
-        for (coord = (*dead_list).begin(); coord != (*dead_list).end(); coord++) {
-            for (val = coord->begin(); val != coord->end(); val++) {
-                cout << *val  ;
-            }
-            cout << endl;
-        }
-        
-        
+        envir.Cycle();
         for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
             for (col = row->begin(); col != row->end(); col++) {
-                cout <<(*col)->get_cell_type() << "   ";
+                cout <<(*col)->get_cell_type() <<" "<< (*col)->get_cell_fitness() <<"   ";
 	}
 	cout<< endl;} cout<< endl;
-}*/
+}
+
 }

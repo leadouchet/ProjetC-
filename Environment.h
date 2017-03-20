@@ -77,6 +77,14 @@ protected:
   static const float dt_;
   FILE* data;
   
+
+private :
+//==============================
+//      PRIVATE METHODS
+//==============================
+
+  
+  
 };
 
 //==============================
