@@ -10,22 +10,25 @@
 //==============================
   const float Gb::Rbb_ = 0.1;
   const float Gb::Rbc_ = 0.1;
+  int Gb::nb_Gb = 0;
 //==============================
 //    CONSTRUCTORS
 //==============================
-  Gb::Gb(){}
+  Gb::Gb(){
+	  nb_Gb += 1;
+	  }
   Gb::Gb(std::vector<float> intra_metabolites) : Cell(intra_metabolites) 
   {
-	if (concentrations_[1] >= fitness_min_){
-    fitness_ = concentrations_[2];
-    }
-	else fitness_ = 0; 
+	Update_Fit(); 
+	nb_Gb += 1;
   }
   
 //==============================
 //    DESTRUCTOR
 //==============================
-  Gb::~Gb(){}
+  Gb::~Gb(){
+	  nb_Gb -= 1;
+	  }
 
 //==============================
 //    PUBLIC METHODS
@@ -40,9 +43,19 @@
     std::vector<float> residues = {ext_metab[0], ext_metab[1] - flux_in, ext_metab[2]};
     concentrations_[1] += flux_in - chgt;
     concentrations_[2] += chgt;
+    Update_Fit();
     return residues;
   }
   
 //==============================
 //   PROTECTED METHODS
 //==============================
+
+void Gb::Update_Fit(){
+	if (concentrations_[2] >= fitness_min_){
+    fitness_ = concentrations_[2];
+    }
+	else fitness_ = 0; 
+	}
+
+

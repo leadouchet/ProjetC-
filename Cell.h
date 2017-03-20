@@ -51,7 +51,7 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  
+    virtual void Update_Fit() = 0; 
 //==============================
 //    ATTRIBUTES
 //==============================
@@ -60,6 +60,8 @@ protected:
   static const float Pmut_;
   float fitness_;
   std::vector<float> concentrations_;
+
+
 
 };
 

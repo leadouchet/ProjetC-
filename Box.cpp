@@ -48,8 +48,8 @@ vector<float> Box::get_box_metabolites(){
 	}
 
 bool Box::empty_Box(){
-	if (cell_ == nullptr) return 0;
-	else return 1;
+	if (cell_ == nullptr) return true;
+	else return false;
 }
 
 bool Box::Cellular_death(){
