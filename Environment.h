@@ -46,7 +46,7 @@ public:
   vector<int> pick_coord (vector< vector<int> >*  tab);
 
   vector<vector<int>>* Cellular_killer();
-  void DeathAndCompet();
+  void Cycle();
   vector<int> Best_fit(vector<int> EmptyBox);
 
 

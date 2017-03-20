@@ -138,16 +138,16 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
         if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit)
         {
         C-> push_back(coord); // we put vector of coordinates with the same fitness into a vector        
-      }
+		}
       if (grid_[coord[1]][coord[0]]-> get_cell_fitness() > Bestfit)
-      {
+		{
         Bestfit = grid_[coord[1]][coord[0]]-> get_cell_fitness();
         delete C;
         C = new vector<vector<int>> {{coord[0],coord[1]}};
-      }
-    }
+		}
+	  }
+	}
   }
-}
 vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
 delete C;
 return xy ;
@@ -155,10 +155,18 @@ return xy ;
 
 
 
- void Environment::DeathAndCompet()
+ void Environment::Cycle()
  {
+ //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
-   //for (int i = dead_ones.size() ; i )	 
+ //Competition
+   for (auto l = dead_ones->size() ; l > 0 ; l--){
+     vector<int> coord_empty = pick_coord(dead_ones);
+	 vector<int> coord_best_fit = Best_fit(coord_empty);
+     grid_[coord_empty[1]][coord_empty[0]]->newborn( grid_[coord_best_fit[1]][coord_best_fit[0]]->cell_ );
+   }
+  //Diffusion 	
+    diffuse_metabolites(); 
  }
 
 //==============================

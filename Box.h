@@ -58,6 +58,11 @@ void update_box(const vector<float> ABC);
   void newborn(Cell* mother);
 
 
+//==============================
+//    PUBLIC ATTRIBUTES
+//==============================
+  Cell* cell_;
+
 protected:
 //==============================
 //    PROTECTED METHODS
@@ -67,7 +72,7 @@ protected:
 //    ATTRIBUTES
 //==============================
   std::vector<float> CONCENTRATIONS_;
-  Cell* cell_;
+
 };
 //==============================
 //    GETTER DEFINITION
