@@ -61,11 +61,15 @@ int main(int argc, char const *argv[])
 	
     delete mother;
     srand (time(NULL));*/
-    
-    Environment envir = Environment();
+    Gb* A1 = new Gb();
+    Gb* B1 = new Gb();
+    cout<< A1->Get_nb () << endl ;
+    /*Environment envir = Environment();
     cout << "environment initialized" << endl;
     std::vector<std::vector<Box*> >::iterator row;
     std::vector<Box*>::iterator col;
+    cout << Environment
+    
     for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
         cout <<(*col)->get_cell_type() << "  ";
@@ -89,5 +93,5 @@ int main(int argc, char const *argv[])
                 cout <<(*col)->get_cell_type() << "   ";
 	}
 	cout<< endl;} cout<< endl;
-}
+}*/
 }

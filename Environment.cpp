@@ -6,6 +6,9 @@
 #include <iostream>
 #include <stdlib.h> 
 #include <stdio.h> 
+#include <fstream>
+
+
 using std::cout;
 using std::endl;
 using std::cin;
@@ -13,7 +16,8 @@ using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
-const float Environment::dt =0.1;
+const float Environment::dt_ =0.1;
+
 //==============================
 //    CONSTRUCTORS
 //==============================
@@ -49,7 +53,43 @@ const float Environment::dt =0.1;
 //==============================
 //    PUBLIC METHODS
 //==============================
-
+  void Environment::Run(float time)
+  {
+	  data = NULL ;
+	  data = fopen("data.csv", "w");
+	  if (data != NULL){
+		  printf("Ga Gb \n");
+		  float elapse_Time = dt_;
+		  while(elapse_Time <= time){
+			  elapse_Time += dt_;
+			  
+			  if (elapse_Time <= T_){
+				  refresh_Environment();
+				  }
+			Cycle();
+			int A = grid_[1][1].cell-> Get_nb();
+			char name =  grid_[1][1].cell-> WhatAmI();
+			if (name == 'a'){
+				printf("%d %d \n",A, W_*H_-A );
+			}
+			else {
+				printf("%d %d \n",W_*H_-A, A);
+			}
+		}
+         fclose(fichier);
+			data.close(); 
+			}
+				  else {
+		  cerr << "Erreur à l'ouverture !" << endl;
+	  }
+  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 //==============================
 //    PROTECTED METHODS
 //==============================

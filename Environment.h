@@ -8,6 +8,9 @@
 #include <array>
 #include <stdlib.h>
 #include "Box.h"
+#include <fstream>
+#include <iostream>
+using namespace std;
 
 /**
  * @class Environment
@@ -48,7 +51,7 @@ public:
   vector<vector<int>>* Cellular_killer();
   void Cycle();
   vector<int> Best_fit(vector<int> EmptyBox);
-
+  void Run(float t);
 
 protected:
 //==============================
@@ -65,9 +68,10 @@ protected:
   int H_; //Height
   //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
-  int T_;
+  float T_;
   float A_init_;
-  static const float dt;
+  static const float dt_;
+  FILE* data;
   
 };
 
