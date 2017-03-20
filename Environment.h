@@ -45,9 +45,12 @@ public:
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
 
+  //go in protected
+  void Cycle(); 
   vector<vector<int>>* Cellular_killer();
-  void Cycle();
   vector<int> Best_fit(vector<int> EmptyBox);
+  void refresh_Environment();
+
 
 protected:
 //==============================
@@ -56,7 +59,8 @@ protected:
   vector<int> toroidal(vector<int> coord);
   void diffuse_metabolites();
   void diffuse_box(int x, int y);
- 
+
+  
 //==============================
 //    ATTRIBUTES
 //==============================
