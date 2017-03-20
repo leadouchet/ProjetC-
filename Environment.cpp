@@ -160,9 +160,9 @@ return xy ;
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
  //Competition
-   for (auto l = dead_ones.size() ; l > 0 ; l--){
+   for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
-	 coord_best_fit = Best_fit(coord_empty);
+	 vector<int> coord_best_fit = Best_fit(coord_empty);
      grid_[coord_empty[1]][coord_empty[0]]->newborn( grid_[coord_best_fit[1]][coord_best_fit[0]]->cell_ );
    }
   //Diffusion 	
