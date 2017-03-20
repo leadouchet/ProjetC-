@@ -49,6 +49,7 @@ public:
   void DeathAndCompet();
   vector<int> Best_fit(vector<int> EmptyBox);
 
+
 protected:
 //==============================
 //    PROTECTED METHODS
@@ -66,14 +67,7 @@ protected:
   float D_; // diffusion constant
   int T_;
   float A_init_;
-
-
-private :
-//==============================
-//      PRIVATE METHODS
-//==============================
-
-  
+  static const float dt;
   
 };
 
