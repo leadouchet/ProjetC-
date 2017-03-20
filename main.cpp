@@ -74,10 +74,21 @@ int main(int argc, char const *argv[])
     }
     for (int i = 0; i<10 ; ++i){
       vector<vector<int>>* dead_list = envir.Cellular_killer();
+      int r = 0 ;
       for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
+      	int c = 0;
 	for (col = row->begin(); col != row->end(); col++) {
-	  cout <<(*col)->get_cell_type() << "  ";
+	  cout <<(*col)-> get_cell_type() << " ";
+	 if ((*col)-> get_cell_type() == 'X'){
+	  	vector<int> coord = {c, r};
+	  	cout << "(" << envir.Best_fit(coord)[0] << "," << envir.Best_fit(coord)[1]<<')' <<"  ";
+	  }
+	  else { 
+	  	cout << (*col)-> get_cell_fitness() << "  ";
+	  }
+	  c++;
 	}
+	r++;
 	cout<< endl;} cout<< endl;
 }
     vector<vector<int>>* dead_list = envir.Cellular_killer();
