@@ -149,7 +149,10 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox){
  void Environment::DeathAndCompet()
  {
    vector< vector<int> >* dead_ones = Cellular_killer();
-   //for (int i = dead_ones.size() ; i )	 
+   for (auto l = dead_ones.size() ; l > 0 ; l--){
+	 //aleat
+     //coord_best_fit = Best_fit(grid_[ i[1] ][ ])
+   }	 
  }
 
 //==============================
