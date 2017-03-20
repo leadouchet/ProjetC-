@@ -79,6 +79,7 @@ void Box::metab_trade(){
 
 
 void Box::newborn(Cell* mother){
+  mother->Cell_division();
   float aleat = (double) rand() / (RAND_MAX);
   if (mother -> WhatAmI() == 'a'){
     if (aleat < (mother->Pmut())){

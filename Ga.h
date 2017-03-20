@@ -46,12 +46,14 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-
+  void Update_Fit() override;
 //==============================
 //    ATTRIBUTES
 //==============================
   static const float Raa_;
   static const float Rab_;
+  static int nb_Ga;
+
 };
 
 //==============================
