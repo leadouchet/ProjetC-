@@ -21,5 +21,4 @@ update_box : change the concentration of metabolites into the box for the proces
 
 
 ### Class Environment 
-array de cases
 Best_fit : Find the neigboor with the best fitness around a box and return its coordinates in a vector.

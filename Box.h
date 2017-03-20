@@ -37,10 +37,11 @@ vector<float> get_box_metabolites() ;
 vector<float> get_cell_concentration();
 char get_cell_type();
 float get_cell_fitness();
+
 //==============================
 //    SETTERS
 //==============================
-
+void update_box(const vector<float> ABC);
 
 
 //==============================
