@@ -8,10 +8,14 @@ Destructor : Delete the cell
 metabolism : Change the level of metabolites into the cell depending on the concentration available its box (given as argument). Return a vector containing the new concentration of metabolites available in the box after the reaction of the cell occure. 
 Cell_division : divide by two all the metabolites of the cell and return the quantity of metabolites of the daugther.
 WhatAmI : return the phenotype of the cell as a character 'a' or 'b'.
+Update_Fit : Compute the fitness of the cell from its metabolites concentrations.
+
+
 
 ### Class Ga : inherite from cell
-
+Update_Fit : Compute the fitness of the cell from its metabolite A concentration.
 ### Class Gb : inherite from cell
+Update_Fit : Compute the fitness of the cell from its metabolites B concentrations.
 
 ### Class Box :
 empty_Box : Test wether a box (given as coordinate x, y) is empty or not , if there is a cell into the box. Return 0 if no cell and 1 otherwise.
@@ -21,4 +25,4 @@ update_box : change the concentration of metabolites into the box for the proces
 
 
 ### Class Environment 
-Best_fit : Find the neigboor with the best fitness around a box and return its coordinates in a vector.
+Best_fit : Find the neigboor with the best fitness around a box and return its coordinates into a vector.

@@ -50,12 +50,13 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-
+void Update_Fit() override;
 //==============================
 //    ATTRIBUTES
 //==============================
   static const float Rbb_;
   static const float Rbc_;
+  static int nb_Gb; 
 
 };
 //==============================
