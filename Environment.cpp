@@ -37,8 +37,8 @@ const float Environment::dt_ =0.1;
   
 
   Environment::Environment(float A_init){
-    W_ = 4;
-    H_ = 4;
+    W_ = 10;
+    H_ = 10;
     A_init_ = A_init;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
@@ -104,10 +104,9 @@ const float Environment::dt_ =0.1;
 			  Cycle();
 			}
 		int nb_cell = grid_[0][0]-> cell_ -> Get_nb();
-    cout << nb_cell << endl;
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
-			return {nb_cell , W_*H_ - nb_cell};
+			return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
 		}
 		else 
 		{
@@ -228,17 +227,18 @@ return xy ;
  
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
-    std::vector<std::vector<Box*> >::iterator row;
-    std::vector<Box*>::iterator col;     for (row = grid_.begin(); row != grid_.end(); row++) {
+    /*std::vector<std::vector<Box*> >::iterator row;
+    std::vector<Box*>::iterator col;
+    for (row = grid_.begin(); row != grid_.end(); row++) {
         for (col = row->begin(); col != row->end(); col++) {
             cout <<(*col)->get_cell_type() << "  ";
          }
          cout<< endl;
-     } 
+     }*/ 
    //Competition
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
-	 vector<int> coord_best_fit = Best_fit(coord_empty);
+     vector<int> coord_best_fit = Best_fit(coord_empty);
      grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
    }
      delete dead_ones;

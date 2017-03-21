@@ -99,7 +99,9 @@ void Run_Programme(float time, float Pmut, float D)
 	data_csv.open("data.csv");
 	if (data_csv.is_open())
 	{
-		for (int T = 1 ; T <= 1500 ; T += 100){
+    data_csv << "T" << " A" << " Survival" << endl;
+		for (int T = 1 ; T <= 1500 ; T += 100){ 
+      cout << T <<  endl;
 			for (int A = 0 ; A <= 50 ; A += 5){
 				data_csv << T << " " << A << " ";
 				Environment* E = new Environment(A);
@@ -112,8 +114,8 @@ void Run_Programme(float time, float Pmut, float D)
 					data_csv << "exclusion" << endl;
 				}
 				else {
-					data_csv << "cohabitation" << " " << res[0] <<" " <<res[1]<< endl;
-          				}
+					data_csv << "cohabitation" << endl;
+        }
 			}
 		}
 		data_csv.close();
@@ -123,3 +125,4 @@ void Run_Programme(float time, float Pmut, float D)
 	}
 
 }
+

@@ -81,10 +81,8 @@ protected:
   int H_; //Height
   //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
-//  float T_;
   float A_init_;
   static const float dt_;
- // ofstream data_csv;
    
 };
 
