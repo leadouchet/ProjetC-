@@ -8,6 +8,9 @@
 #include <array>
 #include <stdlib.h>
 #include "Box.h"
+#include <fstream>
+#include <iostream>
+using namespace std;
 
 /**
  * @class Environment
@@ -45,10 +48,11 @@ public:
 //==============================
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
-
+  void Run(float t);
   //go in protected
   void Cycle(); 
   vector<vector<int>>* Cellular_killer();
+
   vector<int> Best_fit(vector<int> EmptyBox);
   void refresh_Environment();
 
@@ -61,8 +65,7 @@ protected:
   vector<int> toroidal(vector<int> coord);
   void diffuse_metabolites();
   void diffuse_box(int x, int y);
-
-  
+ 
 //==============================
 //    ATTRIBUTES
 //==============================
@@ -70,9 +73,18 @@ protected:
   int H_; //Height
   //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
-  int T_;
+  float T_;
   float A_init_;
-  static const float dt;
+  static const float dt_;
+  FILE* data;
+  
+
+private :
+//==============================
+//      PRIVATE METHODS
+//==============================
+
+  
   
 };
 

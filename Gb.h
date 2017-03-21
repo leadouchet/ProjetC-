@@ -15,6 +15,7 @@
 
 class Gb : public Cell
 {
+	friend int Get_nb_Gb();
 public:
 //==============================
 //    CONSTRUCTORS
@@ -75,9 +76,11 @@ void Update_Fit() override;
 // INLINE FUNCTION DEFINITION
 //==============================
 
-inline int Gb::Get_nb()  const
+inline int Gb::Get_nb() const
 {
+	
   return nb_Gb;
 }
+
 
 #endif // GB_H
