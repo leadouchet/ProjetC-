@@ -41,6 +41,13 @@ const float Environment::dt =0.1;
     delete tab;
   }
   
+  Environment::Environment(float A_init) : Environment()
+  {
+	  A_init_ = A_init;
+  }
+  
+  
+  
   
 //==============================
 //    DESTRUCTOR

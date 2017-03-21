@@ -22,6 +22,7 @@ public:
 //    CONSTRUCTORS
 //==============================
   Environment();
+  Environment(float A_init);
 
 //==============================
 //    DESTRUCTOR
