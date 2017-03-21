@@ -2,10 +2,6 @@
 //    INCLUDES
 //==============================
 #include "Box.h"
-#include <cstdio>
-#include <vector>
-#include <stdlib.h>
-
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -48,8 +44,8 @@ vector<float> Box::get_box_metabolites(){
 	}
 
 bool Box::empty_Box(){
-	if (cell_ == nullptr) return 0;
-	else return 1;
+	if (cell_ == nullptr) return true;
+	else return false;
 }
 
 bool Box::Cellular_death(){
@@ -79,6 +75,7 @@ void Box::metab_trade(){
 
 
 void Box::newborn(Cell* mother){
+  mother->Cell_division();
   float aleat = (double) rand() / (RAND_MAX);
   if (mother -> WhatAmI() == 'a'){
     if (aleat < (mother->Pmut())){

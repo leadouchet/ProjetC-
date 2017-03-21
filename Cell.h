@@ -30,6 +30,7 @@ public:
  inline float Pmut() const; 
  inline float fitness() const;
  inline float Pdeath() const;
+ inline virtual int Get_nb() const;
 //==============================
 //    SETTERS
 //==============================
@@ -47,19 +48,24 @@ void Cell_division();
 
 
 
+
 protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-  
+    virtual void Update_Fit() = 0; 
 //==============================
 //    ATTRIBUTES
 //==============================
   static const float fitness_min_;
   static const float Pdeath_;
   static const float Pmut_;
+  static const float dt_ ;
   float fitness_;
   std::vector<float> concentrations_;
+  static int nb_cell;
+
+
 
 };
 
@@ -80,6 +86,12 @@ inline float Cell::Pdeath() const
 {
   return Pdeath_;
 }
+
+inline int Cell::Get_nb() const
+{
+  return nb_cell;
+}
+
 //==============================
 //    SETTER DEFINITION
 //==============================
