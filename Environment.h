@@ -17,7 +17,7 @@ using std::endl;
 using std::cin;
 using std::vector;
 using std::ofstream;
-//using namespace std;
+
 
 /**
  * @class Environment
@@ -38,7 +38,7 @@ public:
 //==============================
 //    DESTRUCTOR
 //==============================
-
+  ~Environment();
 //==============================
 //    GETTERS
 //==============================

@@ -12,8 +12,8 @@ const float Environment::dt_ =0.1;
 //    CONSTRUCTORS
 //==============================
   Environment::Environment(){
-    W_ = 4;
-    H_ = 4;
+    W_ = 10;
+    H_ = 10;
     A_init_ = 4;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
@@ -63,6 +63,17 @@ const float Environment::dt_ =0.1;
 //==============================
 //    DESTRUCTOR
 //==============================
+  Environment::~Environment()
+  {
+    vector<vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
+    for (row = grid_. begin() ; row != grid_.end(); row++)
+    { 
+      for (col = row->begin(); col != row->end(); col++) {
+      delete *col; 
+    }
+    }
+  }
 
 //==============================
 //    PUBLIC METHODS
@@ -93,6 +104,7 @@ const float Environment::dt_ =0.1;
 			  Cycle();
 			}
 		int nb_cell = grid_[0][0]-> cell_ -> Get_nb();
+    cout << nb_cell << endl;
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
 			return {nb_cell , W_*H_ - nb_cell};

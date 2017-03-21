@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
     delete mother;
     srand (time(NULL));*/
     
-    Environment envir;
+/*    Environment envir;
     cout << "environment initialized" << endl;
     vector<std::vector<Box*> >::iterator row;
     vector<Box*>::iterator col;
@@ -81,12 +81,17 @@ int main(int argc, char const *argv[])
                 cout <<(*col)->get_cell_type() <<" "<< (*col)->get_cell_fitness() <<"   ";
 	}
 	cout<< endl;} cout<< endl;
-}
+}*/
 
 
 Run_Programme (100, 0.0, 0.1);
 
 }
+
+
+//==================================================================================================
+// RUN FUNCTIONS 
+//==================================================================================================
 
 void Run_Programme(float time, float Pmut, float D)
 {
@@ -107,8 +112,8 @@ void Run_Programme(float time, float Pmut, float D)
 					data_csv << "exclusion" << endl;
 				}
 				else {
-					data_csv << "cohabitation" << endl;
-				}
+					data_csv << "cohabitation" << " " << res[0] <<" " <<res[1]<< endl;
+          				}
 			}
 		}
 		data_csv.close();
