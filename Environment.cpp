@@ -14,7 +14,7 @@ const float Environment::dt_ =0.1;
   Environment::Environment(){
     W_ = 4;
     H_ = 4;
-    A_init_ = 0;
+    A_init_ = 4;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
     for (int i = 0 ; i!=W_*H_/2 ; ++i ){
@@ -35,7 +35,31 @@ const float Environment::dt_ =0.1;
     delete tab;
   }
   
-  
+
+  Environment::Environment(float A_init){
+    W_ = 4;
+    H_ = 4;
+    A_init_ = A_init;
+    vector<char>* tab = new vector<char> (W_*H_);
+    grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
+    for (int i = 0 ; i!=W_*H_/2 ; ++i ){
+      (*tab)[i]='a';
+    }
+    for (int j = W_*H_/2  ; j!=W_*H_; ++j){
+      (*tab)[j]='b';
+    }
+      
+    vector<vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
+    for (row = grid_.begin(); row != grid_.end(); row++) {
+      for (col = row->begin(); col != row->end(); col++) {
+        char type = pick_char(tab);
+    (*col) = new Box(type,A_init_);
+    }
+    }
+    delete tab;
+  }
+
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -69,15 +93,14 @@ const float Environment::dt_ =0.1;
 			  Cycle();
 			}
 		int nb_cell = grid_[0][0]-> cell_ -> Get_nb();
-		if (grid_[0][0].get_cell_type() == 'a')
+		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
-			return {nb_cell , W_*H_ - nb_cell}
+			return {nb_cell , W_*H_ - nb_cell};
 		}
 		else 
 		{
-			return {W_*H_ - nb_cell, nb_cell}
+			return {W_*H_ - nb_cell, nb_cell};
 		}
-		
 			
 	}
 	  
