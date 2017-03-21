@@ -6,7 +6,8 @@
 //==============================
 
 #include "Cell.h"
-#include "vector"
+#include <cstdio>
+#include <vector>
 /**
  * @class Ga
  * @brief Creates a Ga Genotype, Cell

@@ -13,7 +13,8 @@
 #include <vector>
 #include <list>
 #include <iostream>
-#include <stdlib.h>  
+#include <stdlib.h> 
+#include <fstream> 
 
 using std::cout;
 using std::endl;
@@ -62,7 +63,7 @@ int main(int argc, char const *argv[])
     delete mother;
     srand (time(NULL));*/
     
-    Environment envir = Environment();
+    Environment envir;
     cout << "environment initialized" << endl;
     std::vector<std::vector<Box*> >::iterator row;
     std::vector<Box*>::iterator col;
