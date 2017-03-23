@@ -67,8 +67,8 @@ const float Environment::dt_ =0.1;
 				  refresh_Environment();
 				  }
 			Cycle();
-			int A = grid_[1][1].cell-> Get_nb();
-			char name =  grid_[1][1].cell-> WhatAmI();
+			int A = grid_[1][1]->cell_-> Get_nb();
+			char name =  grid_[1][1]->cell_-> WhatAmI();
 			if (name == 'a'){
 				printf("%d %d \n",A, W_*H_-A );
 			}
@@ -76,8 +76,8 @@ const float Environment::dt_ =0.1;
 				printf("%d %d \n",W_*H_-A, A);
 			}
 		}
-         fclose(fichier);
-			data.close(); 
+         //fclose(fichier);
+			//data.close();
 			}
 				  else {
 		  cerr << "Erreur à l'ouverture !" << endl;
