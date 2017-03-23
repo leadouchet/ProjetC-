@@ -35,31 +35,14 @@ const float Environment::dt_ =0.1;
     delete tab;
   }
   
-
-  Environment::Environment(float A_init){
-    W_ = 10;
-    H_ = 10;
-    A_init_ = A_init;
-    vector<char>* tab = new vector<char> (W_*H_);
-    grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
-    for (int i = 0 ; i!=W_*H_/2 ; ++i ){
-      (*tab)[i]='a';
-    }
-    for (int j = W_*H_/2  ; j!=W_*H_; ++j){
-      (*tab)[j]='b';
-    }
-      
-    vector<vector<Box*> >::iterator row;
-    vector<Box*>::iterator col;
-    for (row = grid_.begin(); row != grid_.end(); row++) {
-      for (col = row->begin(); col != row->end(); col++) {
-        char type = pick_char(tab);
-    (*col) = new Box(type,A_init_);
-    }
-    }
-    delete tab;
+  Environment::Environment(float A_init) : Environment()
+  {
+	  A_init_ = A_init;
   }
-
+  
+  
+  
+  
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -215,6 +198,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 	  }
 	}
   }
+
 vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
 delete C;
 return xy ;
@@ -227,15 +211,7 @@ return xy ;
  
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
-    /*std::vector<std::vector<Box*> >::iterator row;
-    std::vector<Box*>::iterator col;
-    for (row = grid_.begin(); row != grid_.end(); row++) {
-        for (col = row->begin(); col != row->end(); col++) {
-            cout <<(*col)->get_cell_type() << "  ";
-         }
-         cout<< endl;
-     }*/ 
-   //Competition
+ //Competition
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
      vector<int> coord_best_fit = Best_fit(coord_empty);
