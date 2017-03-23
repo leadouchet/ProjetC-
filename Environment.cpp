@@ -37,6 +37,27 @@ const float Environment::dt_ =0.1;
   
   Environment::Environment(float A_init) : Environment()
   {
+	W_ = 10;
+    H_ = 10;
+
+    vector<char>* tab = new vector<char> (W_*H_);
+    grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
+    for (int i = 0 ; i!=W_*H_/2 ; ++i ){
+      (*tab)[i]='a';
+    }
+    for (int j = W_*H_/2  ; j!=W_*H_; ++j){
+      (*tab)[j]='b';
+    }
+      
+    vector<vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
+    for (row = grid_.begin(); row != grid_.end(); row++) {
+      for (col = row->begin(); col != row->end(); col++) {
+        char type = pick_char(tab);
+	  (*col) = new Box(type,A_init_);
+	  }
+    }
+    delete tab;
 	  A_init_ = A_init;
   }
   
