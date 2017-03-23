@@ -198,6 +198,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 	  }
 	}
   }
+
 vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
 delete C;
 return xy ;
