@@ -22,8 +22,8 @@ const float Environment::dt_ =0.1;
 //    CONSTRUCTORS
 //==============================
   Environment::Environment(){
-    W_ = 4;
-    H_ = 4;
+    W_ = 4;  //32
+    H_ = 4;  //32
     A_init_ = 0;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
