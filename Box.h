@@ -8,6 +8,9 @@
 #include "Cell.h"
 #include "Ga.h"
 #include "Gb.h"
+#include <cstdio>
+#include <stdlib.h>
+
 using namespace std;
 
 /**

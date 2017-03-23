@@ -7,6 +7,8 @@
 
 #include "Cell.h"
 #include <vector>
+#include <cstdio>
+
 
 /**
  * @class Gb
@@ -15,6 +17,7 @@
 
 class Gb : public Cell
 {
+	friend int Get_nb_Gb();
 public:
 //==============================
 //    CONSTRUCTORS
@@ -30,7 +33,7 @@ public:
 //==============================
 //    GETTERS
 //==============================
-
+inline int Get_nb() const override;
 //==============================
 //    SETTERS
 //==============================
@@ -74,5 +77,12 @@ void Update_Fit() override;
 //==============================
 // INLINE FUNCTION DEFINITION
 //==============================
+
+inline int Gb::Get_nb() const
+{
+	
+  return nb_Gb;
+}
+
 
 #endif // GB_H

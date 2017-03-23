@@ -2,10 +2,6 @@
 //    INCLUDES
 //==============================
 #include "Box.h"
-#include <cstdio>
-#include <vector>
-#include <stdlib.h>
-
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES

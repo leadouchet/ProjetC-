@@ -2,8 +2,6 @@
 //    INCLUDES
 //==============================
 #include "Gb.h"
-#include <cstdio>
-#include <vector>
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -33,18 +31,19 @@
 //==============================
 //    PUBLIC METHODS
 //==============================
+
   char Gb::WhatAmI() {
 	  return 'b';
 	  }
   std::vector<float> Gb::metabolism(std::vector<float> ext_metab)
   {
-    float flux_in = Rbb_*ext_metab[1];
-    float chgt = Rbc_*concentrations_[1];
+    float flux_in = Rbb_*ext_metab[1]*dt_;
+    float chgt = Rbc_*concentrations_[1]*dt_;
     std::vector<float> residues = {ext_metab[0], ext_metab[1] - flux_in, ext_metab[2]};
     concentrations_[1] += flux_in - chgt;
     concentrations_[2] += chgt;
-    Update_Fit();
-    return residues;
+    Update_Fit(); //update the fitness of the box
+    return residues; // return the concentration of metabolites left in the surrounding box
   }
   
 //==============================
