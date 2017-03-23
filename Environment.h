@@ -5,17 +5,25 @@
 //    INCLUDES
 //==============================
 #include <vector>
-#include <array>
 #include <stdlib.h>
 #include "Box.h"
-#include <fstream>
 #include <iostream>
-using namespace std;
+#include <fstream>
+#include <stdio.h> 
+
+
+using std::cout;
+using std::endl;
+using std::cin;
+using std::vector;
+using std::ofstream;
+
 
 /**
  * @class Environment
  * @brief Creates an Environment
  */
+
 
 class Environment
 {
@@ -30,7 +38,7 @@ public:
 //==============================
 //    DESTRUCTOR
 //==============================
-
+  ~Environment();
 //==============================
 //    GETTERS
 //==============================
@@ -48,7 +56,7 @@ public:
 //==============================
   char pick_char (vector<char>* tab);
   vector<int> pick_coord (vector< vector<int> >*  tab);
-  void Run(float t);
+  vector<int> Run(float time, float T);
   //go in protected
   void Cycle(); 
   vector<vector<int>>* Cellular_killer();
@@ -73,19 +81,9 @@ protected:
   int H_; //Height
   //  std::vector< std::vector<Box*> > grid_;
   float D_; // diffusion constant
-  float T_;
   float A_init_;
   static const float dt_;
-  FILE* data;
-  
-
-private :
-//==============================
-//      PRIVATE METHODS
-//==============================
-
-  
-  
+   
 };
 
 //==============================

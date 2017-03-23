@@ -28,3 +28,7 @@ main
 *.exe
 *.out
 *.app
+
+# text files
+*.pdf
+*.csv
