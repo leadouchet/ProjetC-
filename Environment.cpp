@@ -22,9 +22,9 @@ const float Environment::dt_ =0.1;
 //    CONSTRUCTORS
 //==============================
   Environment::Environment(){
-    W_ = 4;
-    H_ = 4;
-    A_init_ = 0;
+    W_ = 10;
+    H_ = 10;
+    A_init_ = 4;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
     for (int i = 0 ; i!=W_*H_/2 ; ++i ){
@@ -45,49 +45,68 @@ const float Environment::dt_ =0.1;
     delete tab;
   }
   
+  Environment::Environment(float A_init) : Environment()
+  {
+	  A_init_ = A_init;
+  }
+  
+  
+  
   
 //==============================
 //    DESTRUCTOR
 //==============================
+  Environment::~Environment()
+  {
+    vector<vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
+    for (row = grid_. begin() ; row != grid_.end(); row++)
+    { 
+      for (col = row->begin(); col != row->end(); col++) {
+      delete *col; 
+    }
+    }
+  }
 
 //==============================
 //    PUBLIC METHODS
 //==============================
-  void Environment::Run(float time)
+
+
+  vector<int> Environment::Run(float time, float T)
+  
+  /* This function run the growth of the cell population and save into a 
+   * csv file called data.csv the number of Ga and Gb phenotypes. Every 
+   * T time the growth middle is refresh (the metabolites in the middle 
+   * are removed and replace by A metabolite). For every dt until time
+   * one cycle occure. */
+ 
   {
-	  data = NULL ;
-	  data = fopen("data.csv", "w");
-	  if (data != NULL){
-		  printf("Ga Gb \n");
-		  float elapse_Time = dt_;
-		  while(elapse_Time <= time){
+	  float T_ = T;
+	  float elapse_Time = 0;
+	  float refresh_Time = 0; 
+	  while(elapse_Time <= time)
+		  {
 			  elapse_Time += dt_;
-			  
-			  if (elapse_Time <= T_){
+			  refresh_Time += dt_;  
+			  if (refresh_Time > T_) // The middle is refresh every T_ span.
+			  {
 				  refresh_Environment();
+				  refresh_Time = 0;
 				  }
-			Cycle();
-			int A = grid_[1][1]->cell_-> Get_nb();
-			char name =  grid_[1][1]->cell_-> WhatAmI();
-			if (name == 'a'){
-				printf("%d %d \n",A, W_*H_-A );
+			  Cycle();
 			}
-			else {
-				printf("%d %d \n",W_*H_-A, A);
-			}
+		int nb_cell = grid_[0][0]-> cell_ -> Get_nb();
+		if (grid_[0][0]-> get_cell_type() == 'a')
+		{
+			return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
 		}
-         //fclose(fichier);
-			//data.close();
-			}
-				  else {
-		  cerr << "Erreur à l'ouverture !" << endl;
-	  }
-  }
-	  
-	  
-	  
-	  
-	  
+		else 
+		{
+			return {W_*H_ - nb_cell, nb_cell};
+		}
+			
+	}
 	  
 	  
 //==============================
@@ -189,6 +208,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 	  }
 	}
   }
+
 vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
 delete C;
 return xy ;
@@ -201,16 +221,10 @@ return xy ;
  
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
-    std::vector<std::vector<Box*> >::iterator row;
-    std::vector<Box*>::iterator col;     for (row = grid_.begin(); row != grid_.end(); row++) {
-        for (col = row->begin(); col != row->end(); col++) {
-            cout <<(*col)->get_cell_type() << "  ";
-         }
-         cout<< endl;
-     } //Competition
+ //Competition
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
-	 vector<int> coord_best_fit = Best_fit(coord_empty);
+     vector<int> coord_best_fit = Best_fit(coord_empty);
      grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
    }
      delete dead_ones;

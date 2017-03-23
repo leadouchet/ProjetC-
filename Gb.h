@@ -7,6 +7,8 @@
 
 #include "Cell.h"
 #include <vector>
+#include <cstdio>
+
 
 /**
  * @class Gb

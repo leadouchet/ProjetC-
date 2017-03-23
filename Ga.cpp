@@ -2,8 +2,6 @@
 //    INCLUDES
 //==============================
 #include "Ga.h"
-#include <cstdio>
-#include <vector>
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES

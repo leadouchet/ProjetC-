@@ -13,16 +13,19 @@
 #include <vector>
 #include <list>
 #include <iostream>
-#include <stdlib.h>  
+#include <stdlib.h> 
+#include <fstream> 
 
 using std::cout;
 using std::endl;
 using std::cin;
-using namespace std;
+using std::ofstream;
+using std::vector;
+
 //==============================
 //    FUNCTION DECLARATION
 //==============================
-
+void Run_Programme(float time, float Pmut, float D);
 //==============================
 //    MAIN
 //==============================
@@ -62,10 +65,10 @@ int main(int argc, char const *argv[])
     delete mother;
     srand (time(NULL));*/
     
-    Environment envir = Environment();
+/*    Environment envir;
     cout << "environment initialized" << endl;
-    std::vector<std::vector<Box*> >::iterator row;
-    std::vector<Box*>::iterator col;
+    vector<std::vector<Box*> >::iterator row;
+    vector<Box*>::iterator col;
     for (row = envir.grid_.begin(); row != envir.grid_.end(); row++) {
       for (col = row->begin(); col != row->end(); col++) {
         cout <<(*col)->get_cell_type() << "  ";
@@ -79,6 +82,49 @@ int main(int argc, char const *argv[])
                 cout <<(*col)->get_cell_type() <<" "<< (*col)->get_cell_fitness() <<"   ";
 	}
 	cout<< endl;} cout<< endl;
-}
+}*/
+
+
+Run_Programme (100, 0.0, 0.1);
 
 }
+
+
+//==================================================================================================
+// RUN FUNCTIONS 
+//==================================================================================================
+
+void Run_Programme(float time, float Pmut, float D)
+{
+	ofstream data_csv;
+	data_csv.open("data.csv");
+	if (data_csv.is_open())
+	{
+    data_csv << "T" << " A" << " Survival" << endl;
+		for (float T = 1.0 ; T <= 1500.0 ; T += 100.0){ 
+      cout << T <<  endl;
+			for (float A = 0.0 ; A <= 50 ; A += 5.0){
+				cout << A << endl;
+				data_csv << T << " " << A << " ";
+				Environment* E = new Environment(A);
+				vector<int> res = E-> Run(time , T);
+				delete E;
+				if (res[0] == 0){
+					data_csv << "extinction" << endl;
+				}
+				else if (res[1] == 0){
+					data_csv << "exclusion" << endl;
+				}
+				else {
+					data_csv << "cohabitation" << endl;
+        }
+			}
+		}
+		data_csv.close();
+	}
+	else {
+		cout << "File could not be open !" << endl;
+	}
+
+}
+
