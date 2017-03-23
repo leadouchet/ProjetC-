@@ -133,7 +133,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 	  for (int j = -1; j <= 1; ++j)
     {
       vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+j});
-      if (grid_[coord[1]][coord[0]]-> empty_Box() != 0)
+      if (grid_[coord[1]][coord[0]]-> empty_Box() != true)
       {
         if (grid_[coord[1]][coord[0]]-> get_cell_fitness() == Bestfit)
         {
@@ -160,11 +160,15 @@ return xy ;
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
  //Competition
-   for (auto l = dead_ones->size() ; l > 0 ; l--){
+   cout <<  dead_ones->size()<<endl;
+   for (int l = dead_ones->size() ; l > 0 ; l--){
+     cout<< l <<endl;
      vector<int> coord_empty = pick_coord(dead_ones);
 	 vector<int> coord_best_fit = Best_fit(coord_empty);
      grid_[coord_empty[1]][coord_empty[0]]->newborn( grid_[coord_best_fit[1]][coord_best_fit[0]]->cell_ );
    }
+
+
   //Diffusion 	
     diffuse_metabolites(); 
  }
