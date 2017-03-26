@@ -3,7 +3,6 @@
 #==========================================================================================================================
 
 #change directory
-setwd("/home/ldouchet/Documents/C/ProjetC-")
 
 #data importation from csv file
 data = read.table("data.csv", header = T, sep = " ", dec = ".")
@@ -16,7 +15,7 @@ color = c("red", "blue", "green")
 # Plot of the results
 for (i in 1:3){
   if (i == 1){
-    plot(data[data[,3] == status[i],2],data[data[,3] == status[i],1], pch = 20, col = color[i], xlim = c(0,10), 
+    plot(data[data[,3] == status[i],2],data[data[,3] == status[i],1], pch = 20, col = color[i], xlim = c(0,50), 
          ylim = c(0,1500), xlab = "A_init", ylab = "T")
     legend("topright",legend = status, pch = 20, col = color[1:length(status)])
   }
