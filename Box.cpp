@@ -58,8 +58,9 @@ bool Box::Cellular_death(){
 		CONCENTRATIONS_[2] += cell_metabolites[2];
 		delete cell_;
 		cell_ = nullptr;
+        return true;
 		}
-	return empty_Box();
+	return false;
 	}
 
 

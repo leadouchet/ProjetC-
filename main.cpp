@@ -85,7 +85,7 @@ int main(int argc, char const *argv[])
 }*/
 
 
-Run_Programme (100, 0.0, 0.1);
+Run_Programme (10000, 0.0, 0.1);
 
 }
 
