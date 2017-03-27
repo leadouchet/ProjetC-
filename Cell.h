@@ -35,11 +35,11 @@ public:
   inline float              fitness() const;
   inline float              Pdeath() const;
   inline virtual int        Get_nb() const;
+virtual char WhatAmI() = 0;
 
 //======================================================================
 //                         PUBLIC METHODS
 //======================================================================
-  virtual char              WhatAmI() = 0;
   virtual vector<float>     metabolism(vector<float>) = 0;
   void                      Cell_division();
 
