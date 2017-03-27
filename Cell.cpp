@@ -19,14 +19,14 @@ Cell::Cell()
   { 
     fitness_ = 0;
     concentrations_ = {0.0,0.0,0.0};
-    nb_cell += 1;
+    nb_cell++;
   }
 
-Cell::Cell(std::vector<float> intra_metabolites)
+Cell::Cell(vector<float> intra_metabolites)
   {
     fitness_ = 0;
     concentrations_= intra_metabolites;
-    nb_cell += 1;
+    nb_cell++;
   }
 
 //======================================================================
@@ -34,7 +34,7 @@ Cell::Cell(std::vector<float> intra_metabolites)
 //======================================================================
 Cell::~Cell()
   {
-	nb_cell-= 1;
+	nb_cell--;
   }
   
 //======================================================================
@@ -50,7 +50,7 @@ void Cell::Cell_division()
 //======================================================================
 //                           GETTERS
 //======================================================================
-std::vector<float> Cell::intra_metabolites()
+vector<float> Cell::intra_metabolites()
 {  
   return(concentrations_);
 }

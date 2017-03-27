@@ -6,7 +6,7 @@
 //======================================================================
 #include "Cell.h"
 #include <cstdio>
-#include <vector>
+
 
 /**
  * @class Ga
@@ -20,7 +20,7 @@ public:
 //                           CONSTRUCTORS
 //======================================================================
   Ga();
-  Ga(std::vector<float> intra_metabolites);
+  Ga(vector<float> intra_metabolites);
   
 //======================================================================
 //                            DESTRUCTOR
@@ -31,7 +31,7 @@ public:
 //                          PUBLIC METHODS
 //======================================================================
   char WhatAmI() override;
-  virtual std::vector<float> metabolism(std::vector<float> ext_metab) override;
+  virtual vector<float> metabolism(vector<float> ext_metab) override;
   inline int Get_nb() const override;
   
   
