@@ -42,8 +42,8 @@ char Ga::WhatAmI()
 
 vector<float> Ga::metabolism(vector<float> ext_metab)
   {
-    float flux_in = Raa_*ext_metab[0]*dt_;
-	  float chgt = Rab_*concentrations_[0]*dt_;
+    float flux_in = Raa_ * ext_metab[0] * dt_;
+	  float chgt = Rab_ * concentrations_[0] * dt_;
 	  std::vector<float> residues = {ext_metab[0] - flux_in, ext_metab[1], ext_metab[2]};
 	  concentrations_[0] += flux_in - chgt;
 	  concentrations_[1] += chgt ;

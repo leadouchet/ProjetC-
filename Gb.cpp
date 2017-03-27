@@ -42,8 +42,8 @@ char Gb::WhatAmI()
   
 vector<float> Gb::metabolism(vector<float> ext_metab)
   {
-    float flux_in = Rbb_*ext_metab[1]*dt_;
-    float chgt = Rbc_*concentrations_[1]*dt_;
+    float flux_in = Rbb_ * ext_metab[1] * dt_;
+    float chgt = Rbc_ * concentrations_[1] * dt_;
     vector<float> residues = {ext_metab[0], ext_metab[1] - flux_in, ext_metab[2]};
     concentrations_[1] += flux_in - chgt;
     concentrations_[2] += chgt;
