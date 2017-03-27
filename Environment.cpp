@@ -134,7 +134,8 @@ vector<int> Environment::toroidal(vector<int> coord)
 }
 
 
-void Environment::diffuse_box(int x, int y){
+void Environment::diffuse_box(int x, int y)
+{
   vector<float> ABC =  grid_[x][y]-> get_box_metabolites();
 	for (int i = -1; i <= 1; ++i){
 	  for (int j = -1; j <= 1; ++j){
