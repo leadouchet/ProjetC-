@@ -2,7 +2,17 @@
 //    INCLUDES
 //==============================
 #include "Environment.h"
+#include <vector>
+#include <iostream>
+#include <stdlib.h> 
+#include <stdio.h> 
+#include <fstream>
 
+
+using std::cout;
+using std::endl;
+using std::cin;
+using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -50,11 +60,11 @@ const float Environment::dt_ =0.1;
   {
     vector<vector<Box*> >::iterator row;
     vector<Box*>::iterator col;
-    for (row = grid_. begin() ; row != grid_.end(); row++)
+    for (row = grid_.begin() ; row != grid_.end(); row++)
     { 
       for (col = row->begin(); col != row->end(); col++) {
-      delete *col; 
-    }
+          delete *col;
+      }
     }
   }
 
@@ -77,16 +87,16 @@ const float Environment::dt_ =0.1;
 	  float refresh_Time = 0; 
 	  while(elapse_Time <= time)
 		  {
-			  elapse_Time += dt_;
-			  refresh_Time += dt_;  
-			  if (refresh_Time > T_) // The middle is refresh every T_ span.
+			  elapse_Time ++;
+			  refresh_Time ++;
+			  if (refresh_Time > T_) // The environment is refreshed every T_ span.
 			  {
 				  refresh_Environment();
 				  refresh_Time = 0;
 				  }
 			  Cycle();
 			}
-		int nb_cell = grid_[0][0]-> cell_ -> Get_nb();
+		int nb_cell = grid_[0][0]->cell_-> Get_nb();
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
 			return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
@@ -144,11 +154,11 @@ void Environment::diffuse_box(int x, int y)
 	    vector<int> coord = toroidal(xy);
 	    vector<float> NextBox = grid_[coord[0]][coord[1]]-> get_box_metabolites();
 	    for (int rank = 0 ; rank < 3 ;  ++rank){
-            ABC[rank] += D_*NextBox[rank];
+            ABC[rank] += D_ * NextBox[rank];
 			}
 		}
 	}
-	grid_[x][y] ->  update_box (ABC);
+	grid_[x][y]->update_box (ABC);
 }
 
 
@@ -163,46 +173,48 @@ void Environment::diffuse_metabolites(){
 
 
 vector<vector<int>>* Environment::Cellular_killer()
-{ vector<vector<int>>* result = new vector<vector<int>>;
-  for (int x = 0; x < H_ ; ++x){
-    for (int y = 0; y < W_; ++y){
-      if (grid_[x][y] -> Cellular_death()){
-	result -> push_back(vector<int> {x,y}); 
-      } 
+{
+    vector<vector<int>>* result = new vector<vector<int>>;
+    for (int x = 0; x < H_ ; ++x){
+        for (int y = 0; y < W_; ++y){
+            if (grid_[x][y] -> Cellular_death()){
+                result -> push_back(vector<int> {x,y});
+            }
       
+        }
     }
-  }
   return(result);
 }
 
 vector<int> Environment::Best_fit(vector<int> EmptyBox)
 {
 	float Bestfit = 0.0;
-  vector<vector<int>>* C = new vector<vector<int>> {};
+    vector<vector<int>>* C = new vector<vector<int>> {};
 	for (int i = -1; i <= 1; ++i)
-  {
-	  for (int j = -1; j <= 1; ++j)
     {
-      vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+j});
-      if (grid_[coord[0]][coord[1]]-> empty_Box() != true)
+	  for (int j = -1; j <= 1; ++j)
       {
-        if (grid_[coord[0]][coord[1]]-> get_cell_fitness() == Bestfit)
-        {
-        C-> push_back(coord); // we put vector of coordinates with the same fitness into a vector        
-		}
-      if (grid_[coord[0]][coord[1]]-> get_cell_fitness() > Bestfit)
-		{
-        Bestfit = grid_[coord[0]][coord[1]]-> get_cell_fitness();
-        delete C;
-        C = new vector<vector<int>> {{coord[0],coord[1]}};
-		}
-	  }
-	}
-  }
+          vector<int> coord = toroidal({EmptyBox[0]+i,EmptyBox[1]+j});
+          if (grid_[coord[0]][coord[1]]-> empty_Box() != true)
+          {
+              float fitness = grid_[coord[0]][coord[1]]-> get_cell_fitness();
+              if ( fitness == Bestfit)
+              {
+                  C-> push_back(coord); // we put vector of coordinates with the same fitness into a vector
+              }
+              if (fitness > Bestfit)
+              {
+                  Bestfit = fitness;
+                  delete C;
+                  C = new vector<vector<int>> {{coord[0],coord[1]}};
+              }
+          }
+      }
+    }
 
-vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
-delete C;
-return xy ;
+    vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
+    delete C;
+    return xy ;
 }
 
 
