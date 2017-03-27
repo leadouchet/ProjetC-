@@ -85,7 +85,7 @@ int main(int argc, char const *argv[])
 }*/
 
 
-Run_Programme (100, 0.0, 0.1);
+Run_Programme (10000, 0.0, 0.1);
 
 }
 
@@ -96,35 +96,34 @@ Run_Programme (100, 0.0, 0.1);
 
 void Run_Programme(float time, float Pmut, float D)
 {
-	ofstream data_csv;
-	data_csv.open("data.csv");
-	if (data_csv.is_open())
-	{
-    data_csv << "T" << " A" << " Survival" << endl;
-		for (float T = 1.0 ; T <= 1500.0 ; T += 50.0){ 
-      cout << T <<  endl;
-			for (float A = 0.0 ; A <= 50 ; A += 1){
-				cout << A << endl;
-				data_csv << T << " " << A << " ";
-				Environment* E = new Environment(A);
-				vector<int> res = E-> Run(time , T);
-				delete E;
-				if (res[0] == 0){
-					data_csv << "extinction" << endl;
-				}
-				else if (res[1] == 0){
-					data_csv << "exclusion" << endl;
-				}
-				else {
-					data_csv << "cohabitation" << endl;
+    string result;
+    vector<int> res;
+
+    result += "T A Survival\n";
+    for (float T = 0 ; T <= 1500 ; T += 100){
+        cout << T <<  endl;
+        for (float A = 0.0 ; A <= 50 ; A += 5){
+            cout << A << endl;
+            result += to_string(T) + " " + to_string(A) + " ";
+            Environment* E = new Environment(A);
+            res = E->Run(time , T);
+            delete E;
+            if (res[0] == 0){
+                result += "extinction \n";
+            }
+            else if (res[1] == 0){
+                result += "exclusion \n";
+            }
+            else {
+                result += "cohabitation \n";
+            }
         }
-			}
-		}
-		data_csv.close();
-	}
-	else {
-		cout << "File could not be open !" << endl;
-	}
+    }
+    
+    ofstream data_csv;
+    data_csv.open("data.csv");
+    data_csv << result;
+    data_csv.close();
 
 }
 
