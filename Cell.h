@@ -65,8 +65,6 @@ protected:
   std::vector<float> concentrations_;
   static int nb_cell;
 
-
-
 };
 
 //==============================

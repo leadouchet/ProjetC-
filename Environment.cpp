@@ -9,10 +9,6 @@
 #include <fstream>
 
 
-using std::cout;
-using std::endl;
-using std::cin;
-using namespace std;
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
 //==============================
@@ -22,8 +18,8 @@ const float Environment::dt_ =0.1;
 //    CONSTRUCTORS
 //==============================
   Environment::Environment(){
-    W_ = 10;
-    H_ = 10;
+    W_ = 2;
+    H_ = 2;
     A_init_ = 4;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));

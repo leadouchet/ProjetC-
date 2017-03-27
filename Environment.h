@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "Box.h"
 #include <iostream>
-#include <fstream>
 #include <stdio.h> 
 
 
@@ -16,7 +15,6 @@ using std::cout;
 using std::endl;
 using std::cin;
 using std::vector;
-using std::ofstream;
 
 
 /**
