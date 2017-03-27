@@ -42,7 +42,7 @@ const float Environment::dt_ =0.1;
   }
   
   Environment::Environment(float A_init) : Environment()
-  {
+  {    
 	  A_init_ = A_init;
   }
   
