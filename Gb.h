@@ -31,13 +31,13 @@ public:
 //======================================================================
 //                            GETTERS
 //======================================================================
-  inline int Get_nb() const override;
+  inline int               Get_nb() const override;
 
 //======================================================================
 //                        PUBLIC METHODS
 //======================================================================
-  char WhatAmI() override;
-  virtual vector<float> metabolism(vector<float> ext_metab) override;
+  char                     WhatAmI() override;
+  virtual vector<float>    metabolism(vector<float> ext_metab) override;
   
   
   
@@ -46,14 +46,14 @@ protected:
 //======================================================================
 //                      PROTECTED METHODS
 //======================================================================
-  void Update_Fit() override;
+  void                     Update_Fit() override;
 
 //======================================================================
 //                           ATTRIBUTES
 //======================================================================
-  static const float Rbb_;
-  static const float Rbc_;
-  static int nb_Gb; 
+  static const float       Rbb_;
+  static const float       Rbc_;
+  static int               nb_Gb; 
 };
 
 

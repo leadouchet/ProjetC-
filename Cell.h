@@ -30,18 +30,18 @@ public:
 //======================================================================
 //                            GETTERS
 //======================================================================
-  std::vector<float> intra_metabolites(); 
-  inline float Pmut() const; 
-  inline float fitness() const;
-  inline float Pdeath() const;
-  inline virtual int Get_nb() const;
+  std::vector<float>        intra_metabolites(); 
+  inline float              Pmut() const; 
+  inline float              fitness() const;
+  inline float              Pdeath() const;
+  inline virtual int        Get_nb() const;
 
 //======================================================================
 //                         PUBLIC METHODS
 //======================================================================
-  virtual char WhatAmI() = 0;
-  virtual vector<float> metabolism(vector<float>) = 0;
-  void Cell_division();
+  virtual char              WhatAmI() = 0;
+  virtual vector<float>     metabolism(vector<float>) = 0;
+  void                      Cell_division();
 
 
 
@@ -50,18 +50,18 @@ protected:
 //======================================================================
 //                       PROTECTED METHODS
 //======================================================================
-  virtual void Update_Fit() = 0; 
+  virtual void              Update_Fit() = 0; 
     
 //======================================================================
 //                           ATTRIBUTES
 //======================================================================
-  static const float fitness_min_;
-  static const float Pdeath_;
-  static const float Pmut_;
-  static const float dt_ ;
-  float fitness_;
-  vector<float> concentrations_;
-  static int nb_cell;
+  static const float        fitness_min_;
+  static const float        Pdeath_;
+  static const float        Pmut_;
+  static const float        dt_ ;
+  float                     fitness_;
+  vector<float>             concentrations_;
+  static int                nb_cell;
 };
 
 

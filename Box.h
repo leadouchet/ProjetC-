@@ -32,29 +32,29 @@ public:
 //======================================================================
 //                            GETTERS
 //======================================================================
-  vector<float> get_box_metabolites() ;
-  vector<float> get_cell_concentration();
-  char get_cell_type();
-  float get_cell_fitness();
+  vector<float>           get_box_metabolites() ;
+  vector<float>           get_cell_concentration();
+  char                    get_cell_type();
+  float                   get_cell_fitness();
 
 //======================================================================
 //                            SETTERS
 //======================================================================
-  void update_box(const vector<float> ABC);
+  void                    update_box(const vector<float> ABC);
 
 //======================================================================
 //                         PUBLIC METHODS
 //======================================================================
-  void refresh_box(float A_init); 
-  void metab_trade();
-  bool Cellular_death();
-  bool empty_Box();
-  void newborn(Cell* mother);
+  void                    refresh_box(float A_init); 
+  void                    metab_trade();
+  bool                    Cellular_death();
+  bool                    empty_Box();
+  void                    newborn(Cell* mother);
 
 //======================================================================
 //                       PUBLIC ATTRIBUTES
 //======================================================================
-  Cell* cell_; //essayer de le passer en prive
+  Cell*                   cell_;                                        //essayer de le passer en protected
 
 
 

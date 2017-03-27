@@ -56,9 +56,9 @@ protected:
   vector<int>           toroidal(vector<int> coord);
   void                  diffuse_metabolites();
   void                  diffuse_box(int x, int y);
-  void                  Cycle(); 
   vector<vector<int>>*  Cellular_killer();
   vector<int>           Best_fit(vector<int> EmptyBox);
+  void                  Cycle(); 
   void                  refresh_Environment();
  
  
