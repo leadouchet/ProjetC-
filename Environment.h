@@ -42,7 +42,7 @@ public:
 //                          PUBLIC METHODS
 //======================================================================
   char                  pick_char (vector<char>* tab);
-  vector<int>           pick_coord (vector< vector<int> >*  tab);
+  vector<int>           pick_coord (vector< vector<int> >*  tab); //Pourquoi en public ??
   vector<int>           Run(float time, float T);
 
 
@@ -64,10 +64,10 @@ protected:
 //======================================================================
 //                          ATTRIBUTES
 //======================================================================
-  int                   W_;                                             //Width
-  int                   H_;                                             //Height
+  int                   W_;  //Width
+  int                   H_;  //Height
   vector<vector<Box*>>  grid_;
-  float                 D_;                                             //Diffusion constant
+  float                 D_;  //Diffusion constant
   float                 A_init_;
   static const float    dt_;
 };

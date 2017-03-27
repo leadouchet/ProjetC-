@@ -83,9 +83,27 @@ for the process of diffusion of the environment.
 
 
 
-### Class Environment 
+### Class Environment
 
-* **Best_fit** : Find the neigboor with the best fitness around a box and 
+#### Constructors and destructor : 
+* **Environment()** : Environment default constructor : built an 
+toroidal grid_ of W_*H_ size in wich each coordinate represents a box 
+that host a cell. No metabolites are added into the environment. There 
+are as much Ga phenotype cells as Gb and these are placed randomly into 
+the environment.
+
+* **Environment(float A_init)** : Environment constructor based on the 
+level of glucose placed into the environment. The environment is created
+ with the default constructor but the initial level of glucose (A_init) 
+ contained in each box is chosen by the user. */
+
+* **~Environment()** : Destructor of environment : apply the box 
+destructor for each box contained into the grid_.
+
+
+
+
+* **Best_fit()** : Find the neigboor with the best fitness around a box and 
 return its coordinates into a vector.
 
 * **Run(float time, float T)** : This function run the cellular 

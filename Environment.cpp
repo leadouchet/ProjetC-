@@ -64,6 +64,10 @@ Environment::Environment(float A_init) : Environment()
 //                          DESTRUCTOR
 //======================================================================
 Environment::~Environment()
+
+/*Destructor of environment : apply the box destructor for each box 
+ * contained into the grid_.*/
+
   {
     vector<vector<Box*>>::iterator row;
     vector<Box*>::iterator col;
@@ -117,6 +121,10 @@ vector<int> Environment::Run(float time, float T)
 	  
     
 char Environment::pick_char(vector<char>* tab)
+
+/* This function pick randomly and return a caractere contained into a 
+ * vector given as argument*/
+
   {
     int r;
     if (tab->size() > 1)
@@ -139,6 +147,9 @@ char Environment::pick_char(vector<char>* tab)
  
 vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
 
+/* This function pick randomly and return a vector of coordinates 
+ * contained into a vector given as argument*/
+ 
   {
     int r;
     if (tab->size() > 1)
@@ -163,6 +174,11 @@ vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
 //                     PROTECTED METHODS
 //======================================================================
 vector<int> Environment::toroidal(vector<int> coord)
+
+/*This function ensure the toroidal behaviour of the environment. For a 
+ * given coordinate, it return its coordinate into the environment so 
+ * that it will never leave the space delimited */
+
   {
     int i = coord[0];
     int j = coord[1];
@@ -200,19 +216,30 @@ vector<int> Environment::toroidal(vector<int> coord)
       }
     return {i,j};
   }
+  
 
-void Environment::diffuse_metabolites()
+void Environment::refresh_Environment()
+
+/*Reset every box of the environment at the initial glucose 
+ * concentration (A_init)*/
+
   {
-    for (int x = 0 ; x < H_ ; ++x)
+    for (auto col = grid_.begin() ; col != grid_.end() ; col++)
       {
-        for (int y = 0 ; y < W_ ; ++y)
+        for (auto box = col->begin() ; box != col->end() ; box++)
           {
-            diffuse_box(x,y);
+            (*box)->refresh_box(A_init_);
           }
       }
   }
+ 
 
 void Environment::diffuse_box(int x, int y)
+
+/* This function makes the metabolites diffuse into one box of the 
+ * environment considering its neighboors. The new metabolites level of 
+ * the box is updated*/
+
   {
     vector<float> ABC =  grid_[x][y]->get_box_metabolites();
     for (int i = -1 ; i <= 1 ; ++i)
@@ -221,7 +248,8 @@ void Environment::diffuse_box(int x, int y)
           {
             vector<int> xy = {x+i , y+j};
             vector<int> coord = toroidal(xy);
-            vector<float> NextBox = grid_[coord[0]][coord[1]]->get_box_metabolites();
+            vector<float> NextBox = grid_[coord[0]][coord[1]]->
+            get_box_metabolites();
             for (int rank = 0 ; rank < 3 ;  ++rank)
               {
                 ABC[rank] += D_ * NextBox[rank];
@@ -231,7 +259,28 @@ void Environment::diffuse_box(int x, int y)
     grid_[x][y]->update_box (ABC);
   }
 
+
+void Environment::diffuse_metabolites()
+
+/* Run though the environment to make the metabolites diffuse into each 
+ * box.*/
+
+  {
+    for (int x = 0 ; x < H_ ; ++x)
+      {
+        for (int y = 0 ; y < W_ ; ++y)
+          {
+            diffuse_box(x,y);
+          }
+      }
+  }
+  
+  
 vector<vector<int>>* Environment::Cellular_killer()
+
+/* Run though the grid and for each box determine if the containig cell 
+ * will die considering its probability of death*/
+
   {
     vector<vector<int>>* result = new vector<vector<int>>;
     for (int x = 0 ; x < H_ ; ++x)
@@ -248,7 +297,15 @@ vector<vector<int>>* Environment::Cellular_killer()
     return(result);
   }
 
+
 vector<int> Environment::Best_fit(vector<int> EmptyBox)
+
+/* Given the coordinates of an empty box, determine which of its 
+ * neighboor's cell is the most likely to divide into the box. The 
+ * best neigboor is the one having the best fitness. If the best fitness
+ * is shared by several cells the best neigboor will be randomly 
+ * chosen between those cells. */
+
   {
     float Bestfit = 0.0;
     vector<vector<int>>* C = new vector<vector<int>> {};
@@ -258,13 +315,15 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
           {
             vector<int> coord = toroidal({EmptyBox[0]+i , EmptyBox[1]+j});
             if (grid_[coord[0]][coord[1]]->empty_Box() != true)
+            /*We check if the neighboring box contain a cell, otherwise 
+             * make it divided would be impossible */
               {
                 float fitness = grid_[coord[0]][coord[1]]->get_cell_fitness();
                 if (fitness == Bestfit)
                   {
                     C->push_back(coord); 
-                    /*we put vector of coordinates with the same 
-                     * fitness into a vector*/
+                    /* We put into a vector of coordinates of cells with
+                     * the same fitness.*/
                   }
                 if (fitness > Bestfit)
                   {
@@ -284,6 +343,14 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 
 
 void Environment::Cycle()
+
+/*Gather all the function describing the environment behaviour during 
+ * one cycle  : 
+ * - Make cell randomly die
+ * - Make the surviving cells compete to divide into the empty space
+ * - The metabolites diffuse into the environment
+ * - Each cells metabolizes the metabolites into its box */
+
   {
   //Cellular Death
     vector< vector<int> >* dead_ones = Cellular_killer();
@@ -292,7 +359,8 @@ void Environment::Cycle()
       {
         vector<int> coord_empty = pick_coord(dead_ones);
         vector<int> coord_best_fit = Best_fit(coord_empty);
-        grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
+        grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_
+        [coord_best_fit[0]][coord_best_fit[1]]->cell_ );
       }
     delete dead_ones;
   //Diffusion 	
@@ -308,15 +376,5 @@ void Environment::Cycle()
   }
 
 
-void Environment::refresh_Environment()
-  {
-    for (auto col = grid_.begin() ; col != grid_.end() ; col++)
-      {
-        for (auto box = col->begin() ; box != col->end() ; box++)
-          {
-            (*box)->refresh_box(A_init_);
-          }
-      }
-  }
- 
+
 
