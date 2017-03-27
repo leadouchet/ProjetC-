@@ -13,11 +13,19 @@ const float Environment::dt_ =0.1;
 //======================================================================
 //                         CONSTRUCTORS
 //======================================================================
+
 Environment::Environment()
+
+/*Environment default constructor : built an toroidal grid_ of W_*H_ 
+ * size in wich each coordinate represents a box that host a cell. No 
+ * metabolites are added into the environment. There are as much Ga 
+ * phenotype cells as Gb and these are placed randomly into the 
+ * environment.*/
+
   {
     W_ = 32;
     H_ = 32;
-    A_init_ = 4;
+    A_init_ = 0;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>> (H_,vector<Box*> (W_));
     for (int i = 0 ; i != W_*H_/2 ; ++i)
@@ -42,6 +50,12 @@ Environment::Environment()
   }
   
 Environment::Environment(float A_init) : Environment()
+
+/*Environment constructor based on the level of glucose placed into the 
+ * environment. The environment is created with the default constructor 
+ * but the initial level of glucose (A_init) contained in each box is 
+ * chosen by the user. */
+
   {    
 	  A_init_ = A_init;
   }
@@ -81,7 +95,8 @@ vector<int> Environment::Run(float time, float T)
 		  {
 			  elapse_Time ++;
 			  refresh_Time ++;
-			  if (refresh_Time > T_) // The environment is refreshed every T_ span.
+			  if (refresh_Time > T_) 
+			  // The environment is refreshed every T_ span.
           {
             refresh_Environment();
             refresh_Time = 0;
@@ -91,12 +106,13 @@ vector<int> Environment::Run(float time, float T)
 		int nb_cell = grid_[0][0]->cell_->Get_nb();
 		if (grid_[0][0]->get_cell_type() == 'a')
       {
-        return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
+        return {nb_cell , W_*H_ - nb_cell}; 
       }
     else 
       {
         return {W_*H_ - nb_cell, nb_cell};
       }
+      // (Ga,Gb) vector is returned 
 	}
 	  
     
@@ -122,6 +138,7 @@ char Environment::pick_char(vector<char>* tab)
  
  
 vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
+
   {
     int r;
     if (tab->size() > 1)
@@ -245,7 +262,9 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
                 float fitness = grid_[coord[0]][coord[1]]->get_cell_fitness();
                 if (fitness == Bestfit)
                   {
-                    C->push_back(coord); // we put vector of coordinates with the same fitness into a vector
+                    C->push_back(coord); 
+                    /*we put vector of coordinates with the same 
+                     * fitness into a vector*/
                   }
                 if (fitness > Bestfit)
                   {
@@ -256,7 +275,9 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
               }
           }   
       }
-    vector<int> xy = pick_coord(C); //we choose randomly coordinate of the cell having the same best fitness
+    vector<int> xy = pick_coord(C); 
+    /*we choose randomly coordinate of the cell having the same best 
+     * fitness*/
     delete C;
     return xy ;
   }

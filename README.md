@@ -1,7 +1,8 @@
-## ProjetC-
-## 15/02/2017
+## Competition model between two bacteria of phenotype Ga or Gb
+INSA Lyon, Departement Biosciences parcours BIM. 3rd year C++ Projet 
+15/02/2017. Lea RIERA, Florian PERRON, Lea DOUCHET
 
-### - Class Cell : virtual pure class
+### Class Cell : virtual pure class
 
 ### Constructors and destructors :
 * **Cell()** : create a new cell without metabolites (all concentrations
@@ -15,7 +16,7 @@
 ### Getters
 * **intra_metabolites()** : Return the concentration of metabolites into
  the cell in a vector (glucose, acetate, ethanol).
-* **WhatAmI** : Return the phenotype of the cell as a character 'a' or 
+* **WhatAmI()** : Return the phenotype of the cell as a character 'a' or 
 'b'.
 * **Pmut()** : Return the probabilty of mutation for the cell. It is the
  same for all the cells.
@@ -26,12 +27,12 @@
 ### Methods
 * **Cell_division()** : divide by two all the metabolites of the cell to
  simule a cellular division.
-* **metabolism** : Change the level of metabolites into the cell 
+* **metabolism()** : Change the level of metabolites into the cell 
  depending on the concentration available its box (given as argument) and
  the time step (dt). Return a vector containing the new concentration of
  metabolites available in the box after the reaction of the cell 
  occure. 
-* **Update_Fit** : Compute the fitness of the cell from its metabolites 
+* **Update_Fit()** : Compute the fitness of the cell from its metabolites 
  concentrations. The fitness is depending of the glucose for 'a' 
  phenotype and acetate for 'b'. 
 
@@ -45,11 +46,11 @@ the cell vector constructor and update the Ga counter.
 * **~Ga()** : Delete the Ga cell using the cell destructor and update 
 the Ga counter
 #### Getters : 
-* **WhatAmI** : see cell class
+* **WhatAmI()** : see cell class
 * **Get_nb()** : Return the number of Ga type cells still allocated.
 #### Methods :  
-* **Update_Fit** : see cell class
-* **metabolism** : see cell class
+* **Update_Fit()** : see cell class
+* **metabolism()** : see cell class
 
 
 ### Class Gb : inherite from cell
@@ -61,11 +62,11 @@ the cell vector constructor and update the Gb counter.
 * **~Gb()** : Delete the Gb cell using the cell destructor and update 
 the Gb counter
 #### Getters  :
-* **WhatAmI** : see cell class
+* **WhatAmI()** : see cell class
 * **Get_nb()** : Return the number of Gb type cells still allocated.
 #### Methods : 
-* **Update_Fit** : see cell class
-* **metabolism** : see cell class
+* **Update_Fit()** : see cell class
+* **metabolism()** : see cell class
 
 
 ### Class Box :
