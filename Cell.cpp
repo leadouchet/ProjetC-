@@ -16,6 +16,11 @@
 //                          CONSTRUCTORS
 //======================================================================
 Cell::Cell()
+
+/*Default constructor : Built a cell with all the metabolites equal to 
+ * 0. We considere 3 metabolites : A - the glucose, B - the acetate, and
+ * C - the ethanol. Each new cell is count in nb_cell attribute */
+ 
   { 
     fitness_ = 0;
     concentrations_ = {0.0,0.0,0.0};
@@ -23,6 +28,12 @@ Cell::Cell()
   }
 
 Cell::Cell(vector<float> intra_metabolites)
+
+/* Constructor from a vector : Create a new cell containing into its 
+ * metabolisme, the concentration of metabolites given as argument by a 
+ * vector containing (glucose, acetate, ethanol). Each new cell is 
+ * counted in nb_cell attribute*/
+ 
   {
     fitness_ = 0;
     concentrations_= intra_metabolites;
@@ -33,6 +44,9 @@ Cell::Cell(vector<float> intra_metabolites)
 //                         DESTRUCTOR
 //======================================================================
 Cell::~Cell()
+
+/*Destructor : Each delete cell is updated into nb_cell attribute*/
+
   {
 	nb_cell--;
   }
@@ -41,16 +55,13 @@ Cell::~Cell()
 //                        PUBLIC METHODS
 //======================================================================
 void Cell::Cell_division()
+
+/*Cell_division function simule its division by dividing all its 
+ * metabolites by 2.*/
+
   {
     concentrations_[0] /= 2;
     concentrations_[1] /= 2;
     concentrations_[2] /= 2;
   }
   
-//======================================================================
-//                           GETTERS
-//======================================================================
-vector<float> Cell::intra_metabolites()
-{  
-  return(concentrations_);
-}

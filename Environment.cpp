@@ -4,6 +4,7 @@
 #include "Environment.h"
 
 
+
 //======================================================================
 //                  DEFINITION STATIC ATTRIBUTES
 //======================================================================
@@ -14,8 +15,8 @@ const float Environment::dt_ =0.1;
 //======================================================================
 Environment::Environment()
   {
-    W_ = 10;
-    H_ = 10;
+    W_ = 32;
+    H_ = 32;
     A_init_ = 4;
     vector<char>* tab = new vector<char> (W_*H_);
     grid_ = vector<vector<Box*>> (H_,vector<Box*> (W_));
@@ -52,9 +53,9 @@ Environment::~Environment()
   {
     vector<vector<Box*>>::iterator row;
     vector<Box*>::iterator col;
-    for (row = grid_.begin() ; row != grid_.end(; row++)
+    for (row = grid_.begin() ; row != grid_.end() ; row++)
       { 
-        for (col = row->begin(; col != row->end(; col++) 
+        for (col = row->begin() ; col != row->end() ; col++) 
           {
             delete *col;
           }
@@ -140,7 +141,7 @@ vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
     return res;  
   }
     
-	  
+
 //======================================================================
 //                     PROTECTED METHODS
 //======================================================================
