@@ -29,3 +29,38 @@ update_box : change the concentration of metabolites into the box for the proces
 Best_fit : Find the neigboor with the best fitness around a box and return its coordinates into a vector.
 
 Run : This function run the cellular proliferation for a time (given as argument). Every T time the middle is refresh. The cycle function is called for every step dt. This function create a csv file containing the Ga and Gb number at each cycle.
+
+
+
+
+
+
+#test
+
+###test1 
+  P_mut = 0
+  T : de 1 en 1
+  A : de 0.1 en 0.1
+
+###test2
+  P_mut = 0.0005
+  T : de 1 en 1
+  A : de 0.1 en 0.1
+
+###test3
+  P_mut = 0.001
+  T : de 1 en 1
+  A : de 0.1 en 0.1
+
+###test4
+  P_mut = 0.0001
+  T : de 1 en 1
+  A : de 0.1 en 0.1
+
+###test5
+  P_mut = 0.01
+  T : de 1 en 1
+  A : de 0.1 en 0.1
+
+
+

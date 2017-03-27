@@ -101,9 +101,10 @@ void Run_Programme(float time, float Pmut, float D)
 	if (data_csv.is_open())
 	{
     data_csv << "T" << " A" << " Survival" << endl;
-		for (int T = 1 ; T <= 1500 ; T += 100){ 
+		for (float T = 1.0 ; T <= 1500.0 ; T += 50.0){ 
       cout << T <<  endl;
-			for (int A = 0 ; A <= 50 ; A += 5){
+			for (float A = 0.0 ; A <= 50 ; A += 1){
+				cout << A << endl;
 				data_csv << T << " " << A << " ";
 				Environment* E = new Environment(A);
 				vector<int> res = E-> Run(time , T);
