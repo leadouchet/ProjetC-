@@ -4,13 +4,11 @@
 //======================================================================
 //                           INCLUDES
 //======================================================================
-//#include <vector> //necessaire?
 #include "Ga.h"
 #include "Gb.h"
 #include <cstdio>
 #include <stdlib.h>
 
-//using std::vector; //necessaire?
 
 /**
  * @class Box

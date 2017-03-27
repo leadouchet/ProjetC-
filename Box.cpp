@@ -125,7 +125,6 @@ void Box::newborn(Cell* mother)
       }
   }
 
-
 void Box::update_box(const vector<float> ABC)
   {
     for (auto it = 0 ; it < 3; ++it)
