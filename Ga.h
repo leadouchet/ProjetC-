@@ -54,16 +54,24 @@ protected:
 
 
 
-//==============================
+//======================================================================
 // INLINE FUNCTION DEFINITION
-//==============================
+//======================================================================
+
 inline int Ga::Get_nb() const
+
+/*Return the number of Ga type cells */
+
   {
     return nb_Ga;
   }
+  
+inline char Ga::WhatAmI()
 
+/*Return a phenotype */
 
-
-
+  {
+    return 'a';
+	}
 #endif // GA_H
 

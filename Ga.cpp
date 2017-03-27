@@ -14,11 +14,19 @@
 //                         CONSTRUCTORS
 //======================================================================
 Ga::Ga()
+
+/*Construct a Ga cell using the cell default constructor and update
+ the Gb counter. */
+
   {
     nb_Ga++;
   }
   
 Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
+
+/* Construct a Ga cell using the cell vector constructor and update 
+ * the Ga counter.*/
+
   {
     nb_Ga++;
 	  Update_Fit();
@@ -28,6 +36,10 @@ Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
 //                           DESTRUCTOR
 //======================================================================
 Ga::~Ga()
+
+/*Delete the Ga cell using the cell destructor and update the Gb 
+ * counter*/
+
   {
     nb_Ga--;
   }
@@ -35,12 +47,15 @@ Ga::~Ga()
 //======================================================================
 //                         PUBLIC METHODS
 //======================================================================
-char Ga::WhatAmI()
-  {
-    return 'a';
-	}
+
 
 vector<float> Ga::metabolism(vector<float> ext_metab)
+
+/*Change the level of metabolites into the cell depending on the 
+ * concentration available its box (given as argument). Return a vector 
+ * containing the new concentration of metabolites available in the box 
+ * after the reaction of the cell (update its fitness) occure. */
+ 
   {
     float flux_in = Raa_ * ext_metab[0] * dt_;
 	  float chgt = Rab_ * concentrations_[0] * dt_;
@@ -56,6 +71,10 @@ vector<float> Ga::metabolism(vector<float> ext_metab)
 //======================================================================
 
 void Ga::Update_Fit()
+
+/*Compute the fitness of the cell from its metabolites 
+ concentrations. The fitness is depending of the glucose level.*/ 
+
   {
 	  if (concentrations_[1] >= fitness_min_)
       {

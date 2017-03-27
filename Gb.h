@@ -15,7 +15,6 @@
 
 class Gb : public Cell
 {
-	friend int Get_nb_Gb();
 public:
 //======================================================================
 //                          CONSTRUCTORS
@@ -32,11 +31,11 @@ public:
 //                            GETTERS
 //======================================================================
   inline int Get_nb() const override;
+  inline char WhatAmI() override;
 
 //======================================================================
 //                        PUBLIC METHODS
 //======================================================================
-  char WhatAmI() override;
   virtual vector<float> metabolism(vector<float> ext_metab) override;
   
   
@@ -63,9 +62,20 @@ protected:
 //                   INLINE FUNCTION DEFINITION
 //======================================================================
 inline int Gb::Get_nb() const
+
+/*Return the number of Gb type cells */
+
   {
     return nb_Gb;
   }
 
+
+inline char Gb::WhatAmI()
+
+/*Return the b phenotype */
+
+  {
+	  return 'b';
+  }
 
 #endif // GB_H
