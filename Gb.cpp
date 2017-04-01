@@ -35,15 +35,14 @@
   char Gb::WhatAmI() {
 	  return 'b';
 	  }
-  std::vector<float> Gb::metabolism(std::vector<float> ext_metab)
+  void Gb::metabolism(std::vector<float>* ext_metab)
   {
-    float flux_in = Rbb_*ext_metab[1]*dt_;
+    float flux_in = Rbb_*ext_metab->at(1)*dt_;
     float chgt = Rbc_*concentrations_[1]*dt_;
-    std::vector<float> residues = {ext_metab[0], ext_metab[1] - flux_in, ext_metab[2]};
+      ext_metab->at(1) -= flux_in;
     concentrations_[1] += flux_in - chgt;
     concentrations_[2] += chgt;
     Update_Fit(); //update the fitness of the box
-    return residues; // return the concentration of metabolites left in the surrounding box
   }
   
 //==============================

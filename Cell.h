@@ -43,8 +43,9 @@ public:
 //    PUBLIC METHODS
 //==============================
 virtual char WhatAmI() = 0;
-virtual std::vector<float> metabolism(std::vector<float>) = 0;
+virtual void metabolism(std::vector<float>*) = 0;
 void Cell_division();
+
 
 
 
@@ -59,8 +60,8 @@ protected:
 //==============================
   static const float fitness_min_;
   static const float Pdeath_;
-  static const float Pmut_;
   static const float dt_ ;
+  static const float Pmut_;
   float fitness_;
   std::vector<float> concentrations_;
   static int nb_cell;

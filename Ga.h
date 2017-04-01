@@ -41,7 +41,7 @@ public:
 //    PUBLIC METHODS
 //==============================
   char WhatAmI() override;
-  virtual std::vector<float> metabolism(std::vector<float> ext_metab) override;
+  void metabolism(std::vector<float>* ext_metab) override;
   inline int Get_nb() const override;
   
 protected:

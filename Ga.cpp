@@ -34,14 +34,14 @@ char Ga::WhatAmI() {
 	return 'a';
 	}
 
-  std::vector<float> Ga::metabolism(std::vector<float> ext_metab){
-	  float flux_in = Raa_*ext_metab[0]*dt_;
+void Ga::metabolism(std::vector<float>* ext_metab){
+	  float flux_in = Raa_*ext_metab->at(0)*dt_;
 	  float chgt = Rab_*concentrations_[0]*dt_;
-	  std::vector<float> residues = {ext_metab[0] - flux_in, ext_metab[1], ext_metab[2]};
+    ext_metab->at(0) -= flux_in;
 	  concentrations_[0] += flux_in - chgt;
 	  concentrations_[1] += chgt ;
 	  Update_Fit();
-	  return residues;
+
   }
 
 //==============================

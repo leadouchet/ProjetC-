@@ -36,15 +36,16 @@ Box(char type, float A_init);
 //==============================
 //    GETTERS
 //==============================
-vector<float> get_box_metabolites() ;
+vector<float>* get_box_metabolites() ;
 vector<float> get_cell_concentration();
+vector<float>* get_box_next_metabolites();
 char get_cell_type();
 float get_cell_fitness();
 
 //==============================
 //    SETTERS
 //==============================
-void update_box(const vector<float> ABC);
+
 
 
 //==============================
@@ -59,6 +60,7 @@ void update_box(const vector<float> ABC);
   bool Cellular_death();
   bool empty_Box();
   void newborn(Cell* mother);
+    void update_diffusion();
 
 
 //==============================
@@ -74,7 +76,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
-  std::vector<float> CONCENTRATIONS_;
+  std::vector<float>* CONCENTRATIONS_;
+  std::vector<float>* Next_CONCENTRATIONS_;
 
 };
 //==============================

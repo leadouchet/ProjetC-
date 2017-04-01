@@ -8,7 +8,7 @@
 //==============================
 const float Cell::fitness_min_ = 0.001;
 const float Cell::Pdeath_ = 0.02; 
-const float Cell::Pmut_ = 0.001;
+const float Cell::Pmut_ = 0;
 const float Cell::dt_ = 0.1;
 int Cell::nb_cell = 0;
 //==============================
@@ -40,6 +40,9 @@ void Cell::Cell_division(){
 	concentrations_[1] /= 2;
 	concentrations_[2] /= 2;
 }
+
+
+
 //==============================
 //    GETTERS
 //==============================
