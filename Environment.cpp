@@ -239,11 +239,6 @@ vector<int> Environment::toroidal(vector<int> coord)
       }
     return {i,j};
   }
-  if (j<0){
-    return {i,W_-1};
-    }
-  return {i,j};
-}
 
 
 void Environment::diffuse_box(int x, int y)
@@ -277,20 +272,6 @@ void Environment::diffuse_box(int x, int y)
     }
        //cout<<(*Next_ABC)[0]<<"    "<<(*Next_ABC)[1]<<"   "<<(*Next_ABC)[2]<<endl;
 }
-
-void Environment::refresh_Environment()
-
-    
-    
-
-void Environment::diffuse_metabolites(){
-	for (int x = 0; x < H_ ; ++x){
-		for (int y = 0; y < W_; ++y){
-			diffuse_box(x,y);
-	}
-}
-}
-
 
 void Environment::diffuse_metabolites()
 

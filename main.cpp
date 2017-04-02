@@ -90,7 +90,7 @@ int main(int argc, char const *argv[])
 }*/
 
 
-Run_Programme(10000.0, 0.0, 0.1);
+Run_Programme(10000.0, 0.001, 0.1);
 
 }
 
@@ -128,9 +128,11 @@ void Run_Programme(float time, float Pmut, float D)
     vector<int> res;
 
     result += "T A nb_B Survival\n";
-    for (float T = 0 ; T <= 1500 ; T += 50){
+    for (float T = 0 ; T <= 1500 ; T += 50)
+    {
         cout << T <<  endl;
-        for (float A = 0 ; A <= 50 ; A += 5){
+        for (float A = 0 ; A <= 50 ; A += 5)
+        {
             cout << A << endl;
             result += to_string(T) + " " + to_string(A) + " ";
             Environment* E = new Environment(A);
@@ -161,7 +163,8 @@ void Run_Programme_opti(float time, float Pmut, float D)
 
 
     result += "T A Survival\n";
-    for (int A = 0 ; A <= 50 ; A += 2){
+    for (int A = 0 ; A <= 50 ; A += 2)
+    {
         cout << A <<  endl;
         float T_up = 1500.0;
         float T_down = 0.0;
@@ -182,9 +185,8 @@ void Run_Programme_opti(float time, float Pmut, float D)
         
         //if(ecological_link_down != ecological_link_up)
         
-            for (int i = 0 ; i<2 ; i++){
-                
-            
+            for (int i = 0 ; i<2 ; i++)
+            {
                 Environment* E_middle = new Environment(A);
                 float T_middle = (T_down+T_up)/2;
                 middle = E_middle->Run(time, T_middle);
@@ -213,12 +215,3 @@ void Run_Programme_opti(float time, float Pmut, float D)
     data_csv.close();
     
 }
-
-
-
-
-
-
-
-
-

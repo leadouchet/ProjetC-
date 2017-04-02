@@ -61,10 +61,3 @@ void Cell::Cell_division()
     concentrations_[1] /= 2;
     concentrations_[2] /= 2;
   }
-//==============================
-//    GETTERS
-//==============================
-std::vector<float> Cell::intra_metabolites()
-{  
-  return(concentrations_);
-}

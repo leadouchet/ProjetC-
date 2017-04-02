@@ -31,8 +31,7 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
 	  Update_Fit(); 
 	  nb_Gb++;
   }
-  
-==== BASE ====
+
 //==============================
 //    DESTRUCTOR
 //==============================
