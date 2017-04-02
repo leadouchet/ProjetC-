@@ -1,10 +1,12 @@
 #ifndef CELL_H
 #define CELL_H 
 
-//==============================
-//    INCLUDES
-//==============================
+//======================================================================
+//                            INCLUDES
+//======================================================================
 #include <vector>
+
+using std::vector;
 
 /**
  * @class Cell
@@ -14,93 +16,99 @@
 class Cell
 {
 public:
-//==============================
-//    CONSTRUCTORS
-//==============================
+//======================================================================
+//                          CONSTRUCTORS
+//======================================================================
   Cell();
-  Cell(std::vector<float>);
-//==============================
-//    DESTRUCTOR
-//==============================
- virtual ~Cell();
-//==============================
-//    GETTERS
-//==============================
- std::vector<float> intra_metabolites(); 
- inline float Pmut() const; 
- inline float fitness() const;
- inline float Pdeath() const;
- inline virtual int Get_nb() const;
-//==============================
-//    SETTERS
-//==============================
+  Cell(vector<float>);
+  
+//======================================================================
+//                           DESTRUCTOR
+//======================================================================
+  virtual ~Cell();
+ 
+//======================================================================
+//                            GETTERS
+//======================================================================
+  inline vector<float>      intra_metabolites() const; 
+  inline float              Pmut() const; 
+  inline float              fitness() const;
+  inline float              Pdeath() const;
+  inline virtual int        Get_nb() const;
+  virtual char WhatAmI() = 0;
 
-//==============================
-//    OPERATORS 
-//==============================
-
-//==============================
-//    PUBLIC METHODS
-//==============================
-virtual char WhatAmI() = 0;
-virtual void metabolism(std::vector<float>*) = 0;
-void Cell_division();
-
+//======================================================================
+//                         PUBLIC METHODS
+//======================================================================
+  virtual void     metabolism(vector<float>*) = 0;
+  void                      Cell_division();
 
 
 
 
 protected:
-//==============================
-//    PROTECTED METHODS
-//==============================
-    virtual void Update_Fit() = 0; 
-//==============================
-//    ATTRIBUTES
-//==============================
-  static const float fitness_min_;
-  static const float Pdeath_;
-  static const float dt_ ;
-  static const float Pmut_;
-  float fitness_;
-  std::vector<float> concentrations_;
-  static int nb_cell;
-
-
-
+//======================================================================
+//                       PROTECTED METHODS
+//======================================================================
+  virtual void              Update_Fit() = 0; 
+    
+//======================================================================
+//                           ATTRIBUTES
+//======================================================================
+  static const float        fitness_min_;
+  static const float        Pdeath_;
+  static const float        Pmut_;
+  static const float        dt_ ;
+  float                     fitness_;
+  vector<float>             concentrations_;
+  static int                nb_cell;
 };
 
-//==============================
-//    GETTER DEFINITION
-//==============================
+
+
+
+//======================================================================
+//                         GETTER DEFINITION
+//======================================================================
 inline float Cell::Pmut() const
-{
-  return Pmut_;
-}
+
+/* Getter to access the cell probabilty of mutation. */
+ 
+  {
+    return Pmut_;
+  }
 
 inline float Cell::fitness() const
-{
-  return fitness_;
-}
+
+/* Getter to access the cell fitness. */
+ 
+  {
+    return fitness_;
+  }
 
 inline float Cell::Pdeath() const
-{
-  return Pdeath_;
-}
+
+/* Getter to access the cell probability of death. */
+ 
+  {
+    return Pdeath_;
+  }
 
 inline int Cell::Get_nb() const
-{
-  return nb_cell;
+
+/* Getter to access the number of existing cells. */
+ 
+  {
+    return nb_cell;
+  }
+
+inline vector<float> Cell::intra_metabolites() const
+
+/* Getter to access to the cell metabolites concentrations as a vector
+ * (glucose, acetate, ethanol) */
+ 
+{  
+  return(concentrations_);
 }
-
-//==============================
-//    SETTER DEFINITION
-//==============================
-
-//==============================
-//    OPERATOR DEFINITION
-//==============================
-
-
 
 #endif // CELL_H

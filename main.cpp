@@ -21,6 +21,8 @@ using std::endl;
 using std::cin;
 using std::ofstream;
 using std::vector;
+using std::string;
+using std::to_string;
 
 //==============================
 //    FUNCTION DECLARATION
@@ -143,6 +145,7 @@ void Run_Programme(float time, float Pmut, float D)
     data_csv.open("dataTest.csv");
     data_csv << result;
     data_csv.close();
+    
 
 }
 
