@@ -126,11 +126,11 @@ vector<int> Environment::Run(float time, float T)
 				  }
               
 			  Cycle();
-          nb_cell = grid_[0][0]->cell_-> Get_nb();
-          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell_->Pmut()){cout<<"BREAK"<<endl;break;}
+          nb_cell = grid_[0][0]->cell()-> Get_nb();
+          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell()->Pmut()){cout<<"BREAK"<<endl;break;}
 			
               }
-		nb_cell = grid_[0][0]->cell_-> Get_nb();
+		nb_cell = grid_[0][0]->cell()-> Get_nb();
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
 			return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
@@ -212,7 +212,7 @@ void Environment::diffuse_box(int x, int y)
         for (int j = -1; j <= 1; ++j){
             vector<int> coord = {x+i , y+j};
             coord = toroidal(coord);
-            vector<float>* Neib_Box_ABC = grid_[coord[0]][coord[1]]-> get_box_metabolites();
+            vector<float>* Neib_Box_ABC = grid_[coord[0]][coord[1]]->get_box_metabolites();
             for (int rank = 0 ; rank < 3 ;  ++rank){
                 Next_ABC->at(rank) += D_ * Neib_Box_ABC->at(rank);
             }
@@ -327,7 +327,7 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
      vector<int> coord_best_fit = Best_fit(coord_empty);
-     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
+     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell() );
    }
      delete dead_ones;
   //Diffusion 	

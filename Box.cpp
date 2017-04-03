@@ -94,6 +94,14 @@ float Box::get_cell_fitness()
     return cell_->fitness();
   }
 
+Cell* Box::cell()
+
+/* Give the pointer to the cell in the box. */
+
+  {
+    return cell_;
+  }
+
 //======================================================================
 //                        PUBLIC METHODS
 //======================================================================
