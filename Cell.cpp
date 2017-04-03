@@ -8,7 +8,7 @@
 //======================================================================
   const float Cell::fitness_min_ = 0.001;
   const float Cell::Pdeath_ = 0.02; 
-  const float Cell::Pmut_ = 0.001;
+  const float Cell::Pmut_ = 0.1;
   const float Cell::dt_ = 0.1;
   int Cell::nb_cell = 0;
   
@@ -39,20 +39,21 @@ Cell::Cell(std::vector<float> intra_metabolites)
     concentrations_= intra_metabolites;
     nb_cell++;
   }
+  
 
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
 Cell::~Cell()
 
 /*Destructor : Each delete cell is updated into nb_cell attribute*/
 
   {
-	nb_cell--;
+	  nb_cell--;
   }
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 void Cell::Cell_division()
 
 /*Cell_division function simulate its division by dividing all its 

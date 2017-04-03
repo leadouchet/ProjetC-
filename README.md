@@ -100,9 +100,6 @@ level of glucose placed into the environment. The environment is created
 * **~Environment()** : Destructor of environment : apply the box 
 destructor for each box contained into the grid_.
 
-
-
-
 * **Best_fit()** : Find the neigboor with the best fitness around a box and 
 return its coordinates into a vector.
 

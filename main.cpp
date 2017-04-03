@@ -1,6 +1,6 @@
-//==============================
+//======================================================================
 //    INCLUDES
-//==============================
+//======================================================================
 
 #include <cstdio>
 #include <cstdlib>
@@ -24,22 +24,21 @@ using std::vector;
 using std::string;
 using std::to_string;
 
-//==============================
+//======================================================================
 //    FUNCTION DECLARATION
-//==============================
+//======================================================================
 string eco_link(vector<int> res);
-void Run_Programme(float time, float Pmut, float D);
-void Run_Programme_opti(float time, float Pmut, float D);
+void Run_Programme(float time, float D);
+void Run_Programme_opti(float time,  float D);
 
-//==============================
+//======================================================================
 //    MAIN
-//==============================
+//======================================================================
 
 int main(int argc, char const *argv[])
-{	
-
-Run_Programme(10000.0, 0.0, 0.1);
-
+{
+	
+	Run_Programme(10000.0, 0.1);
 }
 
 
@@ -70,20 +69,20 @@ string eco_link(vector<int> res)
 
 
 
-void Run_Programme(float time, float Pmut, float D)
+void Run_Programme(float time, float D)
 {
     string result;
     vector<int> res;
 
     result += "T A nb_B Survival\n";
-    for (float T = 0 ; T <= 1500 ; T += 500)
+    for (float T = 0 ; T <= 1500 ; T += 100)
     {
-        cout << "T : " << T <<  endl;
-        for (float A = 0 ; A <= 50 ; A += 10)
+        cout << T <<  endl;
+        for (float A = 0 ; A <= 50 ; A += 5)
         {
-            cout << "  A : " << A << endl;
+            cout << A << endl;
             result += to_string(T) + " " + to_string(A) + " ";
-            Environment* E = new Environment(A);
+            Environment* E = new Environment(A,D);
             res = E->Run(time , T);
             delete E;
             cout << to_string(res[1]) << "  " << eco_link(res) <<endl;
@@ -92,14 +91,14 @@ void Run_Programme(float time, float Pmut, float D)
     }
     
     ofstream data_csv;
-    data_csv.open("dataTest.csv");
+    data_csv.open("dataPmut_0_1.csv");
     data_csv << result;
     data_csv.close();
     
 
 }
 
-void Run_Programme_opti(float time, float Pmut, float D)
+void Run_Programme_opti(float time, float D)
 {
     string result;
     vector<int> up;
@@ -111,20 +110,20 @@ void Run_Programme_opti(float time, float Pmut, float D)
 
 
     result += "T A Survival\n";
-    for (int A = 0 ; A <= 50 ; A += 10)
+    for (int A = 0 ; A <= 50 ; A += 2)
     {
-        cout << "A : " << A <<  endl;
+        cout << A <<  endl;
         float T_up = 1500.0;
         float T_down = 0.0;
         
-        Environment* E_up = new Environment(A);
+        Environment* E_up = new Environment(A,D);
         up = E_up->Run(time, T_up);
         ecological_link_up = eco_link(up);
         result += to_string(T_up) + " " + to_string(A) + " " + ecological_link_up;
         delete E_up;
         
         
-        Environment* E_down = new Environment(A);
+        Environment* E_down = new Environment(A,D);
         down = E_down->Run(time, T_down);
         ecological_link_down = eco_link(down);
         result += to_string(T_down) + " " + to_string(A) + " " + ecological_link_down;
@@ -135,7 +134,7 @@ void Run_Programme_opti(float time, float Pmut, float D)
         
             for (int i = 0 ; i<2 ; i++)
             {
-                Environment* E_middle = new Environment(A);
+                Environment* E_middle = new Environment(A,D);
                 float T_middle = (T_down+T_up)/2;
                 middle = E_middle->Run(time, T_middle);
                 ecological_link_middle = eco_link(middle);

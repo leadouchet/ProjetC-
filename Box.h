@@ -10,6 +10,10 @@
 #include "Gb.h"
 #include <cstdio>
 #include <stdlib.h>
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::cin;
 
 
 /**
@@ -49,7 +53,8 @@ public:
   void                    metab_trade();
   bool                    Cellular_death();
   bool                    empty_Box();
-  void                    newborn(Cell* mother);
+  void                    newborn(Cell* sister);
+  void                    mutation();
   void                    update_diffusion();
 
 

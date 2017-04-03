@@ -32,9 +32,9 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
 	  nb_Gb++;
   }
 
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
   Gb::~Gb()
 
 /*Delete the Gb cell using the cell destructor and update the Gb 
@@ -44,11 +44,11 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
 	  nb_Gb--;
   }
 
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 
-  void Gb::metabolism(std::vector<float>* ext_metab)
+  void Gb::metabolism(vector<float>* ext_metab)
 
 /*Change the level of metabolites into the cell depending on the 
  * concentration available its box (given as argument). Return a vector 
@@ -56,9 +56,9 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
  * after the reaction of the cell (update its fitness) occure. */
 
   {
-    float flux_in = Rbb_*ext_metab->at(1)*dt_;
-    float chgt = Rbc_*concentrations_[1]*dt_;
-      ext_metab->at(1) -= flux_in;
+    float flux_in = Rbb_ * ext_metab->at(1) * dt_;
+    float chgt = Rbc_ * concentrations_[1] * dt_;
+    ext_metab->at(1) -= flux_in;
     concentrations_[1] += flux_in - chgt;
     concentrations_[2] += chgt;
     Update_Fit(); //update the fitness of the box
@@ -75,9 +75,9 @@ void Gb::Update_Fit()
  
   {
     if (concentrations_[2] >= fitness_min_)
-      {
-        fitness_ = concentrations_[2];
-      }
+    {
+      fitness_ = concentrations_[2];
+    }
     else fitness_ = 0; 
   }
 

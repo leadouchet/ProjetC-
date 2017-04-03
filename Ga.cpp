@@ -31,9 +31,9 @@ Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
     nb_Ga++;
     Update_Fit();
   }
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
   Ga::~Ga()
 
 /*Delete the Ga cell using the cell destructor and update the Gb 
@@ -43,11 +43,11 @@ Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
     nb_Ga--;
   }
 
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 
-void Ga::metabolism(std::vector<float>* ext_metab)
+void Ga::metabolism(vector<float>* ext_metab)
 
 /*Change the level of metabolites into the cell depending on the 
  * concentration available its box (given as argument). Return a vector 
@@ -55,9 +55,9 @@ void Ga::metabolism(std::vector<float>* ext_metab)
  * after the reaction of the cell (update its fitness) occure. */
  
 {
-	  float flux_in = Raa_*ext_metab->at(0)*dt_;
-	  float chgt = Rab_*concentrations_[0]*dt_;
-      ext_metab->at(0) -= flux_in;
+	  float flux_in = Raa_ * ext_metab->at(0) * dt_;
+	  float chgt = Rab_ * concentrations_[0] * dt_;
+    ext_metab->at(0) -= flux_in;
 	  concentrations_[0] += flux_in - chgt;
 	  concentrations_[1] += chgt ;
 	  Update_Fit();
