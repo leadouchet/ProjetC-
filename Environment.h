@@ -28,7 +28,7 @@ public:
 //                          CONSTRUCTORS
 //======================================================================
   Environment();
-  Environment(float A_init);
+  Environment(float A_init, float D);
 
 //======================================================================
 //                           DESTRUCTOR
@@ -38,8 +38,6 @@ public:
 //======================================================================
 //                          PUBLIC METHODS
 //======================================================================
-  char                  pick_char (vector<char>* tab);
-  vector<int>           pick_coord (vector< vector<int> >*  tab); //Pourquoi en public ??
   vector<int>           Run(float time, float T);
 
 
@@ -57,6 +55,8 @@ protected:
   void                  Cycle(); 
   void                  refresh_Environment();
  
+  char                  pick_char (vector<char>* tab);
+  vector<int>           pick_coord (vector< vector<int> >*  tab);
  
 //======================================================================
 //                          ATTRIBUTES

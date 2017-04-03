@@ -32,9 +32,9 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
 	  nb_Gb++;
   }
 
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
   Gb::~Gb()
 
 /*Delete the Gb cell using the cell destructor and update the Gb 
@@ -44,9 +44,9 @@ Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites)
 	  nb_Gb--;
   }
 
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 
   void Gb::metabolism(std::vector<float>* ext_metab)
 

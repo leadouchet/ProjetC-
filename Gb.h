@@ -34,9 +34,9 @@ public:
   inline int               Get_nb() const override;
   inline char              WhatAmI() override;
 
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
   void metabolism(std::vector<float>* ext_metab) override;  
 
 protected:
