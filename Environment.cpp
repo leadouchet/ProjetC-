@@ -126,13 +126,13 @@ vector<int> Environment::Run(float time, float T)
 			  refresh_Time = 0;
 		  }
 		  Cycle();
-          nb_cell = grid_[0][0]->cell_-> Get_nb();
-          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell_->Pmut())
+          nb_cell = grid_[0][0]->cell()-> Get_nb();
+          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell()->Pmut())
           {
 			  cout<<"BREAK"<<endl;break;
 		  }
 	  }
-	  nb_cell = grid_[0][0]->cell_-> Get_nb();
+	  nb_cell = grid_[0][0]->cell()-> Get_nb();
 	  if (grid_[0][0]-> get_cell_type() == 'a')
 	  {
 		  return {nb_cell , W_*H_ - nb_cell}; 
@@ -223,6 +223,7 @@ void Environment::diffuse_box(int x, int y)
     for (int rank = 0 ; rank < 3 ;  ++rank){
         Next_ABC->at(rank) -= 9*D_ * ABC->at(rank);
     }
+    
 }
 
 void Environment::diffuse_metabolites()
@@ -326,10 +327,9 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
      vector<int> coord_best_fit = Best_fit(coord_empty);
-     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
+     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell() );
    }
      delete dead_ones;
-     
   //Diffusion 	
     diffuse_metabolites(); 
 
@@ -357,8 +357,8 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 		}
 	}
  }
- 
-
+  
+    
 char Environment::pick_char(vector<char>* tab)
 
 /* This function pick randomly and return a caractere contained into a 

@@ -39,15 +39,7 @@ public:
   vector<float>*          get_box_next_metabolites();
   char                    get_cell_type();
   float                   get_cell_fitness();
-
-
-
-
-//======================================================================
-//                       PUBLIC ATTRIBUTES
-//======================================================================
-  Cell*                   cell_;                                        //essayer de le passer en protected
-
+  Cell*                   cell();
 
 
 //======================================================================
@@ -60,6 +52,9 @@ public:
   void                    newborn(Cell* mother);
   void                    update_diffusion();
 
+
+
+
 protected:
 
 //======================================================================
@@ -67,7 +62,7 @@ protected:
 //======================================================================
   std::vector<float>* 	  CONCENTRATIONS_;
   std::vector<float>* 	  Next_CONCENTRATIONS_;
-
+  Cell*                   cell_;
 };
 
 
