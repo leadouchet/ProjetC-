@@ -16,6 +16,7 @@
 //                          CONSTRUCTORS
 //======================================================================
 Cell::Cell()
+
 /*Default constructor : Built a cell with all the metabolites equal to 
  * 0. We considere 3 metabolites : A - the glucose, B - the acetate, and
  * C - the ethanol. Each new cell is count in nb_cell attribute */
@@ -27,6 +28,7 @@ Cell::Cell()
   }
 
 Cell::Cell(std::vector<float> intra_metabolites)
+
 /* Constructor from a vector : Create a new cell containing into its 
  * metabolisme, the concentration of metabolites given as argument by a 
  * vector containing (glucose, acetate, ethanol). Each new cell is 

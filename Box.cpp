@@ -8,7 +8,9 @@
 //                        CONSTRUCTORS
 //======================================================================
 Box::Box()
+
 /* Construct an empty box. */
+
   {
     CONCENTRATIONS_ = new vector<float>;
     *CONCENTRATIONS_={0.0,0.0,0.0};
@@ -19,7 +21,9 @@ Box::Box()
 
 
 Box::Box(char type, float A_init)
+
 /* Construct a box with Ga or Gb Cell and A_init given. */
+
   {
    CONCENTRATIONS_ = new vector<float>;
     *CONCENTRATIONS_ = {A_init,0.0,0.0};
@@ -35,7 +39,7 @@ Box::Box(char type, float A_init)
 
 //======================================================================
 //                          DESTRUCTOR
-//============================================================
+//======================================================================
 Box::~Box(){
 	delete cell_;
     delete CONCENTRATIONS_;
@@ -50,7 +54,9 @@ Box::~Box(){
 //                          GETTERS
 //======================================================================
 vector<float>* Box::get_box_metabolites()
+
 /* Give the concentrations of metabolites within the Box. */
+
   {
 	  return CONCENTRATIONS_;
 	}
@@ -61,13 +67,17 @@ vector<float>* Box::get_box_next_metabolites(){
 
 
 vector<float> Box::get_cell_concentration()
+
 /* Give the concentrations of metabolites within the Cell. */
+
   {
     return(cell_->intra_metabolites());    
   }
 
 char Box::get_cell_type()
+
 /* Give the type of the Cell in the Box. */
+
   { 
     if (cell_ == nullptr)
       {
@@ -77,7 +87,9 @@ char Box::get_cell_type()
 }
 
 float Box::get_cell_fitness()
+
 /* Give the fitness of the Cell within the Box. */
+
   {
     return cell_->fitness();
   }
@@ -97,7 +109,9 @@ void Box::metab_trade(){
 }
 
 bool Box::Cellular_death()
+
 /* The Cell die following a mutation probability. */
+
 {
 float decision = (double) rand() / (RAND_MAX);
 	if(decision <= cell_->Pdeath()){
@@ -114,7 +128,9 @@ float decision = (double) rand() / (RAND_MAX);
 }
 
 bool Box::empty_Box()
+
 /* Say if the Box is empty. */ 
+
   {
     if (cell_ == nullptr) return true;
     else return false;
@@ -124,8 +140,10 @@ bool Box::empty_Box()
 
 
 void Box::newborn(Cell* mother)
+
 /* A close Cell (mother) divide itself and fill the empty Box. 
  * Its metabolites are divided by 2. */
+ 
   {
     mother->Cell_division();
     float aleat = (double) rand() / (RAND_MAX);

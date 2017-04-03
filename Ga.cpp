@@ -53,6 +53,7 @@ void Ga::metabolism(std::vector<float>* ext_metab)
  * concentration available its box (given as argument). Return a vector 
  * containing the new concentration of metabolites available in the box 
  * after the reaction of the cell (update its fitness) occure. */
+ 
 {
 	  float flux_in = Raa_*ext_metab->at(0)*dt_;
 	  float chgt = Rab_*concentrations_[0]*dt_;

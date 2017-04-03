@@ -141,56 +141,7 @@ vector<int> Environment::Run(float time, float T)
 		}
 			
 	}
-	  
-    
-char Environment::pick_char(vector<char>* tab)
 
-/* This function pick randomly and return a caractere contained into a 
- * vector given as argument*/
-
-  {
-    int r;
-    if (tab->size() > 1)
-      r = rand() % (tab->size()-1);
-    else
-      r = 0;
-    char res = tab->at(r);
-    int i = 0;
-    for (auto it = tab->begin(); it != tab->end() ; ++it, ++i)
-      {
-        if (i==r) 
-          {
-            tab->erase(it);
-            break;
-          }
-      }
-    return res;
-  }
- 
- 
-vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
-
-/* This function pick randomly and return a vector of coordinates 
- * contained into a vector given as argument*/
- 
-  {
-    int r;
-    if (tab->size() > 1)
-        r = rand() % (tab->size()-1);
-    else
-        r = 0;
-    vector<int> res = tab->at(r);
-    int i = 0;
-    for (auto it = tab->begin(); it != tab->end() ; ++it, ++i)
-      {
-        if (i==r) 
-          {
-            tab->erase(it);
-            break;
-          }
-      }
-    return res;  
-  }
     
 
 //======================================================================
@@ -409,6 +360,58 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
  }
  
 
+
+
+	  
+    
+char Environment::pick_char(vector<char>* tab)
+
+/* This function pick randomly and return a caractere contained into a 
+ * vector given as argument*/
+
+  {
+    int r;
+    if (tab->size() > 1)
+      r = rand() % (tab->size()-1);
+    else
+      r = 0;
+    char res = tab->at(r);
+    int i = 0;
+    for (auto it = tab->begin(); it != tab->end() ; ++it, ++i)
+      {
+        if (i==r) 
+          {
+            tab->erase(it);
+            break;
+          }
+      }
+    return res;
+  }
+ 
+ 
+vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
+
+/* This function pick randomly and return a vector of coordinates 
+ * contained into a vector given as argument*/
+ 
+  {
+    int r;
+    if (tab->size() > 1)
+        r = rand() % (tab->size()-1);
+    else
+        r = 0;
+    vector<int> res = tab->at(r);
+    int i = 0;
+    for (auto it = tab->begin(); it != tab->end() ; ++it, ++i)
+      {
+        if (i==r) 
+          {
+            tab->erase(it);
+            break;
+          }
+      }
+    return res;  
+  }
 
 
 
