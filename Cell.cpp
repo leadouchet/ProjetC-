@@ -8,7 +8,7 @@
 //======================================================================
   const float Cell::fitness_min_ = 0.001;
   const float Cell::Pdeath_ = 0.02; 
-  const float Cell::Pmut_ = 0.001;
+  const float Cell::Pmut_ = 0.1;
   const float Cell::dt_ = 0.1;
   int Cell::nb_cell = 0;
   

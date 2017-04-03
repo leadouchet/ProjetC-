@@ -90,7 +90,7 @@ int main(int argc, char const *argv[])
 }*/
 
 
-Run_Programme(10000.0, 0.001, 0.1);
+Run_Programme(1000.0, 0.001, 0.1);
 
 }
 
@@ -128,7 +128,7 @@ void Run_Programme(float time, float Pmut, float D)
     vector<int> res;
 
     result += "T A nb_B Survival\n";
-    for (float T = 0 ; T <= 1500 ; T += 50)
+    for (float T = 0 ; T <= 1500 ; T += 100)
     {
         cout << T <<  endl;
         for (float A = 0 ; A <= 50 ; A += 5)
@@ -144,7 +144,7 @@ void Run_Programme(float time, float Pmut, float D)
     }
     
     ofstream data_csv;
-    data_csv.open("dataTest.csv");
+    data_csv.open("dataPmut_0_1.csv");
     data_csv << result;
     data_csv.close();
     

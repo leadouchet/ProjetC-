@@ -127,9 +127,9 @@ vector<int> Environment::Run(float time, float T)
               
 			  Cycle();
           nb_cell = grid_[0][0]->cell_-> Get_nb();
-          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell_->Pmut()){cout<<"BREAK"<<endl;break;}
+          if ((W_*H_ - nb_cell==0 || nb_cell==0) && grid_[0][0]->cell_->Pmut()==0){cout<<"BREAK"<<endl;break;}
 			
-              }
+      }
 		nb_cell = grid_[0][0]->cell_-> Get_nb();
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
