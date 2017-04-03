@@ -47,7 +47,7 @@ Environment::Environment()
     delete tab;
   }
   
-Environment::Environment(float A_init)
+Environment::Environment(float A_init, float D)
 
 /*Environment constructor based on the level of glucose placed into the 
  * environment. The environment is created with the default constructor 
@@ -57,7 +57,7 @@ Environment::Environment(float A_init)
       W_ = 32;
       H_ = 32;
       A_init_ = A_init;
-      D_ = 0.1;
+      D_ = D;
       vector<char>* tab = new vector<char> (W_*H_);
       grid_ = vector<vector<Box*>>(H_,vector< Box* >(W_));
       for (int i = 0 ; i!=W_*H_/2 ; ++i ){
@@ -103,11 +103,12 @@ Environment::~Environment()
 //======================================================================
 vector<int> Environment::Run(float time, float T)
   
-  /* This function run the growth of the cell population and save into a 
-   * csv file called data.csv the number of Ga and Gb phenotypes. Every 
+  /* This function run the growth of the cell population and return the 
+   * resulting populations left at the end of the simulation. Every 
    * T time the growth middle is refresh (the metabolites in the middle 
    * are removed and replace by A metabolite). For every dt until time
-   * one cycle occure. */
+   * one cycle occure. If there is no mutation, if one of the phenotype 
+   * disappears the function stop running and return the results */
  
   {
 	  float T_ = T;
@@ -116,31 +117,32 @@ vector<int> Environment::Run(float time, float T)
           int nb_cell;
 	  while(elapse_Time < time)
       {
-			  elapse_Time ++;
-			  refresh_Time ++;
-			  if (refresh_Time > T_) 
-			  // The environment is refreshed every T_ span.
-          {
-            refresh_Environment();
-            refresh_Time = 0;
-				  }
-              
-			  Cycle();
+		  elapse_Time ++;
+		  refresh_Time ++;
+		  if (refresh_Time > T_)
+		  {
+		  // The environment is refreshed every T_ span.
+			  refresh_Environment();
+			  refresh_Time = 0;
+		  }
+		  Cycle();
           nb_cell = grid_[0][0]->cell_-> Get_nb();
-          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell_->Pmut()){cout<<"BREAK"<<endl;break;}
-			
-              }
-		nb_cell = grid_[0][0]->cell_-> Get_nb();
-		if (grid_[0][0]-> get_cell_type() == 'a')
-		{
-			return {nb_cell , W_*H_ - nb_cell}; // (Ga,Gb) vector is returned 
-		}
-		else 
-		{
-			return {W_*H_ - nb_cell, nb_cell};
-		}
-			
-	}
+          if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell_->Pmut())
+          {
+			  cout<<"BREAK"<<endl;break;
+		  }
+	  }
+	  nb_cell = grid_[0][0]->cell_-> Get_nb();
+	  if (grid_[0][0]-> get_cell_type() == 'a')
+	  {
+		  return {nb_cell , W_*H_ - nb_cell}; 
+		  // (Ga,Gb) vector is returned 
+	  }
+	  else 
+	  {
+		  return {W_*H_ - nb_cell, nb_cell};
+	  }	
+  }
 
     
 
@@ -221,7 +223,6 @@ void Environment::diffuse_box(int x, int y)
     for (int rank = 0 ; rank < 3 ;  ++rank){
         Next_ABC->at(rank) -= 9*D_ * ABC->at(rank);
     }
-       //cout<<(*Next_ABC)[0]<<"    "<<(*Next_ABC)[1]<<"   "<<(*Next_ABC)[2]<<endl;
 }
 
 void Environment::diffuse_metabolites()
@@ -310,18 +311,16 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 
 /*Gather all the function describing the environment behaviour during 
  * one cycle  : 
+ * - The metabolites diffuse into the environment
  * - Make cell randomly die
  * - Make the surviving cells compete to divide into the empty space
- * - The metabolites diffuse into the environment
  * - Each cells metabolizes the metabolites into its box */
  {
   //Diffusion
-     
    diffuse_metabolites();
 
  //Cellular Death
    vector< vector<int> >* dead_ones = Cellular_killer();
-
 
  //Competition
    for (auto l = dead_ones->size() ; l > 0 ; l--){
@@ -330,9 +329,9 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
      grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell_ );
    }
      delete dead_ones;
+     
   //Diffusion 	
     diffuse_metabolites(); 
-
 
   //Metabolism
     for (auto col = grid_.begin(); col != grid_.end() ; col++)
@@ -360,10 +359,6 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
  }
  
 
-
-
-	  
-    
 char Environment::pick_char(vector<char>* tab)
 
 /* This function pick randomly and return a caractere contained into a 
