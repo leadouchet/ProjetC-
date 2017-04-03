@@ -129,7 +129,7 @@ vector<int> Environment::Run(float time, float T)
           nb_cell = grid_[0][0]->cell()-> Get_nb();
           if ((W_*H_ - nb_cell==0 or nb_cell==0) and grid_[0][0]->cell()->Pmut()){cout<<"BREAK"<<endl;break;}
 			
-              }
+      }
 		nb_cell = grid_[0][0]->cell()-> Get_nb();
 		if (grid_[0][0]-> get_cell_type() == 'a')
 		{
