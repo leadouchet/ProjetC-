@@ -145,12 +145,26 @@ bool Box::empty_Box()
   }
 
 
+void Box::newborn(Cell* sister)
 
+/*Given a cell, reproduce the same cell into the box*/
 
-void Box::newborn(Cell* mother)
+{
+	char phenotype = sister->WhatAmI();
+	vector <float> sister_concentration = sister->intra_metabolites();
+	if (phenotype == 'a')
+	{
+		cell_ = new Ga(sister_concentration);
+	}
+	else
+	{
+		cell_ = new Gb(sister_concentration);		
+	}
+}
+/*void Box::newborn(Cell* mother)
 
-/* A close Cell (mother) divide itself and fill the empty Box. 
- * Its metabolites are divided by 2. */
+* A close Cell (mother) divide itself and fill the empty Box. 
+ * Its metabolites are divided by 2. 
  
   {
     mother->Cell_division();
@@ -178,6 +192,33 @@ void Box::newborn(Cell* mother)
           }
       }
   }
+  */
+
+void Box::mutation()
+
+/* Decide if the cell should mutate or not and then divid its metabolites */
+
+{
+    float aleat = (double) rand() / (RAND_MAX);
+    vector <float> mother = cell_->intra_metabolites();
+    char phenotype = cell_->WhatAmI();
+    if (aleat < (cell_->Pmut()))
+    {
+		if ( phenotype == 'a' )
+		{
+			delete cell_;
+            cell_ = new Gb(mother);
+        }
+        else 
+          {
+			  delete cell_;
+			  cell_ = new Ga(mother);
+          }
+      }
+      cell_->Cell_division();
+  }
+
+
 
 void Box::update_diffusion(){
     *CONCENTRATIONS_=*Next_CONCENTRATIONS_;

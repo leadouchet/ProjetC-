@@ -28,8 +28,8 @@ using std::to_string;
 //    FUNCTION DECLARATION
 //======================================================================
 string eco_link(vector<int> res);
-void Run_Programme(float time, float Pmut, float D);
-void Run_Programme_opti(float time, float Pmut, float D);
+void Run_Programme(float time, float D);
+void Run_Programme_opti(float time,  float D);
 
 //======================================================================
 //    MAIN
@@ -37,7 +37,8 @@ void Run_Programme_opti(float time, float Pmut, float D);
 
 int main(int argc, char const *argv[])
 {
-	Run_Programme(10000.0, 0.001, 0.1);
+	
+	Run_Programme(10000.0, 0.1);
 }
 
 
@@ -68,7 +69,7 @@ string eco_link(vector<int> res)
 
 
 
-void Run_Programme(float time, float Pmut, float D)
+void Run_Programme(float time, float D)
 {
     string result;
     vector<int> res;
@@ -97,7 +98,7 @@ void Run_Programme(float time, float Pmut, float D)
 
 }
 
-void Run_Programme_opti(float time, float Pmut, float D)
+void Run_Programme_opti(float time, float D)
 {
     string result;
     vector<int> up;

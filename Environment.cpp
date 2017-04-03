@@ -23,7 +23,7 @@ Environment::Environment()
  * environment.*/
 
   {
-    W_ = 32;
+    W_ =32;
     H_ = 32;
     A_init_ = 0;
     D_ = 0.1;
@@ -327,7 +327,9 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
    for (auto l = dead_ones->size() ; l > 0 ; l--){
      vector<int> coord_empty = pick_coord(dead_ones);
      vector<int> coord_best_fit = Best_fit(coord_empty);
-     grid_[coord_empty[0]][coord_empty[1]]->newborn( grid_[coord_best_fit[0]][coord_best_fit[1]]->cell() );
+     Box* mother_box = grid_[coord_best_fit[0]][coord_best_fit[1]];
+     mother_box->mutation();
+     grid_[coord_empty[0]][coord_empty[1]]->newborn( mother_box->cell());
    }
      delete dead_ones;
   //Diffusion 	

@@ -39,10 +39,11 @@ Cell::Cell(std::vector<float> intra_metabolites)
     concentrations_= intra_metabolites;
     nb_cell++;
   }
+  
 
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
 Cell::~Cell()
 
 /*Destructor : Each delete cell is updated into nb_cell attribute*/
@@ -50,9 +51,9 @@ Cell::~Cell()
   {
 	nb_cell--;
   }
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 void Cell::Cell_division()
 
 /*Cell_division function simulate its division by dividing all its 

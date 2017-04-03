@@ -31,9 +31,9 @@ Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
     nb_Ga++;
     Update_Fit();
   }
-//==============================
+//======================================================================
 //    DESTRUCTOR
-//==============================
+//======================================================================
   Ga::~Ga()
 
 /*Delete the Ga cell using the cell destructor and update the Gb 
@@ -43,9 +43,9 @@ Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
     nb_Ga--;
   }
 
-//==============================
+//======================================================================
 //    PUBLIC METHODS
-//==============================
+//======================================================================
 
 void Ga::metabolism(std::vector<float>* ext_metab)
 
