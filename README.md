@@ -1,6 +1,6 @@
 ## Competition model between two bacteria of phenotype Ga or Gb
 INSA Lyon, Departement Biosciences parcours BIM. 3rd year C++ Projet 
-15/02/2017. Lea RIERA, Florian PERRON, Lea DOUCHET
+15/02/2017. Lea RIERA, Florian PERON, Lea DOUCHET
 
 ### Class Cell : virtual pure class
 
