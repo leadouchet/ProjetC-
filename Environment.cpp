@@ -8,7 +8,7 @@
 //======================================================================
 //                  DEFINITION STATIC ATTRIBUTES
 //======================================================================
-const float Environment::dt_ =0.1;
+const float Environment::dt_ = 0.1;
 
 //======================================================================
 //                         CONSTRUCTORS
@@ -263,6 +263,7 @@ vector<vector<int>>* Environment::Cellular_killer()
     {
       for (int y = 0 ; y < W_; ++y)
       {
+        grid_[x][y]->update_diffusion;
         if (grid_[x][y]->Cellular_death())
         {
           result->push_back(vector<int> {x,y});
@@ -347,14 +348,17 @@ vector<int> Environment::Best_fit(vector<int> EmptyBox)
 
 
   //Metabolism
-    for (auto col = grid_.begin(); col != grid_.end() ; col++)
+    for (int i = 0 ; i <10 ; i++)
     {
-      for (auto box = col->begin() ; box != col->end() ; box++)
+      for (auto col = grid_.begin(); col != grid_.end() ; col++)
       {
-        (*box)->metab_trade();
+        for (auto box = col->begin() ; box != col->end() ; box++)
+        {
+          (*box)->metab_trade();
+        }
       }
-    }
- }
+    } 
+  }
  
  
  void Environment::refresh_Environment()
@@ -420,6 +424,5 @@ vector<int> Environment::pick_coord (vector< vector<int> >*  tab)
     }
     return res;  
   }
-
 
 

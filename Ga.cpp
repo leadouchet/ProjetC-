@@ -22,6 +22,7 @@ Ga::Ga()
     nb_Ga++;
   }
   
+  
 Ga::Ga(vector<float> intra_metabolites) : Cell (intra_metabolites)
 
 /* Construct a Ga cell using the cell vector constructor and update 

@@ -44,6 +44,8 @@ Box::Box(char type, float A_init)
 //======================================================================
 Box::~Box()
 
+/* Destruct a Box */
+
   {
 	  delete cell_;
     delete CONCENTRATIONS_;
@@ -66,6 +68,8 @@ vector<float>* Box::get_box_metabolites()
 
 
 vector<float>* Box::get_box_next_metabolites()
+
+/* Give the concentrations of metabolites in the Box. */
 
   {
     return Next_CONCENTRATIONS_;
@@ -115,6 +119,9 @@ Cell* Box::cell()
 //======================================================================
 
 void Box::refresh_box(float A_init)
+
+/* Reinitiate the box concentrations given an initial concentration of A. */
+
   { 
     CONCENTRATIONS_ -> at(0) = A_init;
     CONCENTRATIONS_-> at(1) = 0;
@@ -123,9 +130,13 @@ void Box::refresh_box(float A_init)
 
 
 void Box::metab_trade()
+
+/* The cell exchange metabolites with the box. */
+
   {
     cell_ -> metabolism(CONCENTRATIONS_);
   }
+
 
 bool Box::Cellular_death()
 
@@ -147,6 +158,7 @@ bool Box::Cellular_death()
     return false;
   }
 
+
 bool Box::empty_Box()
 
 /* Say if the Box is empty. */ 
@@ -159,7 +171,7 @@ bool Box::empty_Box()
 
 void Box::newborn(Cell* sister)
 
-/*Given a cell, reproduce the same cell into the box*/
+/*Given a cell, reproduce the same cell into the box. */
 
   {
     char phenotype = sister->WhatAmI();
@@ -174,43 +186,10 @@ void Box::newborn(Cell* sister)
     }
   }
   
-  
-/*void Box::newborn(Cell* mother)
-
-* A close Cell (mother) divide itself and fill the empty Box. 
- * Its metabolites are divided by 2. 
- 
-  {
-    mother->Cell_division();
-    float aleat = (double) rand() / (RAND_MAX);
-    if (mother->WhatAmI() == 'a')
-      {
-        if (aleat < (mother->Pmut()))
-          {
-            cell_ = new Gb(mother->intra_metabolites());
-          }
-        else
-          {
-            cell_ = new Ga(mother->intra_metabolites());
-          }
-      }
-    else
-      {
-        if (aleat < (mother->Pmut()))
-          {
-            cell_ = new Ga(mother->intra_metabolites());
-          }
-        else
-          {
-            cell_ = new Gb(mother->intra_metabolites());
-          }
-      }
-  }
-  */
 
 void Box::mutation()
 
-/* Decide if the cell should mutate or not and then divid its metabolites */
+/* Decide if the cell should mutate or not and then divid its metabolites. */
 
   {
     float aleat = (double) rand() / (RAND_MAX);
@@ -234,9 +213,13 @@ void Box::mutation()
 
 
 
-void Box::update_diffusion(){
+void Box::update_diffusion()
+
+/* Set the newconcentrations after diffusion.  */
+
+  {
     *CONCENTRATIONS_=*Next_CONCENTRATIONS_;
-}
+  }
 
 
 

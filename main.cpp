@@ -37,7 +37,6 @@ void Run_Programme_opti(float time,  float D);
 
 int main(int argc, char const *argv[])
 {
-	
 	Run_Programme(10000.0, 0.1);
 }
 
@@ -75,12 +74,12 @@ void Run_Programme(float time, float D)
     vector<int> res;
 
     result += "T A nb_B Survival\n";
-    for (float T = 0 ; T <= 1500 ; T += 100)
+    for (float T = 0 ; T <= 1500 ; T += 150)
     {
-        cout << T <<  endl;
-        for (float A = 0 ; A <= 50 ; A += 5)
+        cout << "T : " << T <<  endl;
+        for (float A = 0 ; A <= 50 ; A += 10)
         {
-            cout << A << endl;
+            cout << "  A : " << A << endl;
             result += to_string(T) + " " + to_string(A) + " ";
             Environment* E = new Environment(A,D);
             res = E->Run(time , T);
@@ -91,14 +90,17 @@ void Run_Programme(float time, float D)
     }
     
     ofstream data_csv;
-    data_csv.open("dataPmut_0_1.csv");
+    data_csv.open("data10Pmut_0.csv");
     data_csv << result;
     data_csv.close();
-    
-
 }
 
+
+
 void Run_Programme_opti(float time, float D)
+
+/* Dicotomous method to optimise the Run_Programme fonction. */
+
 {
     string result;
     vector<int> up;

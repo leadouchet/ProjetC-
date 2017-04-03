@@ -22,9 +22,10 @@ Gb::Gb()
 	  nb_Gb++;
   }
   
+  
 Gb::Gb(vector<float> intra_metabolites) : Cell(intra_metabolites) 
 
-/* Construct a Gb cell using the cell vector constructor and update 
+/* Create a Gb cell using the cell vector constructor and update 
  * the Gb counter.*/
 
   {

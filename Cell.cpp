@@ -8,7 +8,7 @@
 //======================================================================
   const float Cell::fitness_min_ = 0.001;
   const float Cell::Pdeath_ = 0.02; 
-  const float Cell::Pmut_ = 0.1;
+  const float Cell::Pmut_ = 0;
   const float Cell::dt_ = 0.1;
   int Cell::nb_cell = 0;
   
@@ -27,7 +27,7 @@ Cell::Cell()
     nb_cell++;
   }
 
-Cell::Cell(std::vector<float> intra_metabolites)
+Cell::Cell(vector<float> intra_metabolites)
 
 /* Constructor from a vector : Create a new cell containing into its 
  * metabolisme, the concentration of metabolites given as argument by a 

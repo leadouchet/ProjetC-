@@ -37,7 +37,7 @@ public:
 //======================================================================
 //    PUBLIC METHODS
 //======================================================================
-  void metabolism(std::vector<float>* ext_metab) override;  
+  void metabolism(vector<float>* ext_metab) override;  
 
 protected:
 //======================================================================

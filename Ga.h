@@ -66,6 +66,7 @@ inline int Ga::Get_nb() const
     return nb_Ga;
   }
   
+  
 inline char Ga::WhatAmI()
 
 /*Return a phenotype */

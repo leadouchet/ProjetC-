@@ -78,6 +78,7 @@ inline float Cell::Pmut() const
     return Pmut_;
   }
 
+
 inline float Cell::fitness() const
 
 /* Getter to access the cell fitness. */
@@ -85,6 +86,7 @@ inline float Cell::fitness() const
   {
     return fitness_;
   }
+
 
 inline float Cell::Pdeath() const
 
@@ -94,6 +96,7 @@ inline float Cell::Pdeath() const
     return Pdeath_;
   }
 
+
 inline int Cell::Get_nb() const
 
 /* Getter to access the number of existing cells. */
@@ -101,6 +104,7 @@ inline int Cell::Get_nb() const
   {
     return nb_cell;
   }
+
 
 inline vector<float> Cell::intra_metabolites() const
 
