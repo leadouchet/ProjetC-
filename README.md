@@ -71,15 +71,20 @@ the Gb counter
 
 ### Class Box :
 
-**empty_Box**: Test wether a box (given as coordinate x, y) is empty or 
+* **empty_Box()**: Test wether a box (given as coordinate x, y) is empty or 
  not , if there is a cell into the box. Return 0 if no cell and 1 
- otherwise.
-**Cellular_death** : Test wether the cell in the box is expected to die.
+ otherwise.  
+* **Cellular_death()** : Test wether the cell in the box is expected to die.
  If yes, this method release the cells metabolites into the box and 
  destroy the cell and return 0 (the box is now empty). If not the method
- return 1 and do not change the cell.
-**update_box** : change the concentration of metabolites into the box 
-for the process of diffusion of the environment.
+ return 1 and do not change the cell.  
+* **update_diffusion()** : change the concentration of metabolites into the box 
+after diffusion of the environment.  
+* **refresh_box(float A_init)** : Reinitiate the box concentrations given an initial concentration of A.
+* **metab_trade()** : The cell exchange metabolites with the box.  
+* **newborn(Cell* sister)** : Given a cell, reproduce the same cell into the box.  
+* **mutation()** : Decide if the cell should mutate or not and then divid its metabolites.
+
 
 
 
@@ -90,55 +95,44 @@ for the process of diffusion of the environment.
 toroidal grid_ of W_*H_ size in wich each coordinate represents a box 
 that host a cell. No metabolites are added into the environment. There 
 are as much Ga phenotype cells as Gb and these are placed randomly into 
-the environment.
+the environment.  
 
 * **Environment(float A_init)** : Environment constructor based on the 
 level of glucose placed into the environment. The environment is created
  with the default constructor but the initial level of glucose (A_init) 
- contained in each box is chosen by the user. */
+ contained in each box is chosen by the user.  
 
 * **~Environment()** : Destructor of environment : apply the box 
-destructor for each box contained into the grid_.
+destructor for each box contained into the grid_.  
 
 * **Best_fit()** : Find the neigboor with the best fitness around a box and 
-return its coordinates into a vector.
+return its coordinates into a vector.  
+
+* **toroidal(vector<int> coord)** : This function ensure the toroidal behaviour of the environment. For a given coordinate, it return its coordinate into the environment so that it will never leave the space delimited.  
+
+* **diffuse_metabolites()** : Run though the environment to make the metabolites diffuse into each box.  
+
+* **diffuse_box(int x, int y)** : This function makes the metabolites diffuse into one box of the environment considering its neighboors. The new metabolites level of the box is updated.  
+
+* **Cellular_killer()** : Run though the grid and for each box determine if the containig cell will die considering its probability of death.  
+
+* **Cycle()** : Gather all the function describing the environment behaviour during one cycle  : 
+  - The metabolites diffuse into the environment
+  - Make cell randomly die
+  - Make the surviving cells compete to divide into the empty space
+  - Each cells metabolizes the metabolites into its box  
+
+* **refresh_Environment()** : Reset every box of the environment at the initial glucose concentration (A_init).  
+
+* **pick_char (vector<char>* tab)** : This function pick randomly and return a caractere contained into a vector given as argument.  
+
+* **pick_coord (vector< vector<int> >*  tab)** : This function pick randomly and return a vector of coordinates contained into a vector given as argument.  
 
 * **Run(float time, float T)** : This function run the cellular 
 proliferation for a time (given as argument). Every T time the middle is
  refresh. The cycle function is called for every step dt. This function 
- create a csv file containing the Ga and Gb number at each cycle.
+ create a csv file containing the Ga and Gb number at each cycle.  
 
-
-
-
-
-
-#test
-
-###test1 
-  P_mut = 0
-  T : de 1 en 1
-  A : de 0.1 en 0.1
-
-###test2
-  P_mut = 0.0005
-  T : de 1 en 1
-  A : de 0.1 en 0.1
-
-###test3
-  P_mut = 0.001
-  T : de 1 en 1
-  A : de 0.1 en 0.1
-
-###test4
-  P_mut = 0.0001
-  T : de 1 en 1
-  A : de 0.1 en 0.1
-
-###test5
-  P_mut = 0.01
-  T : de 1 en 1
-  A : de 0.1 en 0.1
 
 
 

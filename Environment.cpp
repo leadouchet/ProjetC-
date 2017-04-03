@@ -263,7 +263,7 @@ vector<vector<int>>* Environment::Cellular_killer()
     {
       for (int y = 0 ; y < W_; ++y)
       {
-        grid_[x][y]->update_diffusion;
+        grid_[x][y]->update_diffusion;        //optimization (to save a grid process)
         if (grid_[x][y]->Cellular_death())
         {
           result->push_back(vector<int> {x,y});
